@@ -130,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="700dp"
-        android:text="By logging in you will be accepting our Terms & Conditions."
+        android:text="By logging in you will be accepting our Terms  Conditions."
         android:layout_centerHorizontal="true"
         android:textSize="14sp"
         android:textColor="#090909"
@@ -139,6 +139,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello">
+
+    </TextView>
 
 </RelativeLayout>
 
