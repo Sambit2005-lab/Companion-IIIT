@@ -139,6 +139,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:background="@color/white"
+        android:id="@+id/signup"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_alignParentRight="true"
