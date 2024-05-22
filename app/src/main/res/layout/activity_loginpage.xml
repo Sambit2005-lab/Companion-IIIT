@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginpage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button1"
+        android:layout_width="49dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableRight="@drawable/left_arrow"></androidx.appcompat.widget.AppCompatButton>
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="383dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/notosans_regular"
+        android:text="Back to your college hub. Let's log in!"
+        android:textSize="27sp"/>
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="242dp"
+        android:layout_below="@+id/heading"
+        android:src="@drawable/image"/>
+
+    <TextView
+        android:id="@+id/email"
+        android:fontFamily="@font/notosans_regular"
+        android:layout_width="327dp"
+        android:layout_height="38dp"
+        android:layout_below="@+id/image"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="4dp"
+        android:text="Email"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/edittext1"
+        android:layout_width="337dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/email"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="-13dp"
+        android:background="@drawable/edit_text_border"/>
+
+    <TextView
+        android:id="@+id/password"
+        android:layout_width="327dp"
+        android:layout_height="38dp"
+        android:fontFamily="@font/notosans_regular"
+        android:layout_below="@+id/edittext1"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="29dp"
+        android:text="Password"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/edittext2"
+        android:layout_width="337dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/password"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="-11dp"
+        android:background="@drawable/edit_text_border"></EditText>
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:layout_width="337dp"
+        android:layout_height="32dp"
+        android:id="@+id/loginbutton"
+        android:layout_below="@+id/edittext2"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="43dp"
+        android:background="@drawable/button_shapes"
+        android:fontFamily="@font/notosans_regular"
+        android:backgroundTint="@color/black"
+        android:textAllCaps="false"
+        android:text="Log In!"
+        android:textColor="@color/white"
+        android:textSize="18sp">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <TextView
+        android:layout_width="322dp"
+        android:fontFamily="@font/notosans_regular"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginbutton"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="53dp"
+        android:text="   By using your email we ensure a secure login process
+        By logging in you will be accepting our"
+        android:textSize="12sp"></TextView>
+</RelativeLayout>
+
+
+
+
