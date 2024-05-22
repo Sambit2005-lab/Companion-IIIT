@@ -3,90 +3,84 @@ package com.example.companioniiit;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
+import androidx.appcompat.widget.AppCompatButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class signup extends AppCompatActivity {
-    TextInputEditText fullname, Editemail, Editpassword, cpassword;
-    Button signup;
-    FirebaseAuth Auth;
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseAuth mAuth = null;
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
 
+    private EditText fullNameEditText;
+    private EditText emailEditText;
+    private EditText passwordEditText;
+    private EditText confirmPasswordEditText;
+    private AppCompatButton signupButton;
+    private FirebaseAuth mAuth;
 
-    @SuppressLint("WrongViewCast")
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        fullname = findViewById(R.id.edittext1);
-        Editemail = findViewById(R.id.emailinput);
-        Editpassword = findViewById(R.id.passwordinput);
-        cpassword = findViewById(R.id.cp);
-        signup = findViewById(R.id.signup);
 
-        signup.setOnClickListener(new View.OnClickListener() {
+
+        mAuth = FirebaseAuth.getInstance();
+
+
+        fullNameEditText = findViewById(R.id.edittext1);
+        emailEditText = findViewById(R.id.emailinput);
+        passwordEditText = findViewById(R.id.passwordinput);
+        confirmPasswordEditText = findViewById(R.id.cpinput);
+        signupButton = findViewById(R.id.signup);
+
+        // Set the onClickListener for the signup button
+        signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String email = Editemail.getText().toString().trim();
-                String password = Editpassword.getText().toString().trim();
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(signup.this, "Enter email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(signup.this, "Enter password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                FirebaseAuth mAuth = null;
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Toast.makeText(signup.this, "Account is created.", Toast.LENGTH_SHORT).show();
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Intent intent = new Intent(signup.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(signup.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                handleSignup();
             }
-
-            ;
         });
+    }
+
+    private void handleSignup() {
+        String fullName = fullNameEditText.getText().toString();
+        String email = emailEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+        String confirmPassword = confirmPasswordEditText.getText().toString();
+
+
+        if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            Toast.makeText(signup.this, "All fields are required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            Toast.makeText(signup.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        createAccount(email, password);
+    }
+
+    private void createAccount(String email, String password) {
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Toast.makeText(signup.this, "Signup successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(signup.this, login.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Toast.makeText(signup.this, "Authentication failed: " + task.getException().getMessage(),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

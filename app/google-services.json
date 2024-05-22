@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "22404186252",
+    "project_id": "companion-iiit",
+    "storage_bucket": "companion-iiit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22404186252:android:2f05f3ef2fb4db4e2efba9",
+        "android_client_info": {
+          "package_name": "com.example.companioniiit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQFf_ZNuWptNH1Cm1hCVTjOs4d74Ad2Rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

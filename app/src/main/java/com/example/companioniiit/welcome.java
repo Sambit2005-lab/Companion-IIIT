@@ -27,6 +27,7 @@ public class welcome extends AppCompatActivity {
                                         Intent intent;
                                         intent = new Intent(welcome.this, signup.class);
                                         startActivity(intent);
+                                       
 
                                     }
                                 });
@@ -36,6 +37,7 @@ public class welcome extends AppCompatActivity {
                     Intent intent;
                     intent = new Intent(welcome.this, login.class);
                     startActivity(intent);
+
 
                 }
         });
