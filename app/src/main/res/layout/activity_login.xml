@@ -75,8 +75,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
 
-        android:layout_width="337dp"
-        android:layout_height="32dp"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
         android:id="@+id/loginbutton"
         android:layout_below="@+id/edittext2"
         android:textStyle="bold"
