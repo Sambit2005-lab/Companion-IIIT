@@ -8,6 +8,8 @@
     android:layout_height="match_parent">
 
 
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button1"
         android:layout_width="49dp"
@@ -26,19 +28,23 @@
         android:fontFamily="@font/notosans_regular"
         android:text="Back to your college hub. Let's log in!"
         android:textSize="27sp"/>
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="242dp"
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
         android:layout_below="@+id/heading"
-        android:src="@drawable/image"/>
+        android:layout_width="match_parent"
+        android:layout_height="272dp"
+        app:lottie_rawRes="@raw/login_animation"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
 
     <TextView
         android:id="@+id/email"
         android:fontFamily="@font/notosans_regular"
         android:layout_width="327dp"
         android:layout_height="38dp"
-        android:layout_below="@+id/image"
+        android:layout_below="@+id/animation_view"
         android:layout_centerInParent="true"
         android:layout_marginTop="4dp"
         android:text="Email"
