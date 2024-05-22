@@ -81,9 +81,51 @@
         android:textStyle="bold"></TextView>
 
     <EditText
+        android:id="@+id/emailinput"
         android:layout_width="337dp"
         android:layout_height="50dp"
         android:layout_below="@+id/email"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/edit_text_border"></EditText>
+
+    <TextView
+        android:id="@+id/password"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailinput"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="31dp"
+        android:fontFamily="@font/notosans_regular"
+        android:text="Password"
+        android:textSize="15sp"
+        android:textStyle="bold"></TextView>
+
+    <EditText
+        android:layout_width="337dp"
+        android:id="@+id/passwordinput"
+        android:layout_height="50dp"
+        android:layout_below="@+id/password"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/edit_text_border"></EditText>
+
+    <TextView
+        android:id="@+id/cp"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordinput"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="31dp"
+        android:fontFamily="@font/notosans_regular"
+        android:text="Confirm Password"
+        android:textSize="15sp"
+        android:textStyle="bold"></TextView>
+
+    <EditText
+        android:layout_width="337dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/cp"
         android:layout_centerInParent="true"
         android:layout_marginTop="6dp"
         android:background="@drawable/edit_text_border"></EditText>
