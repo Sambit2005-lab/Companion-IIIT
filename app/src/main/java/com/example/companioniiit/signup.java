@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -22,6 +23,7 @@ public class signup extends AppCompatActivity {
     private AppCompatButton signupButton;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    private ProgressBar progressBar;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -37,6 +39,8 @@ public class signup extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordinput);
         confirmPasswordEditText = findViewById(R.id.cpinput);
         signupButton = findViewById(R.id.signup);
+        progressBar = findViewById(R.id.progressBar);
+
 
         // Set the onClickListener for the signup button
         signupButton.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +66,9 @@ public class signup extends AppCompatActivity {
             Toast.makeText(signup.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        progressBar.setVisibility(View.VISIBLE);
+        signupButton.setEnabled(false);
 
         createAccount(fullName, email, password);
     }
