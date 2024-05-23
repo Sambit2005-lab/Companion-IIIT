@@ -1,5 +1,7 @@
 package com.example.companioniiit;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ public class signup extends AppCompatActivity {
     private EditText passwordEditText;
     private EditText confirmPasswordEditText;
     private AppCompatButton signupButton;
+    private AppCompatButton backButton;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private ProgressBar progressBar;
@@ -39,6 +42,7 @@ public class signup extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordinput);
         confirmPasswordEditText = findViewById(R.id.cpinput);
         signupButton = findViewById(R.id.signup);
+        backButton = findViewById(R.id.back_to_welcome);
         progressBar = findViewById(R.id.progressBar);
 
 
@@ -49,7 +53,16 @@ public class signup extends AppCompatActivity {
                 handleSignup();
             }
         });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(signup.this, welcome.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
 
     private void handleSignup() {
         String fullName = fullNameEditText.getText().toString();
@@ -122,3 +135,4 @@ public class signup extends AppCompatActivity {
         }
     }
 }
+

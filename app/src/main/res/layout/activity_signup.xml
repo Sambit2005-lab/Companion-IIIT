@@ -133,6 +133,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:background="@color/white"
+        android:id="@+id/back_to_welcome"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_alignParentBottom="true"

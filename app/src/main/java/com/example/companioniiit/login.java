@@ -14,6 +14,7 @@ public class login extends AppCompatActivity {
     private EditText emailEditText;
     private EditText passwordEditText;
     private AppCompatButton loginButton;
+    private AppCompatButton backButton;
     private FirebaseAuth mAuth;
 
     @Override
@@ -28,12 +29,20 @@ public class login extends AppCompatActivity {
         emailEditText = findViewById(R.id.edittext1);
         passwordEditText = findViewById(R.id.edittext2);
         loginButton = findViewById(R.id.loginbutton);
-
+        backButton = findViewById(R.id.button1);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 handleLogin();
+            }
+        });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(login.this, welcome.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
