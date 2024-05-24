@@ -14,10 +14,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".appear"
-            android:exported="false" />
-        <activity
             android:name=".info_year"
+            android:exported="false"
+            android:theme="@style/Theme.CompanionIIIT" />
+        <activity
+            android:name=".appear"
             android:exported="false" />
         <activity
             android:name=".interest"
