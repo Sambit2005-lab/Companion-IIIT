@@ -154,7 +154,8 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/_wla"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="662dp" />
+            tools:layout_editor_absoluteY="662dp"
+            tools:ignore="MissingConstraints" />
 
         <ImageButton
             android:id="@+id/imageButton2"
@@ -168,7 +169,8 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/png_transparent_arrow_computer_icons_arrow_angle_hand_logo_removebg_preview"
             tools:layout_editor_absoluteX="355dp"
-            tools:layout_editor_absoluteY="662dp" />
+            tools:layout_editor_absoluteY="662dp"
+            tools:ignore="MissingConstraints" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

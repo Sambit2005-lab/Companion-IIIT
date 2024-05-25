@@ -64,7 +64,7 @@ public class welcome extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
            //  User is signed in, redirect to mainactivity
-            Intent intent = new Intent(welcome.this, interest.class);
+            Intent intent = new Intent(welcome.this, info_year.class);
             startActivity(intent);
             finish();
         } else {

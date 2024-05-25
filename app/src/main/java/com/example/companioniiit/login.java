@@ -68,7 +68,7 @@ public class login extends AppCompatActivity {
 
                         Toast.makeText(login.this, "Login successful", Toast.LENGTH_SHORT).show();
                         // Redirect to another activity if needed
-                         Intent intent = new Intent(login.this, MainActivity.class);
+                         Intent intent = new Intent(login.this, info_year.class);
                          startActivity(intent);
                          finish();
                     } else {

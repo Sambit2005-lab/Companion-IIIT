@@ -94,7 +94,7 @@ public class signup extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         writeNewUser(user.getUid(), fullName, email);
                         Toast.makeText(signup.this, "Signup successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(signup.this, login.class);
+                        Intent intent = new Intent(signup.this, info_year.class);
                         startActivity(intent);
                         finish();
                     } else {
