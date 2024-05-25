@@ -14,6 +14,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".upload_picture"
+            android:exported="false" />
+        <activity
             android:name=".info_year"
             android:exported="false"
             android:theme="@style/Theme.CompanionIIIT" />
