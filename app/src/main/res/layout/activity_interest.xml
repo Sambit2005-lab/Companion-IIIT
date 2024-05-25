@@ -384,20 +384,24 @@
         android:text="Writing   +   "
         android:textAlignment="viewStart" />
 
-    <ImageButton
-        android:id="@+id/leftbtn"
-        android:layout_width="83dp"
-        android:layout_height="41dp"
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@color/white"
+        android:id="@+id/back"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/btn_background_1" />
+        android:drawableRight="@drawable/left_arrow"/>
 
-    <ImageButton
-        android:id="@+id/rightbtn"
-        android:layout_width="83dp"
-        android:layout_height="41dp"
-        android:layout_alignParentBottom="true"
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@color/white"
+        android:id="@+id/next"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
         android:layout_alignParentRight="true"
-        android:background="@drawable/btn_background_1" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="0dp"
+        android:drawableLeft="@drawable/right_arrow__1_">
 
+    </androidx.appcompat.widget.AppCompatButton>
 
 </RelativeLayout>
