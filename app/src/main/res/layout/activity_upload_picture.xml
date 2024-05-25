@@ -30,11 +30,12 @@
         android:layout_height="wrap_content"
         android:src="@drawable/loadingbar_3_transperent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/awesome"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintVertical_bias="0.073">
+        app:layout_constraintVertical_bias="0.555">
 
     </ImageView>
 
@@ -42,15 +43,110 @@
         android:id="@+id/awesome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Awesome!"
-        android:textSize="24sp"
         android:fontFamily="@font/notosans_regular"
+        android:text="Awesome!"
+        android:textSize="29sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Let_others_recognize_you"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
     </TextView>
 
+    <TextView
+        android:id="@+id/Let_others_recognize_you"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/noto_sans"
+        android:text="Let others recognize you!"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.198"
+        app:layout_constraintHorizontal_bias="0.113">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/pfp_preview"
+        android:layout_width="179dp"
+        android:layout_height="191dp"
+        android:src="@drawable/pfp_preview"
+        app:layout_constraintTop_toBottomOf="@+id/Let_others_recognize_you"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.329">
+
+    </ImageView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/upload_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Now"
+        android:fontFamily="@font/noto_sans"
+        android:padding="14dp"
+        android:background="@drawable/background_intro"
+        android:drawableRight="@drawable/upload_icon"
+        android:drawablePadding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pfp_preview"
+        app:layout_constraintVertical_bias="0.564"
+        app:layout_constraintHorizontal_bias="0.5">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/skip_for_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skip for now!"
+        android:fontFamily="@font/noto_sans"
+        android:textColor="#ffffff"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/background_btn_intro3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.654">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/back_to_welcome"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:drawableRight="@drawable/left_arrow"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="691dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signup"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/right_arrow__1_"
+        tools:layout_editor_absoluteX="315dp"
+        tools:layout_editor_absoluteY="691dp">
+
+    </androidx.appcompat.widget.AppCompatButton>
 </androidx.constraintlayout.widget.ConstraintLayout>

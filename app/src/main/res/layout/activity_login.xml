@@ -79,7 +79,9 @@
         android:layout_below="@+id/password"
         android:layout_centerInParent="true"
         android:layout_marginTop="-11dp"
-        android:background="@drawable/edit_text_border"></EditText>
+        android:background="@drawable/edit_text_border">
+
+    </EditText>
 
     <androidx.appcompat.widget.AppCompatButton
 
@@ -109,7 +111,9 @@
         android:layout_marginTop="53dp"
         android:text="   By using your email we ensure a secure login process
         By logging in you will be accepting our"
-        android:textSize="12sp"></TextView>
+        android:textSize="12sp">
+
+    </TextView>
 </RelativeLayout>
 
 

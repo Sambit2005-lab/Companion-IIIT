@@ -66,7 +66,9 @@
         android:layout_below="@+id/name"
         android:layout_centerInParent="true"
         android:layout_marginTop="-13dp"
-        android:background="@drawable/edit_text_border"></EditText>
+        android:background="@drawable/edit_text_border">
+        
+    </EditText>
 
     <TextView
         android:id="@+id/email"
@@ -108,7 +110,9 @@
         android:layout_below="@+id/password"
         android:layout_centerInParent="true"
         android:layout_marginTop="6dp"
-        android:background="@drawable/edit_text_border"></EditText>
+        android:background="@drawable/edit_text_border">
+
+    </EditText>
 
     <TextView
         android:id="@+id/cp"
