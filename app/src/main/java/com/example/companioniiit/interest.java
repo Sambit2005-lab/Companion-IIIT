@@ -7,15 +7,83 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import java.util.HashMap;
+import java.util.Map;
 
 public class interest extends AppCompatActivity {
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private Map<String, Button> buttonMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_interest);
 
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
 
+        // Get current user
+        currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null) {
+            // Initialize Firebase Database
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+
+            // Initialize buttons and add them to the map
+            initButton(R.id.technology, "Technology");
+            initButton(R.id.sports, "Sports");
+            initButton(R.id.cybersecurity, "Cybersecurity");
+            initButton(R.id.music, "Music");
+            // Add other buttons similarly...
+        } else {
+            // Handle user not logged in (redirect to login activity, show message, etc.)
+        }
+    }
+
+    private void initButton(int buttonId, final String interest) {
+        final Button button = findViewById(buttonId);
+        buttonMap.put(interest, button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isSelected = toggleButton(button);
+                if (isSelected) {
+                    // Add interest to Firebase
+                    mDatabase.child("users").child(currentUser.getUid()).child("interests").child(interest).setValue(true);
+                } else {
+                    // Remove interest from Firebase
+                    mDatabase.child("users").child(currentUser.getUid()).child("interests").child(interest).removeValue();
+                }
+            }
+        });
+    }
+
+    private boolean toggleButton(Button button) {
+        String text = button.getText().toString();
+        if (text.endsWith(" +   ")) {
+            button.setText(text.replace(" +   ", " x   "));
+            button.setBackgroundColor(ContextCompat.getColor(this, R.color.colorSelected));
+            button.setTextColor(ContextCompat.getColor(this, R.color.colorTextSelected));
+            return true;
+        } else {
+            button.setText(text.replace(" x   ", " +   "));
+            button.setBackgroundColor(ContextCompat.getColor(this, R.color.colorUnselected));
+            button.setTextColor(ContextCompat.getColor(this, R.color.colorTextUnselected));
+            return false;
+        }
     }
 }
+
+
