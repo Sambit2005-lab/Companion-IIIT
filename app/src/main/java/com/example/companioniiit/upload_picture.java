@@ -17,7 +17,7 @@ public class upload_picture extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 1;
     private AppCompatButton upload_picture_btn;
     private AppCompatButton skip_btn;
-
+    private  AppCompatButton backButton;
     private ImageView profile_image;
 
     @Override
@@ -28,6 +28,7 @@ public class upload_picture extends AppCompatActivity {
         upload_picture_btn = findViewById(R.id.upload_now);
         skip_btn = findViewById(R.id.skip_for_now);
         profile_image = findViewById(R.id.pfp_preview);
+        backButton = findViewById(R.id.back);
 
         skip_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +44,15 @@ public class upload_picture extends AppCompatActivity {
                 Intent profile_image = new Intent(Intent.ACTION_PICK);
                 profile_image.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(profile_image, PICK_IMAGE_REQUEST);
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(upload_picture.this, welcome.class);
+                startActivity(intent);
+                finish();
             }
         });
 

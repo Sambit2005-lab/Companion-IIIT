@@ -1,12 +1,15 @@
 package com.example.companioniiit;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +31,8 @@ public class interest extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-
+    private AppCompatButton nextButton;
+    private AppCompatButton backButton;
     private FirebaseUser currentUser;
     private Map<String, Button> buttonMap = new HashMap<>();
 
@@ -45,6 +49,8 @@ public class interest extends AppCompatActivity {
         nameTextView = findViewById(R.id.name);
         yearTextView = findViewById(R.id.year);
         branchTextView = findViewById(R.id.branch);
+        nextButton = findViewById(R.id.next);
+        backButton = findViewById(R.id.back);
 
         // Retrieve and display user details
         displayUserDetails();
@@ -54,7 +60,25 @@ public class interest extends AppCompatActivity {
         initButton(R.id.sports, "Sports");
         initButton(R.id.cybersecurity, "Cybersecurity");
         initButton(R.id.music, "Music");
+
         // Add other buttons similarly...
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(interest.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(interest.this, welcome.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void displayUserDetails() {

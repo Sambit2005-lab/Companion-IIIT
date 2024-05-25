@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +25,9 @@ public class info_year extends AppCompatActivity {
     private ArrayAdapter<String> adapterItemsCourse, adapterItemsYear;
 
     private String selectedCourse, selectedYear;
+    private AppCompatButton nextButton;
+    private AppCompatButton backButton;
+
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -42,6 +46,8 @@ public class info_year extends AppCompatActivity {
 
         autoCompleteTextViewCourse = findViewById(R.id.autocomplete_text_course);
         autoCompleteTextViewYear = findViewById(R.id.autocomplete_text_year);
+        backButton = findViewById(R.id.back);
+        nextButton = findViewById(R.id.info_next);
 
         adapterItemsCourse = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Courses);
         autoCompleteTextViewCourse.setAdapter(adapterItemsCourse);
@@ -75,6 +81,23 @@ public class info_year extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveUserDetails();
+            }
+        });
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(info_year.this, upload_picture.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(info_year.this, login.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
