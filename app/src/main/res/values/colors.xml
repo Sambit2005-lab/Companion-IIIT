@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorSelected">#7BFF07</color> <!-- Example color: Amber -->
+    <color name="colorSelected">#88AB6A</color> <!-- Example color: Amber -->
     <color name="colorTextSelected">#FFFFFF</color> <!-- Example color: White -->
     <color name="colorUnselected">#D3D3D3</color> <!-- Example color: Light Gray -->
     <color name="colorTextUnselected">#000000</color>
