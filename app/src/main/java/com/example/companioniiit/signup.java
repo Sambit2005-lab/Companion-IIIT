@@ -41,8 +41,8 @@ public class signup extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailinput);
         passwordEditText = findViewById(R.id.passwordinput);
         confirmPasswordEditText = findViewById(R.id.cpinput);
-        signupButton = findViewById(R.id.signup);
-        backButton = findViewById(R.id.back_to_welcome);
+        signupButton = findViewById(R.id.next);
+        backButton = findViewById(R.id.back);
         progressBar = findViewById(R.id.progressBar);
 
 
@@ -95,6 +95,7 @@ public class signup extends AppCompatActivity {
                         writeNewUser(user.getUid(), fullName, email);
                         Toast.makeText(signup.this, "Signup successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(signup.this, info_year.class);
+                        intent.putExtra("userName", fullName);
                         startActivity(intent);
                         finish();
                     } else {
@@ -125,6 +126,8 @@ public class signup extends AppCompatActivity {
         public String name;
         public String email;
 
+
+
         public User() {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
@@ -132,6 +135,7 @@ public class signup extends AppCompatActivity {
         public User(String name, String email) {
             this.name = name;
             this.email = email;
+
         }
     }
 }
