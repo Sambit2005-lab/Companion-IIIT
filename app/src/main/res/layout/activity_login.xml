@@ -15,7 +15,9 @@
         android:layout_width="49dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:drawableRight="@drawable/left_arrow"></androidx.appcompat.widget.AppCompatButton>
+        android:drawableRight="@drawable/left_arrow">
+
+    </androidx.appcompat.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/heading"
