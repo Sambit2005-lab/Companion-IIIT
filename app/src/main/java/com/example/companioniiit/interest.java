@@ -58,8 +58,25 @@ public class interest extends AppCompatActivity {
         // Initialize buttons and add them to the map
         initButton(R.id.technology, "Technology");
         initButton(R.id.sports, "Sports");
-        initButton(R.id.cybersecurity, "Cybersecurity");
+        initButton(R.id.cybersecurity, "Cyber Security");
         initButton(R.id.music, "Music");
+        initButton(R.id.acting, "Acting");
+        initButton(R.id.photography, "Photography");
+        initButton(R.id.writing, "Writing");
+        initButton(R.id.art, "Art");
+        initButton(R.id.socialcause, "Social Cause");
+        initButton(R.id.dance, "Dance");
+        initButton(R.id.enterpreneurship, "Enterpreneurship");
+        initButton(R.id.filmmedia, "Film Media");
+        initButton(R.id.coding, "Coding");
+        initButton(R.id.marketing, "Marketing");
+        initButton(R.id.event, "Event Management");
+        initButton(R.id.career, "Career Development");
+        initButton(R.id.literature, "Literature");
+
+
+
+
 
         // Add other buttons similarly...
         backButton.setOnClickListener(new View.OnClickListener() {
