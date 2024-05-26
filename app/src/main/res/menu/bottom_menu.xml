@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/Home"
+        android:title="Home"
+        android:icon="@drawable/home_icon_navbar"
+
+        />
+    <item android:id="@+id/Study"
+        android:title="Study"
+        android:icon="@drawable/study_icon_navbar"
+        />
+
+
+    <item
+        android:id="@+id/Attendance"
+        android:title="Attendance"
+        android:icon="@drawable/attendance_icon_navbar"
+        />
+    <item
+        android:id="@+id/Profile"
+        android:title="Profile"
+        android:icon="@drawable/profile_icon_navbar"
+        />
+</menu>

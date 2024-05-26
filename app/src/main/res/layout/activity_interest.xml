@@ -219,6 +219,7 @@
         android:paddingStart="12dp"
         android:text="Dance   +   "
         android:textAlignment="viewStart" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/socialcause"
         android:layout_width="wrap_content"
