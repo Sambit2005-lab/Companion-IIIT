@@ -1,11 +1,13 @@
 package com.example.companioniiit;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,7 +38,9 @@ public class upload_picture extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private StorageReference mStorageRef;
+    private ProgressBar progressBar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,7 @@ public class upload_picture extends AppCompatActivity {
         upload_picture_btn = findViewById(R.id.upload_now);
         skip_btn = findViewById(R.id.skip_for_now);
         profile_image = findViewById(R.id.pfp_preview);
+        progressBar = findViewById(R.id.progressBar);
 
         skip_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +89,7 @@ public class upload_picture extends AppCompatActivity {
     private void uploadImageToFirebase() {
         if (imageUri != null) {
             FirebaseUser currentUser = mAuth.getCurrentUser();
+            progressBar.setVisibility(View.VISIBLE);
             if (currentUser != null) {
                 String userId = currentUser.getUid();
                 StorageReference fileReference = mStorageRef.child(userId + ".jpg");
