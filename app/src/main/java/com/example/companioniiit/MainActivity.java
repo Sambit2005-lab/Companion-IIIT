@@ -58,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
                     studyimage.setImageResource(R.drawable.study_icon_navbar);
                     profileimage.setImageResource(R.drawable.profile_icon_navbar);
 
-                    societieslayout.setBackgroundColor(getResources().getColor(R.color.black));
-                    studylayout.setBackgroundColor(getResources().getColor(R.color.black));
-                    profilelayout.setBackgroundColor(getResources().getColor(R.color.black));
+                    societieslayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
+                    studylayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
+                    profilelayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
 
                     hometext.setVisibility(View.VISIBLE);
                     homeimage.setImageResource(R.drawable.home_icon_navbar);
@@ -88,9 +88,9 @@ public class MainActivity extends AppCompatActivity {
                     studyimage.setImageResource(R.drawable.study_icon_navbar);
                     profileimage.setImageResource(R.drawable.profile_icon_navbar);
 
-                    homelayout.setBackgroundColor(getResources().getColor(R.color.black));
-                    studylayout.setBackgroundColor(getResources().getColor(R.color.black));
-                    profilelayout.setBackgroundColor(getResources().getColor(R.color.black));
+                    homelayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
+                    studylayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
+                    profilelayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
 
                     societiestext.setVisibility(View.VISIBLE);
                     societiesimage.setImageResource(R.drawable.societies_icon_navbar);
@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity {
                     societiesimage.setImageResource(R.drawable.societies_icon_navbar);
                     profileimage.setImageResource(R.drawable.profile_icon_navbar);
 
-                    homelayout.setBackgroundColor(getResources().getColor(R.color.black));
-                    societieslayout.setBackgroundColor(getResources().getColor(R.color.black)); // Change to societies layout
-                    profilelayout.setBackgroundColor(getResources().getColor(R.color.black));
+                    homelayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
+                    societieslayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected)); // Change to societies layout
+                    profilelayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
 
                     studytext.setVisibility(View.VISIBLE);
                     studyimage.setImageResource(R.drawable.study_icon_navbar);
@@ -148,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
                     societiesimage.setImageResource(R.drawable.societies_icon_navbar); // Correct icon
                     studyimage.setImageResource(R.drawable.study_icon_navbar); // Correct icon
 
-                    homelayout.setBackgroundColor(getResources().getColor(R.color.black));
-                    societieslayout.setBackgroundColor(getResources().getColor(R.color.black));
-                    studylayout.setBackgroundColor(getResources().getColor(R.color.black));
+                    homelayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
+                    societieslayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
+                    studylayout.setBackgroundColor(getResources().getColor(R.color.colorUnselected));
 
                     profiletext.setVisibility(View.VISIBLE);
                     profileimage.setImageResource(R.drawable.profile_icon_navbar);

@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="My Clubs"
-                android:textColor="#F3E15429"
+                android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:visibility="gone" />

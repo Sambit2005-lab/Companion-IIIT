@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.material)
     implementation ("com.airbnb.android:lottie:6.4.0")
 
+
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.auth)
@@ -55,3 +56,4 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
