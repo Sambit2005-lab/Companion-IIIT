@@ -10,10 +10,6 @@
 
 
 
-
-
-
-
     <TextView
         android:id="@+id/step4of4"
         android:layout_width="wrap_content"

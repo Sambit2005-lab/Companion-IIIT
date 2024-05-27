@@ -13,9 +13,9 @@
 
 
     <item
-        android:id="@+id/Attendance"
-        android:title="Attendance"
-        android:icon="@drawable/attendance_icon_navbar"
+        android:id="@+id/societies"
+        android:title="My Clubs"
+        android:icon="@drawable/societies_icon_navbar"
         />
     <item
         android:id="@+id/Profile"
