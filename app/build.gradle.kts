@@ -45,8 +45,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation ("com.airbnb.android:lottie:6.4.0")
-
-
+    implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.auth)
