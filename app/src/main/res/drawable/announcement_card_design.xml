@@ -1,0 +1,22 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shape with rounded corners and stroke -->
+    <item>
+        <shape>
+            <solid android:color="#E04C4C"/>
+            <corners android:radius="11dp"/>
+
+        </shape>
+    </item>
+
+    <!-- Line at the bottom -->
+    <item android:bottom="9dp">
+        <shape>
+            <solid android:color="#FFD4D4"/>
+            <corners android:topLeftRadius="11dp" android:topRightRadius="11dp"/>
+            <stroke android:width="1dp" android:color="#E04C4C"/>
+        </shape>
+    </item>
+
+</layer-list>
+
