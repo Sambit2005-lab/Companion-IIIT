@@ -116,64 +116,72 @@
         </TextView>
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/announcement_card"
             android:layout_width="120dp"
             android:layout_height="110dp"
-            app:cardBackgroundColor="@drawable/announcement_card_design"
-            app:cardCornerRadius="11dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/announcement_card_design"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.184"
+            app:layout_constraintHorizontal_bias="0.155"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/what_are_you_looking_for_today"
-            app:layout_constraintVertical_bias="0.083">
+            app:layout_constraintVertical_bias="0.083"
+            >
 
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
+
+
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/myClasses_card"
             android:layout_width="120dp"
             android:layout_height="110dp"
-            app:cardBackgroundColor="#D6FFD5"
-            app:cardCornerRadius="11dp"
+            android:background="@drawable/myclasses_card_design"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.539"
-            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintHorizontal_bias="0.401"
+            app:layout_constraintStart_toEndOf="@+id/announcement_card"
             app:layout_constraintTop_toBottomOf="@+id/what_are_you_looking_for_today"
-            app:layout_constraintVertical_bias="0.083">
+            app:layout_constraintVertical_bias="0.084">
 
-        </androidx.cardview.widget.CardView>
+        </androidx.appcompat.widget.AppCompatButton>
 
-        <androidx.cardview.widget.CardView
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/attendance_card"
             android:layout_width="120dp"
             android:layout_height="110dp"
-            app:cardBackgroundColor="#FCF4CA"
-            app:cardCornerRadius="11dp"
+            android:layout_marginBottom="70dp"
+
+            android:background="@drawable/attendance_card_design"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.539"
-            app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2"
-            app:layout_constraintVertical_bias="0.694">
+            app:layout_constraintHorizontal_bias="0.383"
+            app:layout_constraintStart_toEndOf="@+id/myCalendar_card"
+            app:layout_constraintTop_toBottomOf="@+id/myClasses_card"
+            app:layout_constraintVertical_bias="0.647">
 
-        </androidx.cardview.widget.CardView>
+        </androidx.appcompat.widget.AppCompatButton>
 
-        <androidx.cardview.widget.CardView
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/myCalendar_card"
             android:layout_width="120dp"
             android:layout_height="110dp"
-            app:cardBackgroundColor="#D1E6FF"
-            app:cardCornerRadius="11dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="70dp"
+
+            android:background="@drawable/calendar_card_design"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.184"
+            app:layout_constraintHorizontal_bias="0.167"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            app:layout_constraintVertical_bias="0.695">
+            app:layout_constraintTop_toBottomOf="@+id/announcement_card"
+            app:layout_constraintVertical_bias="0.647">
 
-        </androidx.cardview.widget.CardView>
-
+        </androidx.appcompat.widget.AppCompatButton>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
