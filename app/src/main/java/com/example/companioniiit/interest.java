@@ -79,7 +79,7 @@ public class interest extends AppCompatActivity {
 
 
         // Add other buttons similarly...
-        backButton.setOnClickListener(new View.OnClickListener() {
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(interest.this, MainActivity.class);

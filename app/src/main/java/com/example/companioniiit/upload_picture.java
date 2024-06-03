@@ -58,7 +58,7 @@ public class upload_picture extends AppCompatActivity {
         skip_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(upload_picture.this, MainActivity.class);
+                Intent intent = new Intent(upload_picture.this, interest.class);
                 startActivity(intent);
             }
         });
@@ -108,7 +108,7 @@ public class upload_picture extends AppCompatActivity {
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if (task.isSuccessful()) {
                                                             Toast.makeText(upload_picture.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
-                                                            Intent intent = new Intent(upload_picture.this, MainActivity.class);
+                                                            Intent intent = new Intent(upload_picture.this, interest.class);
                                                             intent.putExtra("profileImageUrl", imageUrl);
                                                             startActivity(intent);
                                                             finish();
