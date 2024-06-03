@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeFragment extends Fragment {
 
     private TextView userIdTextView;
+    private TextView greetingsTextView;
     private DatabaseReference databaseReference;
     private FirebaseAuth auth;
     private String userId;
@@ -32,16 +33,20 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         userIdTextView = view.findViewById(R.id.userid);
+        greetingsTextView = view.findViewById(R.id.greetings_user);
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();
         userId = auth.getCurrentUser().getUid();
 
         // Initialize Firebase Database
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userId);
 
         // Always show the dialog box
         showCollegeIdDialog();
+
+        // Retrieve the user's name from Firebase
+        getUserNameFromFirebase();
 
         return view;
     }
@@ -81,6 +86,23 @@ public class HomeFragment extends Fragment {
                 if (snapshot.exists()) {
                     String collegeId = snapshot.getValue(String.class);
                     userIdTextView.setText("ID:" + collegeId);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle possible errors.
+            }
+        });
+    }
+
+    private void getUserNameFromFirebase() {
+        databaseReference.child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String name = snapshot.getValue(String.class);
+                    greetingsTextView.setText("Welcome, " + name + "!");
                 }
             }
 
