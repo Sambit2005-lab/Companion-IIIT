@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/add_a_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a Subject"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:textColor="#51B5C3"
+        android:fontFamily="@font/noto_sans"
+        android:textStyle="bold"
+       >
+    </TextView>
+
+    <TextView
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#51B5C3"
+        android:layout_below="@id/add_a_subject"
+        android:layout_margin="8dp">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/class_input_field"
+        android:layout_below="@id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Subject Name"
+        android:layout_margin="8dp"
+        android:background="@drawable/class_dialog_inputfield"
+        android:padding="16dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/teacher_input_field"
+        android:layout_below="@id/class_input_field"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Teacher's Name"
+        android:layout_margin="8dp"
+        android:background="@drawable/class_dialog_inputfield"
+        android:padding="16dp">
+    </EditText>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/save_class_details_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/teacher_input_field"
+        android:background="@drawable/save_button"
+        android:layout_margin="10dp"
+        android:textSize="16sp"
+        android:text="Save"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:fontFamily="@font/notosans_regular"
+        android:padding="16dp">
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancel_class_details_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/teacher_input_field"
+        android:background="@drawable/cancel_button"
+        android:layout_margin="10dp"
+        android:textSize="16sp"
+        android:text="Cancel"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:fontFamily="@font/notosans_regular"
+        android:padding="16dp"
+        android:layout_alignParentRight="true">
+    </androidx.appcompat.widget.AppCompatButton>
+
+
+
+
+</RelativeLayout>

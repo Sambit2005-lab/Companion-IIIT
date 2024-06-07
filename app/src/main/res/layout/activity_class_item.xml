@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".class_item"
+    android:background="@drawable/attendance_report_bg">
+
+    <TextView
+        android:id="@+id/subject_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subject Name"
+        android:textSize="35sp"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/notosans_regular"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/teacher_name"
+        android:layout_below="@+id/subject_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="By teacher's Name"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/notosans_regular"
+        android:layout_marginLeft="16dp"
+        >
+
+    </TextView>
+
+
+</RelativeLayout>
