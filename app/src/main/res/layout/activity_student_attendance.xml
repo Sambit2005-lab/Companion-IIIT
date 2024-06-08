@@ -7,9 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".student_attendance_activity">
 
-<include
-    android:id="@+id/toolbar_at_attendance_page"
-    layout="@layout/toolbar"/>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_attendance"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#51B5C3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_button"
+            android:background="@null"
+            android:layout_gravity="start"
+            android:layout_marginBottom="90dp">
+
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/page_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/notosans_regular"
+            android:text="Title"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+
+    </androidx.appcompat.widget.Toolbar>
 
 
 
