@@ -40,7 +40,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/notosans_regular"
-                android:text="Title"
+                android:text="Attendance"
                 android:textColor="#ffffff"
                 android:textSize="30sp"
                 android:textStyle="bold">

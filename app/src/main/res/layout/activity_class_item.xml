@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="100dp"
     tools:context=".class_item"
+    android:layout_margin="8dp"
     android:background="@drawable/attendance_report_bg">
 
     <TextView
