@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,12 +33,15 @@ public class attendance_card extends AppCompatActivity {
 
     private AppCompatImageButton fab;
 
+    private ImageButton back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_card);
 
         fab = findViewById(R.id.add_subject_fab);
+        back = findViewById(R.id.back_button);
         fab.setOnClickListener(v -> showDialog());
 
         recyclerView = findViewById(R.id.recyclerView_class);
@@ -46,7 +51,16 @@ public class attendance_card extends AppCompatActivity {
         subjectAdapter = new SubjectAdapter(this, subject_items);
         recyclerView.setAdapter(subjectAdapter);
         subjectAdapter.setOnItemClickListener(position -> gotonewactivity(position));
+
+
+        //back button created
+        back.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
     }
+
+
 
     private void gotonewactivity(int position) {
         Intent intent = new Intent(this, student_attendance_activity.class);
@@ -86,4 +100,6 @@ public class attendance_card extends AppCompatActivity {
             subjectAdapter.notifyDataSetChanged();
         }
     }
+
+
 }

@@ -48,7 +48,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/profile_pic_icon"
+
         android:layout_marginTop="130dp">
 
     </ImageView>
@@ -149,7 +149,7 @@
         android:text="My Downloads"
         android:textColor="#ffffff"
         android:textAlignment="textStart"
-        android:drawableRight="@drawable/download_icon"
+
         android:paddingRight="10dp"
         android:paddingLeft="30dp"
         android:layout_width="300dp"
