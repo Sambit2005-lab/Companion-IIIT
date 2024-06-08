@@ -1,7 +1,6 @@
 package com.example.companioniiit;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,12 +28,15 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth auth;
     private String userId;
 
+    private AppCompatButton attendenceButton;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         userIdTextView = view.findViewById(R.id.userid);
         greetingsTextView = view.findViewById(R.id.greetings_user);
+        attendenceButton = view.findViewById(R.id.attendance_card);  // Initialize the button
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();
@@ -48,7 +51,20 @@ public class HomeFragment extends Fragment {
         // Retrieve the user's name from Firebase
         getUserNameFromFirebase();
 
+        onAttendenceClick();
+
         return view;
+    }
+
+    private void onAttendenceClick() {
+        attendenceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the AttendenceActivity
+                Intent intent = new Intent(getActivity(), attendance_card.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void showCollegeIdDialog() {
@@ -62,7 +78,7 @@ public class HomeFragment extends Fragment {
                     String collegeId = editTextCollegeId.getText().toString();
 
                     if (!collegeId.isEmpty()) {
-                        userIdTextView.setText("ID:" + collegeId);
+                        userIdTextView.setText("ID: " + collegeId);
                         saveCollegeIdToFirebase(collegeId);
                     }
                 })
@@ -85,7 +101,7 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String collegeId = snapshot.getValue(String.class);
-                    userIdTextView.setText("ID:" + collegeId);
+                    userIdTextView.setText("ID: " + collegeId);
                 }
             }
 
