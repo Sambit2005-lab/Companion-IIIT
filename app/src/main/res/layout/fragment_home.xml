@@ -49,19 +49,21 @@
 
         </TextView>
 
-        <ImageView
+
+        <com.google.android.material.imageview.ShapeableImageView
+
+
             android:id="@+id/profile_pic"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="73dp"
+            android:layout_height="49dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.80"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@id/greetings_user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.194">
-
-        </ImageView>
+            app:layout_constraintVertical_bias="0.064"
+            app:shapeAppearanceOverlay="@style/circular"/>
 
         <TextView
             android:id="@+id/userid"
@@ -127,11 +129,7 @@
             app:layout_constraintHorizontal_bias="0.155"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/what_are_you_looking_for_today"
-            app:layout_constraintVertical_bias="0.083"
-            >
-
-
-
+            app:layout_constraintVertical_bias="0.083">
 
 
         </androidx.appcompat.widget.AppCompatButton>
