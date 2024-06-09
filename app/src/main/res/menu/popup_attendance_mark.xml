@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <item android:id="@+id/present_mark"
+       android:icon="@drawable/present_mark_popup"
+       android:title="Present"/>
+
+    <item android:id="@+id/absent_mark"
+        android:icon="@drawable/absent_attendance_mark"
+        android:title="Absent"/>
+
+    <item android:id="@+id/cancelled_mark"
+        android:icon="@drawable/cancelled_attendance_mark"
+        android:title="Cancelled"/>
+
+    <item
+        android:id="@+id/clear_mark"
+        android:icon="@drawable/clear_mark"
+        android:title="Clear"/>
+</menu>
