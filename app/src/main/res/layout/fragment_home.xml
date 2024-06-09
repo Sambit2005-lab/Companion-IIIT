@@ -63,7 +63,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.064"
-            app:shapeAppearanceOverlay="@style/circular"/>
+            app:shapeAppearanceOverlay="@style/circular" />
 
         <TextView
             android:id="@+id/userid"
@@ -84,6 +84,19 @@
 
         </TextView>
 
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:layout_width="290dp"
+            android:layout_height="140dp"
+            app:layout_constraintBottom_toTopOf="@+id/what_are_you_looking_for_today"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userid"
+            app:layout_constraintVertical_bias="0.164"
+            app:circularflow_radiusInDP="10dp">
+
+        </com.denzcoskun.imageslider.ImageSlider>
 
         <ImageView
             android:id="@+id/home_background"
