@@ -29,6 +29,7 @@ public class HomeFragment extends Fragment {
     private String userId;
 
     private AppCompatButton attendenceButton;
+    private AppCompatButton myCalenderButton;
 
     @Nullable
     @Override
@@ -36,7 +37,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         userIdTextView = view.findViewById(R.id.userid);
         greetingsTextView = view.findViewById(R.id.greetings_user);
-        attendenceButton = view.findViewById(R.id.attendance_card);  // Initialize the button
+        attendenceButton = view.findViewById(R.id.attendance_card);// Initialize the button
+        myCalenderButton = view.findViewById(R.id.myCalendar_card);
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();
@@ -53,7 +55,21 @@ public class HomeFragment extends Fragment {
 
         onAttendenceClick();
 
+        onMyCalenderClick();
+
         return view;
+    }
+
+    private void onMyCalenderClick() {
+        myCalenderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the MyCalenderActivity
+                Intent intent = new Intent(getActivity(), activity_myCalender_card.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void onAttendenceClick() {
