@@ -142,7 +142,10 @@
             app:layout_constraintHorizontal_bias="0.155"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/what_are_you_looking_for_today"
-            app:layout_constraintVertical_bias="0.083">
+            app:layout_constraintVertical_bias="0.083"
+            android:text="Announcement"
+            android:textColor="#E04C4C"
+            >
 
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -157,7 +160,9 @@
             app:layout_constraintHorizontal_bias="0.401"
             app:layout_constraintStart_toEndOf="@+id/announcement_card"
             app:layout_constraintTop_toBottomOf="@+id/what_are_you_looking_for_today"
-            app:layout_constraintVertical_bias="0.084">
+            app:layout_constraintVertical_bias="0.084"
+            android:text="My classes"
+            android:textColor="#67C61C">
 
         </androidx.appcompat.widget.AppCompatButton>
 
@@ -173,7 +178,9 @@
             app:layout_constraintHorizontal_bias="0.383"
             app:layout_constraintStart_toEndOf="@+id/myCalendar_card"
             app:layout_constraintTop_toBottomOf="@+id/myClasses_card"
-            app:layout_constraintVertical_bias="0.647">
+            app:layout_constraintVertical_bias="0.647"
+            android:text="Attendance"
+            android:textColor="#E8C441">
 
         </androidx.appcompat.widget.AppCompatButton>
 
@@ -183,14 +190,15 @@
             android:layout_height="110dp"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="70dp"
-
             android:background="@drawable/calendar_card_design"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.167"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/announcement_card"
-            app:layout_constraintVertical_bias="0.647">
+            app:layout_constraintVertical_bias="0.647"
+            android:text="My Calendar"
+            android:textColor="#408CE5">
 
         </androidx.appcompat.widget.AppCompatButton>
     </androidx.constraintlayout.widget.ConstraintLayout>
