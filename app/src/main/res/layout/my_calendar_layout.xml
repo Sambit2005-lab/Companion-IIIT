@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+   >
 
     <ImageView
         android:id="@+id/topBar_myCalendar"
@@ -27,10 +28,12 @@
         android:src="@drawable/back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042">
+        >
 
     </androidx.appcompat.widget.AppCompatImageButton>
 
@@ -38,33 +41,37 @@
         android:id="@+id/myCalendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:fontFamily="@font/noto_sans"
         android:text="My Calendar"
         android:textColor="#ffffff"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_margin="8dp"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
         app:layout_constraintBottom_toBottomOf="@id/topBar_myCalendar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back_button"
-        app:layout_constraintVertical_bias="0.0">
+        >
 
     </TextView>
 
     <RelativeLayout
+        android:id="@+id/current_year_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/topBar_myCalendar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar_myCalendar"
-        app:layout_constraintVertical_bias="0.174"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.174">
 
 
         <TextView
@@ -72,6 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:layout_centerHorizontal="true"
             android:fontFamily="@font/noto_sans"
             android:text="CurrentYear"
             android:textColor="#BF000000"
@@ -80,7 +88,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_centerHorizontal="true"
 
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.2">
@@ -91,12 +98,26 @@
             android:id="@+id/calendar_prev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
             android:background="@null"
             android:src="@drawable/calendar_prev"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/current_year"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="90dp"
+
+            >
+
+        </androidx.appcompat.widget.AppCompatImageButton>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/calendar_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="90dp"
+            android:background="@null"
+            android:src="@drawable/calendar_next"
+            app:layout_constraintStart_toEndOf="@+id/current_year"
 
             >
 
@@ -104,5 +125,111 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/days_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_below="@id/current_year_layout"
+        >
+
+        <TextView
+            android:id="@+id/Sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="Sun"
+            android:layout_weight="1"
+            android:textSize="22sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="4dp"
+            android:layout_weight="1"
+            android:text="Mon"
+            android:textSize="22sp">
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/Tuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="4dp"
+            android:layout_weight="1"
+            android:text="Tue"
+            android:textSize="22sp">
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/Wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="4dp"
+            android:layout_weight="1"
+            android:text="Wed"
+            android:textSize="22sp">
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/Thursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="4dp"
+            android:layout_weight="1"
+            android:text="Thu"
+            android:textSize="22sp">
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/Friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="4dp"
+            android:layout_weight="1"
+            android:text="Fri"
+            android:textSize="22sp">
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/Saturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="4dp"
+            android:paddingLeft="4dp"
+            android:layout_weight="1"
+            android:text="Sat"
+            android:textSize="22sp">
+        </TextView>
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/date_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/days_holder"
+        android:layout_marginTop="2dp"
+        android:numColumns="7"
+        android:padding="2dp">
+
+    </GridView>
+
+
+</RelativeLayout>
