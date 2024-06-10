@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         userIdTextView = view.findViewById(R.id.userid);
         greetingsTextView = view.findViewById(R.id.greetings_user);
-        attendenceButton = view.findViewById(R.id.attendance_card);// Initialize the button
+        attendenceButton = view.findViewById(R.id.attendance_card); // Initialize the button
         myCalenderButton = view.findViewById(R.id.myCalendar_card);
 
         // Initialize Firebase Auth
@@ -47,8 +47,8 @@ public class HomeFragment extends Fragment {
         // Initialize Firebase Database
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userId);
 
-        // Always show the dialog box
-        showCollegeIdDialog();
+        // Check if the College ID is already saved in Firebase
+        checkIfCollegeIdExists();
 
         // Retrieve the user's name from Firebase
         getUserNameFromFirebase();
@@ -83,6 +83,27 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    private void checkIfCollegeIdExists() {
+        databaseReference.child("collegeId").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // College ID exists, retrieve and display it
+                    String collegeId = snapshot.getValue(String.class);
+                    userIdTextView.setText("ID: " + collegeId);
+                } else {
+                    // College ID does not exist, show the dialog
+                    showCollegeIdDialog();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle possible errors.
+            }
+        });
+    }
+
     private void showCollegeIdDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         LayoutInflater inflater = getLayoutInflater();
@@ -99,8 +120,7 @@ public class HomeFragment extends Fragment {
                     }
                 })
                 .setNeutralButton("Skip", (dialog, which) -> {
-                    // Retrieve the college ID from Firebase
-                    getCollegeIdFromFirebase();
+                    // Do nothing, user chose to skip
                 })
                 .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
                 .create()
@@ -109,23 +129,6 @@ public class HomeFragment extends Fragment {
 
     private void saveCollegeIdToFirebase(String collegeId) {
         databaseReference.child("collegeId").setValue(collegeId);
-    }
-
-    private void getCollegeIdFromFirebase() {
-        databaseReference.child("collegeId").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String collegeId = snapshot.getValue(String.class);
-                    userIdTextView.setText("ID: " + collegeId);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle possible errors.
-            }
-        });
     }
 
     private void getUserNameFromFirebase() {
@@ -145,3 +148,4 @@ public class HomeFragment extends Fragment {
         });
     }
 }
+
