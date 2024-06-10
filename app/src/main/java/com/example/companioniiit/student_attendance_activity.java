@@ -72,7 +72,6 @@ public class student_attendance_activity extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users")
                 .child(currentUserId)
-                .child("subjects")
                 .child(subjectKey)
                 .child("attendance");
 

@@ -182,11 +182,13 @@ public class attendance_card extends AppCompatActivity {
 
 
     private void showEditDeleteDialog(int position) {
+        // Check if the position is valid
         if (position < 0 || position >= subject_items.size()) {
             Toast.makeText(this, "Invalid subject position", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // Build and show the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = LayoutInflater.from(this).inflate(R.layout.edit_delete_dialog, null);
         builder.setView(view);
@@ -199,16 +201,17 @@ public class attendance_card extends AppCompatActivity {
         Button deleteButton = view.findViewById(R.id.delete_button);
 
         // Pre-fill with existing subject data
-        editSubjectName.setText(subject_items.get(position).getSubjectItem().getSubjectName());
-        editTeacherName.setText(subject_items.get(position).getSubjectItem().getTeacherName());
+        Subject_Item currentItem = subject_items.get(position).getSubjectItem();
+        editSubjectName.setText(currentItem.getSubjectName());
+        editTeacherName.setText(currentItem.getTeacherName());
 
         updateButton.setOnClickListener(v -> {
-            String newSubjectName = editSubjectName.getText().toString();
-            String newTeacherName = editTeacherName.getText().toString();
+            String newSubjectName = editSubjectName.getText().toString().trim();
+            String newTeacherName = editTeacherName.getText().toString().trim();
 
             if (!newSubjectName.isEmpty() && !newTeacherName.isEmpty()) {
                 String key = subject_items.get(position).getKey();
-                DatabaseReference subjectRef = databaseReference.child("subjects").child(key); // Reference to the specific subject node
+                DatabaseReference subjectRef = databaseReference.child(key); // Reference to the specific subject node
 
                 Subject_Item updatedSubject = new Subject_Item(newSubjectName, newTeacherName);
 
@@ -228,7 +231,7 @@ public class attendance_card extends AppCompatActivity {
 
         deleteButton.setOnClickListener(v -> {
             String key = subject_items.get(position).getKey();
-            DatabaseReference subjectRef = databaseReference.child("subjects").child(key); // Reference to the specific subject node
+            DatabaseReference subjectRef = databaseReference.child(key); // Reference to the specific subject node
 
             subjectRef.removeValue()
                     .addOnCompleteListener(task -> {
@@ -236,18 +239,19 @@ public class attendance_card extends AppCompatActivity {
                             // Delete related attendance data
                             DatabaseReference attendanceRef = FirebaseDatabase.getInstance().getReference("users")
                                     .child(currentUserId)
-                                    .child("attendance")
                                     .child(key); // Reference to the attendance data for the subject
 
                             attendanceRef.removeValue()
                                     .addOnCompleteListener(attendanceTask -> {
                                         if (attendanceTask.isSuccessful()) {
-                                            subject_items.remove(position);
-                                            subjectAdapter.notifyItemRemoved(position);
+                                            if (position >= 0 && position < subject_items.size()) {
+                                                subject_items.remove(position);
+                                                subjectAdapter.notifyItemRemoved(position);
+                                            }
                                             dialog.dismiss();
                                             Toast.makeText(attendance_card.this, "Class deleted successfully", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            Toast.makeText(attendance_card.this, "Failed to delete class", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(attendance_card.this, "Failed to delete attendance data", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         } else {
@@ -257,4 +261,3 @@ public class attendance_card extends AppCompatActivity {
         });
     }
 }
-
