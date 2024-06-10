@@ -28,7 +28,6 @@ public class info_year extends AppCompatActivity {
     private AppCompatButton nextButton;
     private AppCompatButton backButton;
 
-
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
 
@@ -77,18 +76,10 @@ public class info_year extends AppCompatActivity {
         // Set the welcome message with the username
         welcomeTextView.setText("Hey " + userName + "!");
 
-        findViewById(R.id.info_next).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveUserDetails();
-            }
-        });
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(info_year.this, upload_picture.class);
-                startActivity(intent);
-                finish();
+                saveUserDetailsAndProceed();
             }
         });
 
@@ -102,7 +93,7 @@ public class info_year extends AppCompatActivity {
         });
     }
 
-    private void saveUserDetails() {
+    private void saveUserDetailsAndProceed() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null && selectedCourse != null && selectedYear != null) {
             String userId = currentUser.getUid();
@@ -113,10 +104,10 @@ public class info_year extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(info_year.this, "Details saved successfully", Toast.LENGTH_SHORT).show();
-                            // Navigate to the next activity
-                             Intent intent = new Intent(info_year.this, upload_picture.class);
-                             startActivity(intent);
-                             finish();
+                            // Navigate to the next activity only if details are saved successfully
+                            Intent intent = new Intent(info_year.this, upload_picture.class);
+                            startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(info_year.this, "Failed to save details: " + task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
@@ -127,7 +118,6 @@ public class info_year extends AppCompatActivity {
         }
     }
 }
-
 
 
 
