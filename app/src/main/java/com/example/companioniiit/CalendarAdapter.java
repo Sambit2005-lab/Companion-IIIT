@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import androidx.core.content.ContextCompat;
 
+import java.util.ArrayList;
 
 public class CalendarAdapter extends BaseAdapter {
 
@@ -52,7 +53,14 @@ public class CalendarAdapter extends BaseAdapter {
 
         holder.dateTextView.setText(dates.get(position));
 
+        // Reset the background color of the view
+        resetDateBackgroundColor(holder.dateTextView);
+
         return convertView;
+    }
+
+    private void resetDateBackgroundColor(TextView dateTextView) {
+        dateTextView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
     }
 
     static class ViewHolder {

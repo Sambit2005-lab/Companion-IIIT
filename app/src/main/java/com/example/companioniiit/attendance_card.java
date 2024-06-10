@@ -26,10 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import com.example.companioniiit.Subject_Item;
-import com.example.companioniiit.SubjectWithKey;
-import com.example.companioniiit.SubjectAdapter;
-
 
 public class attendance_card extends AppCompatActivity {
 
@@ -80,7 +76,6 @@ public class attendance_card extends AppCompatActivity {
         loadSubjectsFromFirebase();
 
         // Back button click listener
-
         back.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -91,7 +86,9 @@ public class attendance_card extends AppCompatActivity {
     }
 
     private void loadSubjectsFromFirebase() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference subjectsRef = databaseReference.child("subjects");
+
+        subjectsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 subject_items.clear();
@@ -99,7 +96,7 @@ public class attendance_card extends AppCompatActivity {
                     String key = snapshot.getKey();
                     Subject_Item subjectItem = snapshot.getValue(Subject_Item.class);
                     if (key != null && subjectItem != null) {
-                        subject_items.add(new SubjectWithKey(key, subjectItem));
+                        subject_items.add(new SubjectWithKey(key, subjectItem)); // Add SubjectWithKey object
                     }
                 }
                 subjectAdapter.notifyDataSetChanged();
@@ -114,11 +111,16 @@ public class attendance_card extends AppCompatActivity {
     }
 
     private void gotonewactivity(int position) {
-        Intent intent = new Intent(this, student_attendance_activity.class);
-        intent.putExtra("subject_name", subject_items.get(position).getSubjectItem().getSubjectName());
-        intent.putExtra("teacher_name", subject_items.get(position).getSubjectItem().getTeacherName());
-        intent.putExtra("position", position);
-        startActivity(intent);
+        if (position >= 0 && position < subject_items.size()) {
+            Intent intent = new Intent(this, student_attendance_activity.class);
+            intent.putExtra("subject_key", subject_items.get(position).getKey()); // Pass the subject key
+            intent.putExtra("subject_name", subject_items.get(position).getSubjectItem().getSubjectName());
+            intent.putExtra("teacher_name", subject_items.get(position).getSubjectItem().getTeacherName());
+            intent.putExtra("position", position);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Invalid subject position", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @SuppressLint("InflateParams")
@@ -142,30 +144,49 @@ public class attendance_card extends AppCompatActivity {
         });
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private void saveClass() {
         String subject_name_text = subject_name.getText().toString();
         String teacher_name_text = teacher_name.getText().toString();
         if (!subject_name_text.isEmpty() && !teacher_name_text.isEmpty()) {
-            String key = databaseReference.push().getKey();
-            Subject_Item subjectItem = new Subject_Item(subject_name_text, teacher_name_text);
-            if (key != null) {
-                databaseReference.child(key).setValue(subjectItem)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(attendance_card.this, "Class saved successfully", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(attendance_card.this, "Failed to save class", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                subject_items.add(new SubjectWithKey(key, subjectItem));
-                subjectAdapter.notifyDataSetChanged();
+            DatabaseReference subjectsRef = databaseReference.child("subjects");
+            // Check if the subject already exists
+            boolean subjectExists = false;
+            for (SubjectWithKey subjectWithKey : subject_items) {
+                if (subjectWithKey.getSubjectItem().getSubjectName().equals(subject_name_text) &&
+                        subjectWithKey.getSubjectItem().getTeacherName().equals(teacher_name_text)) {
+                    subjectExists = true;
+                    break;
+                }
+            }
+            if (!subjectExists) {
+                String key = subjectsRef.push().getKey();
+                Subject_Item subjectItem = new Subject_Item(subject_name_text, teacher_name_text);
+                if (key != null) {
+                    // Save the subject item with the generated key
+                    subjectsRef.child(key).setValue(subjectItem)
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(attendance_card.this, "Class saved successfully", Toast.LENGTH_SHORT).show();
+                                    subject_items.add(new SubjectWithKey(key, subjectItem)); // Add SubjectWithKey object
+                                    subjectAdapter.notifyDataSetChanged(); // Notify adapter of data change
+                                } else {
+                                    Toast.makeText(attendance_card.this, "Failed to save class", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+            } else {
+                Toast.makeText(attendance_card.this, "Subject already exists", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    @SuppressLint("InflateParams")
+
     private void showEditDeleteDialog(int position) {
+        if (position < 0 || position >= subject_items.size()) {
+            Toast.makeText(this, "Invalid subject position", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = LayoutInflater.from(this).inflate(R.layout.edit_delete_dialog, null);
         builder.setView(view);
@@ -186,56 +207,54 @@ public class attendance_card extends AppCompatActivity {
             String newTeacherName = editTeacherName.getText().toString();
 
             if (!newSubjectName.isEmpty() && !newTeacherName.isEmpty()) {
-                Subject_Item updatedSubject = new Subject_Item(newSubjectName, newTeacherName);
                 String key = subject_items.get(position).getKey();
+                DatabaseReference subjectRef = databaseReference.child("subjects").child(key); // Reference to the specific subject node
 
-                if (key != null) {
-                    databaseReference.child(key).setValue(updatedSubject)
-                            .addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    subject_items.set(position, new SubjectWithKey(key, updatedSubject));
-                                    subjectAdapter.notifyDataSetChanged();
-                                    Toast.makeText(attendance_card.this, "Class updated successfully", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(attendance_card.this, "Failed to update class", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
+                Subject_Item updatedSubject = new Subject_Item(newSubjectName, newTeacherName);
+
+                subjectRef.setValue(updatedSubject)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                subject_items.set(position, new SubjectWithKey(key, updatedSubject));
+                                subjectAdapter.notifyItemChanged(position);
+                                dialog.dismiss();
+                                Toast.makeText(attendance_card.this, "Class updated successfully", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(attendance_card.this, "Failed to update class", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
-            dialog.dismiss();
         });
 
         deleteButton.setOnClickListener(v -> {
-            if (!subject_items.isEmpty() && position >= 0 && position < subject_items.size()) {
-                String key = subject_items.get(position).getKey();
-                if (key != null) {
-                    databaseReference.child(key).removeValue()
-                            .addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    subjectAdapter.removeItem(position);
-                                    Toast.makeText(attendance_card.this, "Class deleted successfully", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(attendance_card.this, "Failed to delete class", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
-            } else {
-                Toast.makeText(attendance_card.this, "Invalid position or list is empty", Toast.LENGTH_SHORT).show();
-            }
-            dialog.dismiss();
+            String key = subject_items.get(position).getKey();
+            DatabaseReference subjectRef = databaseReference.child("subjects").child(key); // Reference to the specific subject node
+
+            subjectRef.removeValue()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // Delete related attendance data
+                            DatabaseReference attendanceRef = FirebaseDatabase.getInstance().getReference("users")
+                                    .child(currentUserId)
+                                    .child("attendance")
+                                    .child(key); // Reference to the attendance data for the subject
+
+                            attendanceRef.removeValue()
+                                    .addOnCompleteListener(attendanceTask -> {
+                                        if (attendanceTask.isSuccessful()) {
+                                            subject_items.remove(position);
+                                            subjectAdapter.notifyItemRemoved(position);
+                                            dialog.dismiss();
+                                            Toast.makeText(attendance_card.this, "Class deleted successfully", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(attendance_card.this, "Failed to delete class", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        } else {
+                            Toast.makeText(attendance_card.this, "Failed to delete class", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
-
-
     }
-
-
-
-
-
 }
-
-
-
-
-
 

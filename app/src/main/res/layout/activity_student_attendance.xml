@@ -251,7 +251,7 @@
                android:id="@+id/class_present_text"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-              android:text="class attended"
+              android:text="class attended: 0"
                android:padding="8dp"
                android:textSize="19sp">
 
@@ -262,7 +262,7 @@
                android:id="@+id/class_absent_text"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="Class not attended"
+               android:text="Class not attended: 0"
                android:textSize="19sp"
 
                android:padding="8dp">
@@ -273,7 +273,7 @@
                android:id="@+id/class_cancelled_text"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="class cancelled"
+               android:text="class cancelled : 0"
                android:textSize="19sp"
                android:padding="8dp">
 

@@ -19,7 +19,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
@@ -40,51 +39,42 @@ public class student_attendance_activity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String currentUserId;
 
-    private String subjectName; // Variable to store the subject name
+    private String subjectKey;
+    private String subjectName;
+    private TextView textViewSubjectName;
+    private TextView textViewClassPresent;
+    private TextView textViewClassAbsent;
+    private TextView textViewClassCancelled;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_attendance);
 
-        // Retrieve the subject name from the intent
+
         subjectName = getIntent().getStringExtra("subject_name");
 
-
-
-
-        // Initialize Firebase reference
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             currentUserId = currentUser.getUid();
+
         } else {
             // Handle the case where the user is not logged in
         }
 
-        DatabaseReference subjectRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("subject_name");
+        textViewSubjectName = findViewById(R.id.textview_subject_name);
+        textViewSubjectName.setText(subjectName);
 
-        subjectRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String subjectName = dataSnapshot.getValue(String.class);
-                    if (subjectName != null) {
-                        TextView textViewSubjectName = findViewById(R.id.textview_subject_name);
-                        textViewSubjectName.setText(subjectName);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle errors here
-            }
-        });
+        // Retrieve the subject key from the intent
+        String subjectKey = getIntent().getStringExtra("subject_key");
 
 
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("attendance");
+        databaseReference = FirebaseDatabase.getInstance().getReference("users")
+                .child(currentUserId)
+                .child("subjects")
+                .child(subjectKey)
+                .child("attendance");
 
         dateGrid = findViewById(R.id.date_grid);
         currentYear = findViewById(R.id.current_year);
@@ -102,7 +92,6 @@ public class student_attendance_activity extends AppCompatActivity {
             }
         });
 
-        // Add click listeners for the navigation buttons
         findViewById(R.id.calendar_prev).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,10 +107,11 @@ public class student_attendance_activity extends AppCompatActivity {
                 displayCurrentMonth();
             }
         });
+
+        textViewClassPresent = findViewById(R.id.class_present_text);
+        textViewClassAbsent = findViewById(R.id.class_absent_text);
+        textViewClassCancelled = findViewById(R.id.class_cancelled_text);
     }
-
-
-
 
     private void displayCurrentMonth() {
         calendar.set(Calendar.DAY_OF_MONTH, 1);
@@ -131,15 +121,12 @@ public class student_attendance_activity extends AppCompatActivity {
         int maxDays = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         dates.clear();
 
-        // Calculate the offset for the first day of the month
         int offset = calendar.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY;
 
-        // Add empty cells for the offset
         for (int i = 0; i < offset; i++) {
             dates.add("");
         }
 
-        // Add the dates for the month
         for (int i = 1; i <= maxDays; i++) {
             dates.add(String.valueOf(i));
         }
@@ -150,6 +137,78 @@ public class student_attendance_activity extends AppCompatActivity {
         } else {
             calendarAdapter.notifyDataSetChanged();
         }
+
+        updateAttendanceColors();
+        updateAttendanceCounts();
+    }
+
+    private void updateAttendanceColors() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Attendance attendance = snapshot.getValue(Attendance.class);
+                    if (attendance != null && attendance.getDate() != null) {
+                        String[] dateParts = attendance.getDate().split(" ");
+                        if (dateParts.length > 0) {
+                            String day = dateParts[0];
+                            String monthYear = dateParts[1] + " " + dateParts[2];
+                            if (sdf.format(calendar.getTime()).equals(monthYear)) {
+                                int index = dates.indexOf(day);
+                                if (index != -1) {
+                                    View view = dateGrid.getChildAt(index);
+                                    updateDateColor(view, attendance.getStatus());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle errors here
+            }
+        });
+    }
+
+    private void updateAttendanceCounts() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int presentCount = 0;
+                int absentCount = 0;
+                int cancelledCount = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Attendance attendance = snapshot.getValue(Attendance.class);
+                    if (attendance != null) {
+                        String[] dateParts = attendance.getDate().split(" ");
+                        String monthYear = dateParts[1] + " " + dateParts[2];
+                        if (sdf.format(calendar.getTime()).equals(monthYear)) {
+                            switch (attendance.getStatus()) {
+                                case "present":
+                                    presentCount++;
+                                    break;
+                                case "absent":
+                                    absentCount++;
+                                    break;
+                                case "cancelled":
+                                    cancelledCount++;
+                                    break;
+                            }
+                        }
+                    }
+                }
+                textViewClassPresent.setText("Class attended: " + presentCount);
+                textViewClassAbsent.setText("Class not attended: " + absentCount);
+                textViewClassCancelled.setText("Class cancelled: " + cancelledCount);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle errors here
+            }
+        });
     }
 
     private void showPopupMenu(final View view, final String date) {
@@ -157,11 +216,10 @@ public class student_attendance_activity extends AppCompatActivity {
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.popup_attendance_mark, popup.getMenu());
 
-        // Set the title of the popup menu
-        popup.getMenu().findItem(R.id.present_mark).setTitle("Present - " + subjectName);
-        popup.getMenu().findItem(R.id.absent_mark).setTitle("Absent - " + subjectName);
-        popup.getMenu().findItem(R.id.cancelled_mark).setTitle("Cancelled - " + subjectName);
-        popup.getMenu().findItem(R.id.clear_mark).setTitle("Clear - " + subjectName);
+        popup.getMenu().findItem(R.id.present_mark).setIcon(R.drawable.present_mark_popup).setTitle("Present - ");
+        popup.getMenu().findItem(R.id.absent_mark).setIcon(R.drawable.absent_attendance_mark).setTitle("Absent - ");
+        popup.getMenu().findItem(R.id.cancelled_mark).setIcon(R.drawable.cancelled_attendance_mark).setTitle("Cancelled - ");
+        popup.getMenu().findItem(R.id.clear_mark).setIcon(R.drawable.clear_mark).setTitle("Clear - ");
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -189,60 +247,64 @@ public class student_attendance_activity extends AppCompatActivity {
     }
 
     private void markAttendance(String date, String status, View view) {
-        String key = databaseReference.push().getKey();
-        Attendance attendance = new Attendance(date, status);
-        if (key != null) {
-            databaseReference.child(key).setValue(attendance)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(student_attendance_activity.this, "Attendance marked successfully", Toast.LENGTH_SHORT).show();
-                            updateDateColor(view, status);
-                        } else {
-                            Toast.makeText(student_attendance_activity.this, "Failed to mark attendance", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
+        DatabaseReference attendanceRef = databaseReference.child(date);
+
+        // Create a new Attendance object with the subject name and status
+        Attendance attendance = new Attendance(date, subjectName, status);
+        // Set the attendance details in the database
+        attendanceRef.setValue(attendance)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(student_attendance_activity.this, "Attendance marked successfully", Toast.LENGTH_SHORT).show();
+                        updateDateColor(view, status);
+                        updateAttendanceCounts();
+                    } else {
+                        Toast.makeText(student_attendance_activity.this, "Failed to mark attendance", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void clearAttendance(String date, View view) {
-        // Implement the logic to clear attendance for the selected date
-        // You can remove the attendance entry from Firebase and reset the color of the date cell
-        // Here is a basic implementation:
-        databaseReference.orderByChild("date").equalTo(date).getRef().removeValue()
+        databaseReference.child(date).removeValue()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(student_attendance_activity.this, "Attendance cleared", Toast.LENGTH_SHORT).show();
-                        view.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                    } else {
+                        updateDateColor(view, null);
+                        updateAttendanceCounts();
+                    }
+                    else {
                         Toast.makeText(student_attendance_activity.this, "Failed to clear attendance", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void updateDateColor(View view, String status) {
-        switch (status) {
-            case "present":
-                view.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-                break;
-            case "absent":
-                view.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                break;
-            case "cancelled":
-                view.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
-                break;
+    private void updateDateColor(View view, @Nullable String status) {
+        if (view != null) {
+            TextView dateTextView = view.findViewById(R.id.calendar_day);
+            if (status == null) {
+                dateTextView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            } else if (status.equals("present")) {
+                dateTextView.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+            } else if (status.equals("absent")) {
+                dateTextView.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+            } else if (status.equals("cancelled")) {
+                dateTextView.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
+            }
         }
     }
 
-    public static class Attendance {
-        public String date;
-        public String status;
+    private static class Attendance {
+        private String date;
+        private String subjectName;
+        private String status;
 
         public Attendance() {
             // Default constructor required for calls to DataSnapshot.getValue(Attendance.class)
         }
 
-        public Attendance(String date, String status) {
+        public Attendance(String date, String subjectName, String status) {
             this.date = date;
+            this.subjectName = subjectName;
             this.status = status;
         }
 
@@ -254,6 +316,14 @@ public class student_attendance_activity extends AppCompatActivity {
             this.date = date;
         }
 
+        public String getSubjectName() {
+            return subjectName;
+        }
+
+        public void setSubjectName(String subjectName) {
+            this.subjectName = subjectName;
+        }
+
         public String getStatus() {
             return status;
         }
@@ -263,7 +333,4 @@ public class student_attendance_activity extends AppCompatActivity {
         }
     }
 }
-
-
-
 

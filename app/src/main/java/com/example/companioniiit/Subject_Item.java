@@ -1,6 +1,6 @@
 package com.example.companioniiit;
 
-public class Subject_Item {
+public class Subject_Item  {
     private String subjectName;
     private String teacherName;
 

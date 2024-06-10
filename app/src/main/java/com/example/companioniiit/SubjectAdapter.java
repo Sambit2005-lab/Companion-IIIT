@@ -10,10 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import com.example.companioniiit.Subject_Item;
-import com.example.companioniiit.SubjectWithKey;
-import com.example.companioniiit.SubjectAdapter;
-
 
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder> {
     private Context context;
@@ -27,7 +23,6 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
             notifyItemRemoved(position);
         }
     }
-
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -100,3 +95,4 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
         }
     }
 }
+
