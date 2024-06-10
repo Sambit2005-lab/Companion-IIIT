@@ -10,8 +10,10 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CalendarAdapter extends BaseAdapter {
+
 
     private Context context;
     private ArrayList<String> dates;
@@ -22,6 +24,8 @@ public class CalendarAdapter extends BaseAdapter {
         this.dates = dates;
         this.inflater = LayoutInflater.from(context);
     }
+
+
 
     @Override
     public int getCount() {

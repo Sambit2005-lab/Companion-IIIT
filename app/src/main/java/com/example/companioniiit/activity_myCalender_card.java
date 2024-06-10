@@ -10,23 +10,29 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class activity_myCalender_card extends AppCompatActivity {
 
     private GridView dateGrid;
-    private CalendarAdapter calendarAdapter;
+    private CalenderAdapterForMYCalender calendarAdapter;
     private ArrayList<String> dates;
     private TextView currentYear;
     private Calendar calendar;
@@ -35,6 +41,8 @@ public class activity_myCalender_card extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
     private String currentUserId;
+
+    private Map<String, Integer> eventDates;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +63,7 @@ public class activity_myCalender_card extends AppCompatActivity {
         dateGrid = findViewById(R.id.date_grid);
         currentYear = findViewById(R.id.current_year);
         dates = new ArrayList<>();
+        eventDates = new HashMap<>();
         calendar = Calendar.getInstance();
         sdf = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
 
@@ -84,6 +93,9 @@ public class activity_myCalender_card extends AppCompatActivity {
                 displayCurrentMonth();
             }
         });
+
+        // Load events from Firebase
+        loadEventsFromFirebase();
     }
 
     private void displayCurrentMonth() {
@@ -108,13 +120,12 @@ public class activity_myCalender_card extends AppCompatActivity {
         }
 
         if (calendarAdapter == null) {
-            calendarAdapter = new CalendarAdapter(this, dates);
+            calendarAdapter = new CalenderAdapterForMYCalender(this, dates, eventDates);
             dateGrid.setAdapter(calendarAdapter);
         } else {
             calendarAdapter.notifyDataSetChanged();
         }
     }
-
 
     private void showAddEventDialog(final String date) {
         final Dialog dialog = new Dialog(this);
@@ -141,47 +152,97 @@ public class activity_myCalender_card extends AppCompatActivity {
     }
 
     private void saveEventToFirebase(String date, String event) {
-        String key = databaseReference.push().getKey();
         Event newEvent = new Event(date, event);
-        if (key != null) {
-            databaseReference.child(key).setValue(newEvent)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(activity_myCalender_card.this, "Event added successfully", Toast.LENGTH_SHORT).show();
+        databaseReference.push().setValue(newEvent)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(activity_myCalender_card.this, "Event added", Toast.LENGTH_SHORT).show();
+                        // Update event count for the date
+                        if (eventDates.containsKey(date)) {
+                            eventDates.put(date, eventDates.get(date) + 1);
                         } else {
-                            Toast.makeText(activity_myCalender_card.this, "Failed to add event", Toast.LENGTH_SHORT).show();
+                            eventDates.put(date, 1);
                         }
-                    });
-        }
+                        displayCurrentMonth();
+                    } else {
+                        Toast.makeText(activity_myCalender_card.this, "Failed to add event", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
-    public static class Event {
-        public String date;
-        public String event;
+    private void loadEventsFromFirebase() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                eventDates.clear();
+                for (DataSnapshot eventSnapshot : snapshot.getChildren()) {
+                    Event event = eventSnapshot.getValue(Event.class);
+                    if (event != null) {
+                        String[] dateParts = event.date.split(" ");
+                        if (dateParts.length > 0) {
+                            String date = dateParts[0];
+                            if (eventDates.containsKey(date)) {
+                                eventDates.put(date, eventDates.get(date) + 1);
+                            } else {
+                                eventDates.put(date, 1);
+                            }
+                        }
+                    }
+                }
+                displayCurrentMonth();
+            }
 
-        public Event() {
-            // Default constructor required for calls to DataSnapshot.getValue(Event.class)
-        }
-
-        public Event(String date, String event) {
-            this.date = date;
-            this.event = event;
-        }
-
-        public String getDate() {
-            return date;
-        }
-
-        public void setDate(String date) {
-            this.date = date;
-        }
-
-        public String getEvent() {
-            return event;
-        }
-
-        public void setEvent(String event) {
-            this.event = event;
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(activity_myCalender_card.this, "Failed to load events", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
+
+ class Event {
+    public String date;
+    public String event;
+    public int eventCount;
+
+    public Event() {
+        // Default constructor required for calls to DataSnapshot.getValue(Event.class)
+    }
+
+    public Event(String date, String event) {
+        this.date = date;
+        this.event = event;
+    }
+
+    public Event(String date, String event, int eventCount) {
+        this.date = date;
+        this.event = event;
+        this.eventCount = eventCount;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+
+    public int getEventCount() {
+        return eventCount;
+    }
+
+    public void setEventCount(int eventCount) {
+        this.eventCount = eventCount;
+    }
+}
+
+
