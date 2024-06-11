@@ -86,7 +86,7 @@ public class attendance_card extends AppCompatActivity {
     }
 
     private void loadSubjectsFromFirebase() {
-        DatabaseReference subjectsRef = databaseReference.child("subjects");
+        DatabaseReference subjectsRef = databaseReference;
 
         subjectsRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -148,7 +148,7 @@ public class attendance_card extends AppCompatActivity {
         String subject_name_text = subject_name.getText().toString();
         String teacher_name_text = teacher_name.getText().toString();
         if (!subject_name_text.isEmpty() && !teacher_name_text.isEmpty()) {
-            DatabaseReference subjectsRef = databaseReference.child("subjects");
+            DatabaseReference subjectsRef = databaseReference;
             // Check if the subject already exists
             boolean subjectExists = false;
             for (SubjectWithKey subjectWithKey : subject_items) {
@@ -239,7 +239,7 @@ public class attendance_card extends AppCompatActivity {
                             // Delete related attendance data
                             DatabaseReference attendanceRef = FirebaseDatabase.getInstance().getReference("users")
                                     .child(currentUserId)
-                                    .child(key); // Reference to the attendance data for the subject
+                                    .child(key).child("attendance"); // Reference to the attendance data for the subject
 
                             attendanceRef.removeValue()
                                     .addOnCompleteListener(attendanceTask -> {
