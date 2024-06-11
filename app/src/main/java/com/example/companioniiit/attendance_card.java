@@ -91,12 +91,22 @@ public class attendance_card extends AppCompatActivity {
         subjectsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                subject_items.clear();
+                subject_items.clear(); // Clear the list before adding items
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String key = snapshot.getKey();
                     Subject_Item subjectItem = snapshot.getValue(Subject_Item.class);
                     if (key != null && subjectItem != null) {
-                        subject_items.add(new SubjectWithKey(key, subjectItem)); // Add SubjectWithKey object
+                        boolean subjectExists = false;
+                        for (SubjectWithKey item : subject_items) {
+                            if (item.getSubjectItem().getSubjectName().equalsIgnoreCase(subjectItem.getSubjectName()) &&
+                                    item.getSubjectItem().getTeacherName().equalsIgnoreCase(subjectItem.getTeacherName())) {
+                                subjectExists = true;
+                                break;
+                            }
+                        }
+                        if (!subjectExists) {
+                            subject_items.add(new SubjectWithKey(key, subjectItem));
+                        }
                     }
                 }
                 subjectAdapter.notifyDataSetChanged();
@@ -104,11 +114,11 @@ public class attendance_card extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle possible errors
                 Toast.makeText(attendance_card.this, "Failed to load subjects", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 
     private void gotonewactivity(int position) {
         if (position >= 0 && position < subject_items.size()) {
@@ -152,8 +162,8 @@ public class attendance_card extends AppCompatActivity {
             // Check if the subject already exists
             boolean subjectExists = false;
             for (SubjectWithKey subjectWithKey : subject_items) {
-                if (subjectWithKey.getSubjectItem().getSubjectName().equals(subject_name_text) &&
-                        subjectWithKey.getSubjectItem().getTeacherName().equals(teacher_name_text)) {
+                if (subjectWithKey.getSubjectItem().getSubjectName().equalsIgnoreCase(subject_name_text) &&
+                        subjectWithKey.getSubjectItem().getTeacherName().equalsIgnoreCase(teacher_name_text)) {
                     subjectExists = true;
                     break;
                 }
