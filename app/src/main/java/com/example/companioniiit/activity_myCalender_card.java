@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,6 +98,16 @@ public class activity_myCalender_card extends AppCompatActivity {
                 displayCurrentMonth();
             }
         });
+
+        dateGrid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedDate = getFullDate(position);
+                showEventsDialog(selectedDate);
+                return true;
+            }
+        });
+
 
         // Load events from Firebase
         loadEventsFromFirebase();
@@ -234,6 +246,48 @@ public class activity_myCalender_card extends AppCompatActivity {
         SimpleDateFormat fullSdf = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
         return fullSdf.format(tempCalendar.getTime());
     }
+
+    private void showEventsDialog(String date) {
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_show_events);
+        dialog.setTitle("Events for " + date);
+
+        TextView dateTextView = dialog.findViewById(R.id.dialog_date_text);
+        dateTextView.setText(date);
+
+        ListView eventsListView = dialog.findViewById(R.id.dialog_events_list);
+        ArrayList<String> events = new ArrayList<>();
+
+        databaseReference.child(date).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot eventSnapshot : snapshot.getChildren()) {
+                    Event event = eventSnapshot.getValue(Event.class);
+                    if (event != null) {
+                        events.add(event.getEvent());
+                    }
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(activity_myCalender_card.this, android.R.layout.simple_list_item_1, events);
+                eventsListView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(activity_myCalender_card.this, "Failed to load events", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button closeButton = dialog.findViewById(R.id.dialog_close_button);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
 }
 
 class Event {
