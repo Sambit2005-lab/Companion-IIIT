@@ -263,6 +263,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/add_event_fab"
             app:layout_constraintEnd_toEndOf="@id/add_event_fab"
             android:src="@drawable/add_reminder_fab_icon">

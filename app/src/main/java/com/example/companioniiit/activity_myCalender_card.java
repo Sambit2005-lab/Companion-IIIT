@@ -1,6 +1,7 @@
 package com.example.companioniiit;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -71,6 +73,30 @@ public class activity_myCalender_card extends AppCompatActivity {
         eventDates = new HashMap<>();
         calendar = Calendar.getInstance();
         sdf = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
+
+        //floating button functionality added
+        FloatingActionButton addEventFab = findViewById(R.id.add_event_fab);
+        FloatingActionButton addReminderFab = findViewById(R.id.add_reminder_fab);
+
+        addEventFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (addReminderFab.getVisibility() == View.VISIBLE) {
+                    addReminderFab.hide();
+                } else {
+                    addReminderFab.show();
+                }
+            }
+        });
+
+        addReminderFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity_myCalender_card.this, add_reminder_page.class);
+                startActivity(intent);
+            }
+        });
+
 
         displayCurrentMonth();
 
