@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -78,10 +79,16 @@ public class CalenderAdapterForMYCalender extends BaseAdapter {
         if (day.isEmpty()) return "";
 
         Calendar tempCalendar = (Calendar) calendar.clone();
-        tempCalendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
+        try {
+            tempCalendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
+        } catch (NumberFormatException e) {
+            Log.e("CalendarAdapter", "Error parsing day: " + day, e);
+            return "";
+        }
 
         SimpleDateFormat fullSdf = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
         return fullSdf.format(tempCalendar.getTime());
     }
 }
+
 

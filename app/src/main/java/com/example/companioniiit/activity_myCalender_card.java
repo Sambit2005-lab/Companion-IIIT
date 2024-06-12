@@ -57,6 +57,8 @@ public class activity_myCalender_card extends AppCompatActivity {
             currentUserId = currentUser.getUid();
         } else {
             // Handle the case where the user is not logged in
+            finish();
+            return;
         }
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("events");
@@ -157,7 +159,9 @@ public class activity_myCalender_card extends AppCompatActivity {
 
     private void saveEventToFirebase(String date, String event) {
         Event newEvent = new Event(date, event);
-        databaseReference.child(date).setValue(newEvent)
+
+        // Generate a unique key for the new event
+        databaseReference.child(date).push().setValue(newEvent)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(activity_myCalender_card.this, "Event added", Toast.LENGTH_SHORT).show();
@@ -167,12 +171,13 @@ public class activity_myCalender_card extends AppCompatActivity {
                         } else {
                             eventDates.put(date, 1);
                         }
-                        displayCurrentMonth();
+                        calendarAdapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(activity_myCalender_card.this, "Failed to add event", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
 
     private void loadEventsFromFirebase() {
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -185,21 +190,23 @@ public class activity_myCalender_card extends AppCompatActivity {
                 SimpleDateFormat monthYearFormat = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
                 String currentMonthYear = monthYearFormat.format(currentCalendar.getTime());
 
-                for (DataSnapshot eventSnapshot : snapshot.getChildren()) {
-                    Event event = eventSnapshot.getValue(Event.class);
-                    if (event != null) {
-                        String date = event.getDate();
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+                for (DataSnapshot dateSnapshot : snapshot.getChildren()) {
+                    String date = dateSnapshot.getKey();
+                    for (DataSnapshot eventSnapshot : dateSnapshot.getChildren()) {
                         try {
-                            Calendar eventCalendar = Calendar.getInstance();
-                            eventCalendar.setTime(dateFormat.parse(date));
-                            String eventMonthYear = monthYearFormat.format(eventCalendar.getTime());
-                            if (eventMonthYear.equals(currentMonthYear)) {
-                                Log.d("FirebaseEvent", "Date: " + date + ", Event: " + event.getEvent());
-                                if (eventDates.containsKey(date)) {
-                                    eventDates.put(date, eventDates.get(date) + 1);
-                                } else {
-                                    eventDates.put(date, 1);
+                            Event event = eventSnapshot.getValue(Event.class);
+                            if (event != null) {
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+                                Calendar eventCalendar = Calendar.getInstance();
+                                eventCalendar.setTime(dateFormat.parse(event.getDate()));
+                                String eventMonthYear = monthYearFormat.format(eventCalendar.getTime());
+                                if (eventMonthYear.equals(currentMonthYear)) {
+                                    Log.d("FirebaseEvent", "Date: " + date + ", Event: " + event.getEvent());
+                                    if (eventDates.containsKey(date)) {
+                                        eventDates.put(date, eventDates.get(date) + 1);
+                                    } else {
+                                        eventDates.put(date, 1);
+                                    }
                                 }
                             }
                         } catch (Exception e) {
@@ -207,7 +214,7 @@ public class activity_myCalender_card extends AppCompatActivity {
                         }
                     }
                 }
-                displayCurrentMonth();
+                calendarAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -216,6 +223,8 @@ public class activity_myCalender_card extends AppCompatActivity {
             }
         });
     }
+
+
 
     private String getFullDate(int position) {
         String day = dates.get(position);
