@@ -91,13 +91,13 @@ public class attendance_card extends AppCompatActivity {
         subjectsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                subject_items.clear(); // Clear the list before adding items
+                ArrayList<SubjectWithKey> newSubjectItems = new ArrayList<>(); // Temporary list to avoid modifying subject_items directly
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String key = snapshot.getKey();
                     Subject_Item subjectItem = snapshot.getValue(Subject_Item.class);
                     if (key != null && subjectItem != null) {
                         boolean subjectExists = false;
-                        for (SubjectWithKey item : subject_items) {
+                        for (SubjectWithKey item : newSubjectItems) {
                             if (item.getSubjectItem().getSubjectName().equalsIgnoreCase(subjectItem.getSubjectName()) &&
                                     item.getSubjectItem().getTeacherName().equalsIgnoreCase(subjectItem.getTeacherName())) {
                                 subjectExists = true;
@@ -105,10 +105,12 @@ public class attendance_card extends AppCompatActivity {
                             }
                         }
                         if (!subjectExists) {
-                            subject_items.add(new SubjectWithKey(key, subjectItem));
+                            newSubjectItems.add(new SubjectWithKey(key, subjectItem));
                         }
                     }
                 }
+                subject_items.clear(); // Clear the old list
+                subject_items.addAll(newSubjectItems); // Add the new, filtered list
                 subjectAdapter.notifyDataSetChanged();
             }
 
@@ -118,6 +120,7 @@ public class attendance_card extends AppCompatActivity {
             }
         });
     }
+
 
 
     private void gotonewactivity(int position) {
@@ -161,10 +164,12 @@ public class attendance_card extends AppCompatActivity {
             DatabaseReference subjectsRef = databaseReference;
             // Check if the subject already exists
             boolean subjectExists = false;
+            String existingKey = null;
             for (SubjectWithKey subjectWithKey : subject_items) {
                 if (subjectWithKey.getSubjectItem().getSubjectName().equalsIgnoreCase(subject_name_text) &&
                         subjectWithKey.getSubjectItem().getTeacherName().equalsIgnoreCase(teacher_name_text)) {
                     subjectExists = true;
+                    existingKey = subjectWithKey.getKey();
                     break;
                 }
             }
@@ -187,8 +192,21 @@ public class attendance_card extends AppCompatActivity {
             } else {
                 Toast.makeText(attendance_card.this, "Subject already exists", Toast.LENGTH_SHORT).show();
             }
+
+            // Remove existing duplicate subject, if any
+            if (existingKey != null) {
+                subjectsRef.child(existingKey).removeValue(); // Remove the existing duplicate subject from Firebase
+                // Remove the existing duplicate subject from the local list
+                for (SubjectWithKey subjectWithKey : subject_items) {
+                    if (subjectWithKey.getKey().equals(existingKey)) {
+                        subject_items.remove(subjectWithKey);
+                        break;
+                    }
+                }
+            }
         }
     }
+
 
 
     private void showEditDeleteDialog(int position) {

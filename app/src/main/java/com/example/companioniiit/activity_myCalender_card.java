@@ -2,6 +2,7 @@ package com.example.companioniiit;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -72,7 +73,7 @@ public class activity_myCalender_card extends AppCompatActivity {
         dateGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedDate = dates.get(position) + " " + sdf.format(calendar.getTime());
+                String selectedDate = getFullDate(position);
                 showAddEventDialog(selectedDate);
             }
         });
@@ -120,11 +121,14 @@ public class activity_myCalender_card extends AppCompatActivity {
         }
 
         if (calendarAdapter == null) {
-            calendarAdapter = new CalenderAdapterForMYCalender(this, dates, eventDates);
+            calendarAdapter = new CalenderAdapterForMYCalender(this, dates, eventDates, calendar);
             dateGrid.setAdapter(calendarAdapter);
         } else {
             calendarAdapter.notifyDataSetChanged();
         }
+
+        // Load events for the displayed month
+        loadEventsFromFirebase();
     }
 
     private void showAddEventDialog(final String date) {
@@ -153,7 +157,7 @@ public class activity_myCalender_card extends AppCompatActivity {
 
     private void saveEventToFirebase(String date, String event) {
         Event newEvent = new Event(date, event);
-        databaseReference.push().setValue(newEvent)
+        databaseReference.child(date).setValue(newEvent)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(activity_myCalender_card.this, "Event added", Toast.LENGTH_SHORT).show();
@@ -175,17 +179,31 @@ public class activity_myCalender_card extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 eventDates.clear();
+
+                // Filter events for the current month
+                Calendar currentCalendar = (Calendar) calendar.clone();
+                SimpleDateFormat monthYearFormat = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
+                String currentMonthYear = monthYearFormat.format(currentCalendar.getTime());
+
                 for (DataSnapshot eventSnapshot : snapshot.getChildren()) {
                     Event event = eventSnapshot.getValue(Event.class);
                     if (event != null) {
-                        String[] dateParts = event.date.split(" ");
-                        if (dateParts.length > 0) {
-                            String date = dateParts[0];
-                            if (eventDates.containsKey(date)) {
-                                eventDates.put(date, eventDates.get(date) + 1);
-                            } else {
-                                eventDates.put(date, 1);
+                        String date = event.getDate();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+                        try {
+                            Calendar eventCalendar = Calendar.getInstance();
+                            eventCalendar.setTime(dateFormat.parse(date));
+                            String eventMonthYear = monthYearFormat.format(eventCalendar.getTime());
+                            if (eventMonthYear.equals(currentMonthYear)) {
+                                Log.d("FirebaseEvent", "Date: " + date + ", Event: " + event.getEvent());
+                                if (eventDates.containsKey(date)) {
+                                    eventDates.put(date, eventDates.get(date) + 1);
+                                } else {
+                                    eventDates.put(date, 1);
+                                }
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }
                 }
@@ -198,12 +216,20 @@ public class activity_myCalender_card extends AppCompatActivity {
             }
         });
     }
+
+    private String getFullDate(int position) {
+        String day = dates.get(position);
+        if (day.isEmpty()) return "";
+        Calendar tempCalendar = (Calendar) calendar.clone();
+        tempCalendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
+        SimpleDateFormat fullSdf = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+        return fullSdf.format(tempCalendar.getTime());
+    }
 }
 
- class Event {
+class Event {
     public String date;
     public String event;
-    public int eventCount;
 
     public Event() {
         // Default constructor required for calls to DataSnapshot.getValue(Event.class)
@@ -214,35 +240,12 @@ public class activity_myCalender_card extends AppCompatActivity {
         this.event = event;
     }
 
-    public Event(String date, String event, int eventCount) {
-        this.date = date;
-        this.event = event;
-        this.eventCount = eventCount;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public String getEvent() {
         return event;
     }
-
-    public void setEvent(String event) {
-        this.event = event;
-    }
-
-    public int getEventCount() {
-        return eventCount;
-    }
-
-    public void setEventCount(int eventCount) {
-        this.eventCount = eventCount;
-    }
 }
-
 
