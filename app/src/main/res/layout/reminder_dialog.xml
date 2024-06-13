@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp"
+    android:backgroundTint="#C5B7B7"
+    >
+
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical">
+
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="ADD REMINDER"
+             android:textSize="18sp"
+             android:textColor="@color/black"
+             android:gravity="center"
+             android:layout_marginTop="10dp"
+             />
+
+         <com.google.android.material.textfield.TextInputLayout
+             android:id="@+id/title"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:hint="Title"
+             android:layout_margin="10dp"
+             >
+
+             <com.google.android.material.textfield.TextInputEditText
+                 android:id="@+id/edittitle"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content" />
+
+
+         </com.google.android.material.textfield.TextInputLayout>
+
+         <TextView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Reminder Type"
+             android:layout_margin="10dp"
+             android:textSize="14sp"
+             />
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:background="@drawable/grey_file"
+
+               >
+        <Spinner
+            android:id="@+id/ReminderType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+
+            />
+
+
+           </RelativeLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="31dp"
+             android:layout_margin="10dp"
+             android:orientation="horizontal"
+             android:background="@drawable/grey_file">
+
+             <TextView
+                 android:id="@+id/pickedDateAndTime"
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"
+                 android:text="@string/date_and_time"
+                 android:layout_margin="2dp"
+
+                 />
+
+             <TextView
+                 android:id="@+id/selectbtn"
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:text="Select"
+                 android:background="@drawable/select_colour"
+
+
+                 />
+
+
+         </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submitbtn"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:backgroundTint="#51B5C3"
+            android:layout_margin="10dp"
+            android:text="Add Reminder"
+             />
+
+
+         <com.google.android.material.button.MaterialButton
+             android:id="@+id/cancelbtn"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:backgroundTint="#51B5C3"
+             android:layout_margin="10dp"
+             android:text="cancel"
+             />
+
+     </LinearLayout>
+
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

@@ -10,6 +10,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_profile_page">profile_page</string>
     <string name="title_activity_my_profile">my_profile</string>
+    <string name="date_and_time"><![CDATA[Date & Time]]></string>
 
 
 </resources>

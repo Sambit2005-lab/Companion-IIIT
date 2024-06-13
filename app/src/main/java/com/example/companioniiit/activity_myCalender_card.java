@@ -92,7 +92,7 @@ public class activity_myCalender_card extends AppCompatActivity {
         addReminderFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity_myCalender_card.this, add_reminder_page.class);
+                Intent intent = new Intent(activity_myCalender_card.this, AddreminderPage.class);
                 startActivity(intent);
             }
         });

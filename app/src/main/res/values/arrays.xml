@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="reminderTypes" >
+        <item>Reminder</item>
+        <item>Task</item>
+        <item>event</item>
+        <item>alert</item>
+    </string-array>
+
+
+</resources>

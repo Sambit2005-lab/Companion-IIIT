@@ -5,11 +5,11 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,14 +20,17 @@
         android:theme="@style/Theme.CompanionIIIT"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-        <receiver android:name=".ReminderBroadcastReceiver" />
         <activity
-            android:name=".add_reminder_page"
+            android:name=".AddreminderPage"
             android:exported="false" />
 
+        <receiver
+            android:name=".ReminderBroadcastReceiver"
+            android:exported="false" />
 
-
+        <activity
+            android:name=".AddReminderPage"
+            android:exported="false" />
         <activity
             android:name=".activity_myCalender_card"
             android:exported="false" />
@@ -40,7 +43,6 @@
         <activity
             android:name=".attendance_card"
             android:exported="false" />
-
         <activity
             android:name=".upload_picture"
             android:exported="false" />
@@ -48,7 +50,6 @@
             android:name=".info_year"
             android:exported="false"
             android:theme="@style/Theme.CompanionIIIT" />
-
         <activity
             android:name=".interest"
             android:exported="false" />
