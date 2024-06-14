@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.companioniiit.Model.Category;
 import com.example.companioniiit.R;
-import com.example.companioniiit.ViewAllChaptersActivity;
+
 
 import java.util.ArrayList;
 import java.util.List;
