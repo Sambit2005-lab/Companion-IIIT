@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,8 @@ public class NotesFragment extends Fragment {
     private CategoryAdapter categoryAdapter;
     private List<Category> categoryList;
 
+
+
     private FirebaseDatabase database;
     private DatabaseReference notesRef;
 
@@ -51,6 +54,9 @@ public class NotesFragment extends Fragment {
         categoryList = new ArrayList<>();
         categoryAdapter = new CategoryAdapter(getContext(), categoryList);
         categoryRecyclerView.setAdapter(categoryAdapter);
+
+        // search functionality added
+
 
         database = FirebaseDatabase.getInstance();
         String userYear = "1st year"; // Get this value based on your current user

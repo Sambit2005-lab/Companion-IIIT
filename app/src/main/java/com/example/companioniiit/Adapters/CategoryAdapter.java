@@ -1,9 +1,11 @@
 package com.example.companioniiit.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.TextView;
 
 
@@ -13,16 +15,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.companioniiit.Model.Category;
 import com.example.companioniiit.R;
+import com.example.companioniiit.ViewAllChaptersActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
     private Context context;
     private List<Category> categoryList;
 
+
     public CategoryAdapter(Context context, List<Category> categoryList) {
         this.context = context;
         this.categoryList = categoryList;
+
     }
 
     @NonNull
@@ -40,12 +46,22 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         NoteAdapter noteAdapter = new NoteAdapter(context, category.getNoteList());
         holder.notesRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         holder.notesRecyclerView.setAdapter(noteAdapter);
+
     }
+
+
+
 
     @Override
     public int getItemCount() {
         return categoryList.size();
     }
+
+
+
+
+
+
 
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
         TextView categoryTitle;

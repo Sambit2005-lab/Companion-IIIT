@@ -1,66 +1,96 @@
 package com.example.companioniiit.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.companioniiit.Adapters.CategoryAdapter;
+import com.example.companioniiit.Adapters.NoteAdapter;
+
+import com.example.companioniiit.Model.Category;
+import com.example.companioniiit.Model.Note;
 import com.example.companioniiit.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PyqFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PyqFragment extends Fragment {
+    private RecyclerView categoryRecyclerView;
+    private CategoryAdapter categoryAdapter;
+    private List<Category> categoryList;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FirebaseDatabase database;
+    private DatabaseReference notesRef;
 
     public PyqFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PyqFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PyqFragment newInstance(String param1, String param2) {
-        PyqFragment fragment = new PyqFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @SuppressLint("MissingInflatedId")
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pyq, container, false);
+        View view = inflater.inflate(R.layout.fragment_pyq, container, false);
+
+        categoryRecyclerView = view.findViewById(R.id.noteRecyclerView);
+        categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        categoryList = new ArrayList<>();
+        categoryAdapter = new CategoryAdapter(getContext(), categoryList);
+        categoryRecyclerView.setAdapter(categoryAdapter);
+
+        database = FirebaseDatabase.getInstance();
+        String userYear = "1st year"; // Get this value based on your current user
+        notesRef = database.getReference().child(userYear).child("Pyqs").child("Pyqs Category");
+
+        fetchNotes();
+
+        return view;
     }
-}
+
+    private void fetchNotes() {
+        notesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                categoryList.clear();
+                for (DataSnapshot categorySnapshot : snapshot.getChildren()) {
+                    String categoryTitle = categorySnapshot.getKey();
+                    List<Note> noteList = new ArrayList<>();
+                    for (DataSnapshot noteSnapshot : categorySnapshot.getChildren()) {
+                        if (noteSnapshot.exists()) {
+                            for (DataSnapshot detailSnapshot : noteSnapshot.getChildren()) {
+                                if (detailSnapshot.exists()) {
+                                    String title = detailSnapshot.getKey();
+                                    String link = detailSnapshot.child("Pyq link").getValue(String.class);
+                                    Note note = new Note(title, link);
+                                    noteList.add(note);
+                                }
+                            }
+                        }
+                    }
+                    Category category = new Category(categoryTitle, noteList);
+                    categoryList.add(category);
+                }
+                categoryAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("NotesFragment", "Failed to read value.", error.toException());
+                // Handle the error here, e.g., show a toast or log a message
+            }
+        });
+    }}

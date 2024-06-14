@@ -9,36 +9,16 @@
     >
 
 
-    <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="313dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_border"
-        android:gravity="left"
-        android:hint="search..."
-        android:paddingStart="15dp"
-        android:paddingTop="9dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/search_bar"
-        android:background="@drawable/search1_icon"
-        android:textColor="@color/black"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
-        app:layout_constraintStart_toStartOf="@+id/search_bar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034" />
-
+        android:background="@drawable/grey_file"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search categories..."
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="5dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:background="#DEDADA"
