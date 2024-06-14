@@ -1,4 +1,4 @@
-package com.example.companioniiit
+package com.example.companioniiit.Kotlin_Reminder_functionality
 
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.example.companioniiit.R
 
 class NotificationHelper(val context: Context) {
     private val CHANNEL_ID = "REMINDER_NOTIFICATIONS"

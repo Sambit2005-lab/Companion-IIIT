@@ -1,4 +1,4 @@
-package com.example.companioniiit;
+package com.example.companioniiit.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
+
+import com.example.companioniiit.R;
 
 import java.util.ArrayList;
 import java.util.HashSet;

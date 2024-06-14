@@ -1,4 +1,4 @@
-package com.example.companioniiit;
+package com.example.companioniiit.Adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.companioniiit.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

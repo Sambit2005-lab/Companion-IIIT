@@ -24,7 +24,7 @@
             android:name=".Card_Activity"
             android:exported="false" />
         <activity
-            android:name=".AddreminderPage"
+            android:name=".Kotlin_Reminder_functionality.AddreminderPage"
             android:exported="false" />
 
         <receiver

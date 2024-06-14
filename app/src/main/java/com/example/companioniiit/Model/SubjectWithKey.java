@@ -1,4 +1,6 @@
-package com.example.companioniiit;
+package com.example.companioniiit.Model;
+
+import com.example.companioniiit.Model.Subject_Item;
 
 public class SubjectWithKey {
     private String key;

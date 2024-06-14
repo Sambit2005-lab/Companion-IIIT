@@ -1,4 +1,4 @@
-package com.example.companioniiit;
+package com.example.companioniiit.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.companioniiit.Model.SubjectWithKey;
+import com.example.companioniiit.Model.Subject_Item;
+import com.example.companioniiit.R;
 
 import java.util.ArrayList;
 

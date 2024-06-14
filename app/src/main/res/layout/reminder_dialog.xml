@@ -29,7 +29,7 @@
              android:id="@+id/title"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:hint="Title"
+             android:hint="Add Your Description Or Title"
              android:layout_margin="10dp"
              >
 

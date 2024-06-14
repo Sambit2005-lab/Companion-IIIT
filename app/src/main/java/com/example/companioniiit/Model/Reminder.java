@@ -1,4 +1,4 @@
-package com.example.companioniiit;
+package com.example.companioniiit.Model;
 
 public class Reminder {
     public String reminderId;

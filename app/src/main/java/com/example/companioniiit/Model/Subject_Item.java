@@ -1,4 +1,4 @@
-package com.example.companioniiit;
+package com.example.companioniiit.Model;
 
 public class Subject_Item  {
     private String subjectName;

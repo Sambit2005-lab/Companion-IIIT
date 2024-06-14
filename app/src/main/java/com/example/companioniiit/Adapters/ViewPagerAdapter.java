@@ -1,10 +1,13 @@
-package com.example.companioniiit;
+package com.example.companioniiit.Adapters;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.companioniiit.Fragments.PyqFragment;
+import com.example.companioniiit.Fragments.NotesFragment;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
     public ViewPagerAdapter(@NonNull FragmentManager fm) {
@@ -15,7 +18,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            return new NoteFragment();
+            return new NotesFragment();
         } else {
             return new PyqFragment();
         }

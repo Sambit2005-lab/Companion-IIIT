@@ -1,4 +1,4 @@
-package com.example.companioniiit
+package com.example.companioniiit.Kotlin_Reminder_functionality
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -9,23 +9,19 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.TimePicker
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
+import com.example.companioniiit.R
 import com.example.companioniiit.databinding.ActivityAddreminderPageBinding
 import com.example.companioniiit.databinding.ReminderDialogBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
-import java.time.Year
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
@@ -60,7 +56,9 @@ class AddreminderPage : AppCompatActivity() {
             .setView(dialogBinding.root)
             .show()
 
-        dialogBinding.ReminderType.adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,resources.getStringArray(R.array.reminderTypes))
+        dialogBinding.ReminderType.adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,resources.getStringArray(
+            R.array.reminderTypes
+        ))
         dialogBinding.cancelbtn.setOnClickListener {
             dialog.dismiss()
         }

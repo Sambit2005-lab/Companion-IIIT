@@ -1,4 +1,4 @@
-package com.example.companioniiit;
+package com.example.companioniiit.Fragments;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -8,6 +8,9 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.companioniiit.R;
+import com.example.companioniiit.Adapters.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class StudyFragment extends Fragment {
@@ -34,6 +37,9 @@ public class StudyFragment extends Fragment {
 
         // Link TabLayout with ViewPager
         tabLayout.setupWithViewPager(viewPager);
+
+
+
 
         return view;
     }

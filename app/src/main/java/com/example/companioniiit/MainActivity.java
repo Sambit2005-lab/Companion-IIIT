@@ -1,20 +1,17 @@
 package com.example.companioniiit;
 
-import android.Manifest;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+
+import com.example.companioniiit.Fragments.HomeFragment;
+import com.example.companioniiit.Fragments.ProfileFragment;
+import com.example.companioniiit.Fragments.StudyFragment;
+import com.example.companioniiit.Model.SocietyFragment;
 
 public class MainActivity extends AppCompatActivity {
     private int Selectedtab = 1;
