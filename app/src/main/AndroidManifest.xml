@@ -24,6 +24,9 @@
             android:name=".HostCompanionIIIT"
             android:exported="false" />
         <activity
+            android:name=".announcement_card"
+            android:exported="false" />
+        <activity
             android:name=".ViewAllChaptersActivity"
             android:exported="false" />
         <activity
