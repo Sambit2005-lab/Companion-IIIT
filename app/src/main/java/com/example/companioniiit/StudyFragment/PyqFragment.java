@@ -1,4 +1,4 @@
-package com.example.companioniiit.Fragments;
+package com.example.companioniiit.StudyFragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -6,20 +6,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.companioniiit.Adapters.CategoryAdapter;
-import com.example.companioniiit.Adapters.NoteAdapter;
-
-import com.example.companioniiit.Model.Category;
-import com.example.companioniiit.Model.Note;
 import com.example.companioniiit.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,17 +21,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotesFragment extends Fragment {
+public class PyqFragment extends Fragment {
     private RecyclerView categoryRecyclerView;
     private CategoryAdapter categoryAdapter;
     private List<Category> categoryList;
 
-
-
     private FirebaseDatabase database;
     private DatabaseReference notesRef;
 
-    public NotesFragment() {
+    public PyqFragment() {
         // Required empty public constructor
     }
 
@@ -47,7 +37,7 @@ public class NotesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_note, container, false);
+        View view = inflater.inflate(R.layout.fragment_pyq, container, false);
 
         categoryRecyclerView = view.findViewById(R.id.noteRecyclerView);
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -55,12 +45,9 @@ public class NotesFragment extends Fragment {
         categoryAdapter = new CategoryAdapter(getContext(), categoryList);
         categoryRecyclerView.setAdapter(categoryAdapter);
 
-        // search functionality added
-
-
         database = FirebaseDatabase.getInstance();
         String userYear = "1st year"; // Get this value based on your current user
-        notesRef = database.getReference().child(userYear).child("Notes").child("Notes Category");
+        notesRef = database.getReference().child(userYear).child("Pyqs").child("Pyqs Category");
 
         fetchNotes();
 
@@ -80,7 +67,7 @@ public class NotesFragment extends Fragment {
                             for (DataSnapshot detailSnapshot : noteSnapshot.getChildren()) {
                                 if (detailSnapshot.exists()) {
                                     String title = detailSnapshot.getKey();
-                                    String link = detailSnapshot.child("Note link").getValue(String.class);
+                                    String link = detailSnapshot.child("Pyq link").getValue(String.class);
                                     Note note = new Note(title, link);
                                     noteList.add(note);
                                 }

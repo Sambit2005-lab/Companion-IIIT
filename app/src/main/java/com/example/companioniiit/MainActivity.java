@@ -8,10 +8,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.companioniiit.Fragments.HomeFragment;
-import com.example.companioniiit.Fragments.ProfileFragment;
-import com.example.companioniiit.Fragments.StudyFragment;
-import com.example.companioniiit.Model.SocietyFragment;
+import com.example.companioniiit.HomeFragment.HomeFragment;
+import com.example.companioniiit.ProfileFragment.ProfileFragment;
+import com.example.companioniiit.StudyFragment.StudyFragment;
+import com.example.companioniiit.SocietyFragment.SocietyFragment;
 
 public class MainActivity extends AppCompatActivity {
     private int Selectedtab = 1;

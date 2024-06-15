@@ -1,5 +1,7 @@
-package com.example.companioniiit;
+package com.example.companioniiit.attendance;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,8 +14,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 
-import com.example.companioniiit.Adapters.CalendarAdapter;
+import com.example.companioniiit.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,10 +50,24 @@ public class student_attendance_activity extends AppCompatActivity {
     private TextView textViewClassAbsent;
     private TextView textViewClassCancelled;
 
+    private AppCompatImageButton backbtn;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_attendance);
+
+        backbtn = findViewById(R.id.attendaceBackbtn);
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(student_attendance_activity.this, attendance_card.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         subjectName = getIntent().getStringExtra("subject_name");
@@ -141,6 +158,8 @@ public class student_attendance_activity extends AppCompatActivity {
         updateAttendanceColors();
         updateAttendanceCounts();
     }
+
+
 
     private void updateAttendanceColors() {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

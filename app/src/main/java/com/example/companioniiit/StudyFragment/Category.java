@@ -1,4 +1,6 @@
-package com.example.companioniiit.Model;
+package com.example.companioniiit.StudyFragment;
+
+import com.example.companioniiit.StudyFragment.Note;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.companioniiit.Model;
+package com.example.companioniiit.StudyFragment;
 public class Note {
     private String title;
     private String link;

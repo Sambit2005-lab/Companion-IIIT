@@ -1,4 +1,4 @@
-package com.example.companioniiit.Adapters;
+package com.example.companioniiit.attendance;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.companioniiit;
+package com.example.companioniiit.attendance;
 
 public  class Attendance {
     private String date;

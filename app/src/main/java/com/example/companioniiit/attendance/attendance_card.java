@@ -1,4 +1,4 @@
-package com.example.companioniiit;
+package com.example.companioniiit.attendance;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,9 +17,8 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.companioniiit.Adapters.SubjectAdapter;
-import com.example.companioniiit.Model.SubjectWithKey;
-import com.example.companioniiit.Model.Subject_Item;
+import com.example.companioniiit.MainActivity;
+import com.example.companioniiit.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

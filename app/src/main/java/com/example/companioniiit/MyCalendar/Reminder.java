@@ -1,4 +1,4 @@
-package com.example.companioniiit.Model;
+package com.example.companioniiit.MyCalendar;
 
 public class Reminder {
     public String reminderId;

@@ -1,4 +1,4 @@
-package com.example.companioniiit.Fragments;
+package com.example.companioniiit.HomeFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.companioniiit.R;
-import com.example.companioniiit.activity_myCalender_card;
-import com.example.companioniiit.attendance_card;
+import com.example.companioniiit.MyCalendar.activity_myCalender_card;
+import com.example.companioniiit.attendance.attendance_card;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

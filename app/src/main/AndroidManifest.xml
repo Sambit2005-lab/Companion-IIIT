@@ -36,24 +36,20 @@
             android:name=".Kotlin_Reminder_functionality.AddreminderPage"
             android:exported="false" />
 
-        <receiver
-            android:name=".ReminderBroadcastReceiver"
-            android:exported="false" />
+
+
 
         <activity
-            android:name=".AddReminderPage"
+            android:name=".MyCalendar.activity_myCalender_card"
             android:exported="false" />
         <activity
-            android:name=".activity_myCalender_card"
-            android:exported="false" />
-        <activity
-            android:name=".student_attendance_activity"
+            android:name=".attendance.student_attendance_activity"
             android:exported="false" />
         <activity
             android:name=".class_item"
             android:exported="false" />
         <activity
-            android:name=".attendance_card"
+            android:name=".attendance.attendance_card"
             android:exported="false" />
         <activity
             android:name=".upload_picture"

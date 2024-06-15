@@ -1,4 +1,4 @@
-package com.example.companioniiit.Model;
+package com.example.companioniiit.SocietyFragment;
 
 import android.os.Bundle;
 
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.companioniiit.R;
-import com.example.companioniiit.Fragments.StudyFragment;
+import com.example.companioniiit.StudyFragment.StudyFragment;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,6 +1,6 @@
-package com.example.companioniiit.Model;
+package com.example.companioniiit.attendance;
 
-import com.example.companioniiit.Model.Subject_Item;
+import com.example.companioniiit.attendance.Subject_Item;
 
 public class SubjectWithKey {
     private String key;

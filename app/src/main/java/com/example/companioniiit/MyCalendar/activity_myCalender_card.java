@@ -1,5 +1,6 @@
-package com.example.companioniiit;
+package com.example.companioniiit.MyCalendar;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,9 +18,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 
-import com.example.companioniiit.Adapters.CalenderAdapterForMYCalender;
+import com.example.companioniiit.MainActivity;
 import com.example.companioniiit.Kotlin_Reminder_functionality.AddreminderPage;
+import com.example.companioniiit.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,12 +48,14 @@ public class activity_myCalender_card extends AppCompatActivity {
     private Calendar calendar;
     private SimpleDateFormat sdf;
 
+    private AppCompatImageButton backbtn;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
     private String currentUserId;
 
     private Map<String, Integer> eventDates;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +75,7 @@ public class activity_myCalender_card extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUserId).child("events");
 
         dateGrid = findViewById(R.id.date_grid);
+        backbtn = findViewById(R.id.back_button);
         currentYear = findViewById(R.id.current_year);
         dates = new ArrayList<>();
         eventDates = new HashMap<>();
@@ -80,6 +86,16 @@ public class activity_myCalender_card extends AppCompatActivity {
         FloatingActionButton addEventFab = findViewById(R.id.add_event_fab);
         FloatingActionButton addReminderFab = findViewById(R.id.add_reminder_fab);
 
+        // back btn implementation
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity_myCalender_card.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
         addEventFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

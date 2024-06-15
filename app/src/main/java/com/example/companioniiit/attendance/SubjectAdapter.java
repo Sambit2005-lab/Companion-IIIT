@@ -1,4 +1,4 @@
-package com.example.companioniiit.Adapters;
+package com.example.companioniiit.attendance;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.companioniiit.Model.SubjectWithKey;
-import com.example.companioniiit.Model.Subject_Item;
 import com.example.companioniiit.R;
 
 import java.util.ArrayList;
@@ -52,7 +50,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
     @NonNull
     @Override
     public SubjectViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_class_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_subject_item, parent, false);
         return new SubjectViewHolder(view);
     }
 

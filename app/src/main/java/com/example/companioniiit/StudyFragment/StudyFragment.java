@@ -1,4 +1,4 @@
-package com.example.companioniiit.Fragments;
+package com.example.companioniiit.StudyFragment;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.companioniiit.R;
-import com.example.companioniiit.Adapters.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class StudyFragment extends Fragment {

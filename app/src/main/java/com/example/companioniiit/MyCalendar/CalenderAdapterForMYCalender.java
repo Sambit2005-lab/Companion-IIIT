@@ -1,4 +1,4 @@
-package com.example.companioniiit.Adapters;
+package com.example.companioniiit.MyCalendar;
 
 import android.content.Context;
 import android.util.Log;

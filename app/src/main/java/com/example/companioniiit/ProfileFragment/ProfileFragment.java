@@ -1,4 +1,4 @@
-package com.example.companioniiit.Fragments;
+package com.example.companioniiit.ProfileFragment;
 
 import android.os.Bundle;
 
