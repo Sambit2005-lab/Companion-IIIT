@@ -1,5 +1,6 @@
 package com.example.companioniiit.HomeFragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+
+
 import com.example.companioniiit.R;
 import com.example.companioniiit.MyCalendar.activity_myCalender_card;
 import com.example.companioniiit.attendance.attendance_card;
@@ -23,6 +29,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeFragment extends Fragment {
 
     private TextView userIdTextView;
@@ -31,9 +40,11 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth auth;
     private String userId;
 
+
     private AppCompatButton attendenceButton;
     private AppCompatButton myCalenderButton;
 
+    @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,6 +53,23 @@ public class HomeFragment extends Fragment {
         greetingsTextView = view.findViewById(R.id.greetings_user);
         attendenceButton = view.findViewById(R.id.attendance_card); // Initialize the button
         myCalenderButton = view.findViewById(R.id.myCalendar_card);
+
+        // Initialize ImageSlider
+        ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
+
+
+        // Creating a list of SlideModel
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.iiitphoto1, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.iiitphoto2, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.iiitphoto3, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.iiitphoto4, ScaleTypes.CENTER_CROP));
+
+
+        // Add images to the ImageSlider
+        imageSlider.setImageList(slideModels);
+
+
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();

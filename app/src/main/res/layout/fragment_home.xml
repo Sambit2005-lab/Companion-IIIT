@@ -86,15 +86,16 @@
 
 
         <com.denzcoskun.imageslider.ImageSlider
-            android:layout_width="290dp"
+            android:id="@+id/imageSlider"
+            android:layout_width="350dp"
             android:layout_height="140dp"
+            app:circularflow_radiusInDP="10dp"
             app:layout_constraintBottom_toTopOf="@+id/what_are_you_looking_for_today"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/userid"
-            app:layout_constraintVertical_bias="0.164"
-            app:circularflow_radiusInDP="10dp">
+            app:layout_constraintVertical_bias="0.139">
 
         </com.denzcoskun.imageslider.ImageSlider>
 
