@@ -21,6 +21,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".hostside_techsociety_teammembers"
+            android:exported="false" />
+        <activity
+            android:name=".hostside_techsociety_event_images"
+            android:exported="false" />
+        <activity
+            android:name=".hostside_techsociety_calendar"
+            android:exported="false" />
+        <activity
+            android:name=".hostside_techsociety_announcement"
+            android:exported="false" />
+        <activity
+            android:name=".techsociety_host_home"
+            android:exported="false" />
+        <activity
             android:name=".host_side_home"
             android:exported="false" />
         <activity
@@ -38,10 +53,6 @@
         <activity
             android:name=".Kotlin_Reminder_functionality.AddreminderPage"
             android:exported="false" />
-
-
-
-
         <activity
             android:name=".MyCalendar.activity_myCalender_card"
             android:exported="false" />
