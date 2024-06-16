@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="@drawable/background_intro">
+
+
     
     
     <ImageView
@@ -411,5 +413,7 @@
         android:drawableLeft="@drawable/right_arrow__1_">
 
     </androidx.appcompat.widget.AppCompatButton>
+
+
 
 </RelativeLayout>

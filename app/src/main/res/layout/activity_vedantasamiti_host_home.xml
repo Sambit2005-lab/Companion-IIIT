@@ -5,14 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Host.techsociety_host_home">
+    tools:context=".Host.vedantasamiti_host_home">
 
     <TextView
         android:id="@+id/welcome_tech_society"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Welcome, Tech Society's Host!"
+        android:text="Welcome, VedantaSamiti Society's Host!"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,10 +23,10 @@
     </TextView>
 
     <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-      app:layout_constraintTop_toBottomOf="@id/welcome_tech_society"
+        app:layout_constraintTop_toBottomOf="@id/welcome_tech_society"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="10dp"
@@ -109,6 +109,6 @@
             </EditText>
         </LinearLayout>
 
-  </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

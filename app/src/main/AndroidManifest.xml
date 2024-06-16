@@ -21,25 +21,57 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".hostside_techsociety_teammembers"
+            android:name=".Host.megahertz_host_home"
             android:exported="false" />
         <activity
-            android:name=".hostside_techsociety_event_images"
+            android:name=".Host.sportsociety_host_home"
             android:exported="false" />
         <activity
-            android:name=".hostside_techsociety_calendar"
+            android:name=".Host.vedantasamiti_host_home"
             android:exported="false" />
         <activity
-            android:name=".hostside_techsociety_announcement"
+            android:name=".Host.naps_host_home"
             android:exported="false" />
         <activity
-            android:name=".techsociety_host_home"
+            android:name=".Host.paracosom_host_home"
+            android:exported="false" />
+        <activity
+            android:name=".Host.culturalsociety_host_home"
+            android:exported="false" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/Theme.CompanionIIIT.NoActionBar" />
+        <activity
+            android:name=".Host.fats_host_home"
+            android:exported="false" />
+        <activity
+            android:name=".Host.photogeeks_host_home"
+            android:exported="false" />
+        <activity
+            android:name=".Host.tars_host_home"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_societies_teammembers"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_societies_event_images"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_societies_calendar"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_societies_announcement"
+            android:exported="false" />
+        <activity
+            android:name=".Host.techsociety_host_home"
             android:exported="false" />
         <activity
             android:name=".host_side_home"
             android:exported="false" />
         <activity
-            android:name=".HostCompanionIIIT"
+            android:name=".Host.HostCompanionIIIT"
             android:exported="false" />
         <activity
             android:name=".announcement_card"
