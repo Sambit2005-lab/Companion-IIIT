@@ -3,12 +3,265 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SocietyFragment.SocietyFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/page_layout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+
+      <ImageView
+          android:id="@+id/toolbar_societies"
+          android:layout_width="match_parent"
+          android:layout_height="170dp"
+          android:background="#51B5C3"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+      </ImageView>
+
+      <androidx.appcompat.widget.AppCompatImageButton
+          android:id="@+id/back_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="24dp"
+          android:src="@drawable/back_button"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.084"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:background="@null">
+
+      </androidx.appcompat.widget.AppCompatImageButton>
+
+      <TextView
+          android:id="@+id/my_societies"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/notosans_regular"
+          android:text="My Societies"
+          android:textColor="#ffffff"
+          android:textSize="30sp"
+          android:textStyle="bold"
+          app:layout_constraintBottom_toBottomOf="@id/toolbar_societies"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/back_button"
+          app:layout_constraintVertical_bias="0.767">
+
+      </TextView>
+
+      <ScrollView
+          android:id="@+id/scrollview_societies"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintTop_toBottomOf="@id/toolbar_societies"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent">
+
+          <LinearLayout
+              android:id="@+id/societies_card_holder"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              >
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/techsociety_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="Tech Society"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/tars_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="TARS"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/ECELL_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="E-Cell"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/photogeeks_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:layout_margin="12dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:fontFamily="@font/noto_sans"
+                  android:padding="14dp"
+                  android:text="Photo-Geeks"
+                  android:textAlignment="textStart"
+                  android:textAllCaps="false"
+                  android:textColor="#ffffff"
+                  android:textSize="28sp"
+                  android:textStyle="bold">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/FATS_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="FATS"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/cult_society_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="Cultural Society"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/paracosm_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="Paracosm"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/naps_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="NAPS"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/vedanta_samiti_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="Vedanta Samiti"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/sportssociety_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="Sports Society"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/megaheartz_card"
+                  android:layout_width="380dp"
+                  android:layout_height="90dp"
+                  android:background="@drawable/techsociety_card_background"
+                  android:layout_margin="12dp"
+                  android:text="Mega Heartz"
+                  android:textAllCaps="false"
+                  android:padding="14dp"
+                  android:textSize="28sp"
+                  android:textAlignment="textStart"
+                  android:fontFamily="@font/noto_sans"
+                  android:textStyle="bold"
+                  android:textColor="#ffffff">
+
+              </androidx.appcompat.widget.AppCompatButton>
+
+          </LinearLayout>
+
+      </ScrollView>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
