@@ -68,11 +68,7 @@
         <activity
             android:name=".Host.culturalsociety_host_home"
             android:exported="false" />
-        <activity
-            android:name=".ScrollingActivity"
-            android:exported="false"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/Theme.CompanionIIIT.NoActionBar" />
+
         <activity
             android:name=".Host.fats_host_home"
             android:exported="false" />
@@ -97,18 +93,14 @@
         <activity
             android:name=".Host.techsociety_host_home"
             android:exported="false" />
-        <activity
-            android:name=".host_side_home"
-            android:exported="false" />
+
         <activity
             android:name=".Host.HostCompanionIIIT"
             android:exported="false" />
         <activity
             android:name=".announcement_card"
             android:exported="false" />
-        <activity
-            android:name=".ViewAllChaptersActivity"
-            android:exported="false" />
+
         <activity
             android:name=".Card_Activity"
             android:exported="false" />
@@ -121,8 +113,9 @@
         <activity
             android:name=".attendance.student_attendance_activity"
             android:exported="false" />
+
         <activity
-            android:name=".class_item"
+            android:name=".SocietyFragment.fats"
             android:exported="false" />
         <activity
             android:name=".attendance.attendance_card"
