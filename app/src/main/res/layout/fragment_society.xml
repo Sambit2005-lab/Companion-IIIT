@@ -14,7 +14,7 @@
 
       <ImageView
           android:id="@+id/toolbar_societies"
-          android:layout_width="match_parent"
+          android:layout_width="413dp"
           android:layout_height="170dp"
           android:background="#51B5C3"
           app:layout_constraintEnd_toEndOf="parent"

@@ -21,6 +21,36 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".SocietyFragment.megahertz"
+            android:exported="false" />
+        <activity
+            android:name=".SocietyFragment.sportsociety"
+            android:exported="false" />
+        <activity
+            android:name=".SocietyFragment.vedantasamiti"
+            android:exported="false" />
+        <activity
+            android:name=".SocietyFragment.naps"
+            android:exported="false" />
+        <activity
+            android:name=".SocietyFragment.paracosm"
+            android:exported="false" />
+        <activity
+            android:name=".SocietyFragment.cultural_society"
+            android:exported="false" />
+        <activity
+            android:name=".SocietyFragment.photogeeks"
+            android:exported="false" />
+        <activity
+            android:name=".SocietyFragment.Ecell"
+            android:exported="false" />
+        <activity
+            android:name=".SocietyFragment.Tars"
+            android:exported="false" />
+        <activity
+            android:name=".SocietyFragment.TechSociety"
+            android:exported="false" />
+        <activity
             android:name=".Host.megahertz_host_home"
             android:exported="false" />
         <activity
