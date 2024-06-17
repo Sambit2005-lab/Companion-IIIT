@@ -221,21 +221,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
 
-                   <androidx.recyclerview.widget.RecyclerView
-                       android:id="@+id/our_events_recyclerview"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:orientation="horizontal">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/our_events_recyclerview_techsociety"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                   </androidx.recyclerview.widget.RecyclerView>
+                    </androidx.recyclerview.widget.RecyclerView>
 
-               </LinearLayout>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/team_members"
@@ -262,7 +262,7 @@
 
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/team_members_recyclerview"
+                        android:id="@+id/team_members_recyclerview_techsociety"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -313,6 +313,7 @@
                 android:gravity="center">
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/joining_link_techsociety"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Joining Link"
