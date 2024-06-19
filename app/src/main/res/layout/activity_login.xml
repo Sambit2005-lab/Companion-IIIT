@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,7 +15,10 @@
         android:layout_width="49dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:drawableRight="@drawable/left_arrow">
+        android:drawableRight="@drawable/left_arrow"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/heading">
 
     </androidx.appcompat.widget.AppCompatButton>
 
@@ -29,7 +32,11 @@
         android:textStyle="bold"
         android:fontFamily="@font/notosans_regular"
         android:text="Back to your college hub. Let's log in!"
-        android:textSize="27sp"/>
+        android:textSize="27sp"
+        app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/animation_view" t/>
 
 
     <com.airbnb.lottie.LottieAnimationView
@@ -39,7 +46,14 @@
         android:layout_height="272dp"
         app:lottie_rawRes="@raw/login_animation"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"/>
+        app:lottie_loop="true"
+        app:layout_constraintTop_toBottomOf="@id/heading"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/email"/>
 
     <TextView
         android:id="@+id/email"
@@ -50,7 +64,11 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="4dp"
         android:text="Email"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/animation_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toTopOf="@id/edittext1"/>
 
     <EditText
         android:id="@+id/edittext1"
@@ -60,7 +78,11 @@
         android:paddingStart="5dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="-13dp"
-        android:background="@drawable/edit_text_border"/>
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/password"/>
 
     <TextView
         android:id="@+id/password"
@@ -71,7 +93,11 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="29dp"
         android:text="Password"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/edittext1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toTopOf="@id/edittext2"/>
 
     <EditText
         android:id="@+id/edittext2"
@@ -82,7 +108,11 @@
         android:paddingStart="5dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="-11dp"
-        android:background="@drawable/edit_text_border">
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/loginbutton">
 
     </EditText>
 
@@ -94,27 +124,37 @@
         android:layout_below="@+id/edittext2"
         android:textStyle="bold"
         android:layout_centerInParent="true"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/button_shapes"
         android:fontFamily="@font/notosans_regular"
         android:backgroundTint="@color/black"
         android:textAllCaps="false"
         android:text="Log In!"
         android:textColor="@color/white"
-        android:textSize="18sp">
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/edittext2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/terms" >
 
     </androidx.appcompat.widget.AppCompatButton>
 
     <TextView
+        android:id="@+id/terms"
         android:layout_width="322dp"
         android:fontFamily="@font/notosans_regular"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginbutton"
         android:layout_centerInParent="true"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:text="   By using your email we ensure a secure login process
         By logging in you will be accepting our"
-        android:textSize="12sp">
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/loginbutton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
     </TextView>
 
@@ -124,7 +164,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone"/>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

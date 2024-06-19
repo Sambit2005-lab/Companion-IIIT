@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SocietyFragment.about_naps">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/toolbar_societies"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="#C9A72D"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </ImageView>
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:src="@drawable/back_button"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar_societies"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.081"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.347">
+
+        </ImageButton>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_societies">
+
+            <LinearLayout
+                android:id="@+id/info_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="150dp"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/background_pfp"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="#d9d9d9"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/pfp_holder"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="80dp"
+                        android:background="@drawable/circular_pfp_holder"
+                        app:layout_constraintEnd_toStartOf="@+id/society_name"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/society_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="152dp"
+                        android:text="NAPS Society"
+                        android:textColor="#000000"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginLeft="110dp"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/iiit_bhubaneswar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IIIT BHUBANESWAR"
+                        android:textColor="#000000"
+                        app:layout_constraintTop_toBottomOf="@id/society_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginLeft="110dp"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/dashed_line"
+                        android:layout_width="360dp"
+                        android:layout_height="2dp"
+                        android:background="#C9A72D"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/pfp_holder"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:padding="8dp">
+
+                    </ImageView>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/about_us"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="About Us"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:paddingTop="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    >
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/about_us_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="12dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/what_do_we_do"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="What do we do?"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:paddingTop="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    >
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/what_do_we_do_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="12dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/Our_Events"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Our Events"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:paddingTop="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    >
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/Our_Events_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="12dp"
+                    android:textColor="#000000"
+                    android:textSize="16sp">
+
+                </TextView>
+
+                <LinearLayout
+                    android:id="@+id/event_image_holder"
+                    android:orientation="vertical"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/our_events_recyclerview_naps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/team_members"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="Meet our team"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:paddingTop="12dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        >
+
+                    </TextView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/team_members_recyclerview_naps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                    </LinearLayout>
+
+
+
+                    <TextView
+                        android:id="@+id/contact_us"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="Contact Us"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:paddingTop="12dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        >
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/contact_us_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n\n Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingBottom="12dp"
+                        android:textColor="#000000"
+                        android:textSize="16sp">
+
+                    </TextView>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/joining_link_naps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Joining Link"
+                        >
+
+                    </androidx.appcompat.widget.AppCompatButton>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
