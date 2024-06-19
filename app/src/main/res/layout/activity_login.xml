@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/animation_view" t/>
+        app:layout_constraintBottom_toTopOf="@id/animation_view" />
 
 
     <com.airbnb.lottie.LottieAnimationView
@@ -57,18 +57,20 @@
 
     <TextView
         android:id="@+id/email"
-        android:fontFamily="@font/notosans_regular"
         android:layout_width="327dp"
         android:layout_height="38dp"
         android:layout_below="@+id/animation_view"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/notosans_regular"
         android:text="Email"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/animation_view"
+        app:layout_constraintBottom_toTopOf="@id/edittext1"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="32dp"
-        app:layout_constraintBottom_toTopOf="@id/edittext1"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/animation_view" />
 
     <EditText
         android:id="@+id/edittext1"
@@ -88,16 +90,18 @@
         android:id="@+id/password"
         android:layout_width="327dp"
         android:layout_height="38dp"
-        android:fontFamily="@font/notosans_regular"
         android:layout_below="@+id/edittext1"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="29dp"
+        android:fontFamily="@font/notosans_regular"
         android:text="Password"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/edittext1"
+        app:layout_constraintBottom_toTopOf="@id/edittext2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="32dp"
-        app:layout_constraintBottom_toTopOf="@id/edittext2"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edittext1" />
 
     <EditText
         android:id="@+id/edittext2"
@@ -149,8 +153,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="   By using your email we ensure a secure login process
-        By logging in you will be accepting our"
-        android:textSize="12sp"
+        By logging in you will be accepting our Terms and conditions."
+        android:textSize="11.2sp"
         app:layout_constraintTop_toBottomOf="@+id/loginbutton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
