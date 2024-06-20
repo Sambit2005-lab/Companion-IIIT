@@ -8,32 +8,33 @@
     android:layout_height="match_parent">
 
 
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button1"
-        android:layout_width="49dp"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:drawableRight="@drawable/left_arrow"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        android:background="@null"
+        android:padding="8dp"
+        android:src="@drawable/back_button"
+        app:layout_constraintBottom_toTopOf="@+id/heading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/heading">
+        app:layout_constraintVertical_bias="1.0">
 
-    </androidx.appcompat.widget.AppCompatButton>
+    </androidx.appcompat.widget.AppCompatImageButton>
 
     <TextView
         android:id="@+id/heading"
-        android:layout_width="383dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
-        android:layout_centerInParent="true"
+        android:padding="8dp"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:fontFamily="@font/notosans_regular"
         android:text="Back to your college hub. Let's log in!"
         android:textSize="27sp"
-        app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:layout_constraintTop_toBottomOf="@+id/back_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/animation_view" />
@@ -162,12 +163,7 @@
 
     </TextView>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
