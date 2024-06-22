@@ -9,6 +9,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageButton;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +23,7 @@ public class login extends AppCompatActivity {
     private EditText emailEditText;
     private EditText passwordEditText;
     private AppCompatButton loginButton;
-    private AppCompatButton backButton;
+    private AppCompatImageButton backButton;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
 
@@ -39,7 +41,7 @@ public class login extends AppCompatActivity {
         emailEditText = findViewById(R.id.edittext1);
         passwordEditText = findViewById(R.id.edittext2);
         loginButton = findViewById(R.id.loginbutton);
-        backButton = findViewById(R.id.button1);
+        backButton = findViewById(R.id.back_button);
         progressBar = findViewById(R.id.progressBar);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
