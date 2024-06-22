@@ -19,70 +19,88 @@
             android:background="@null"
             android:src="@drawable/notification_bell"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/greetings_user"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.067"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.377">
+            app:layout_constraintVertical_bias="0.055">
 
 
         </ImageButton>
 
-        <TextView
-            android:id="@+id/greetings_user"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/user_details_holder"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/noto_sans"
-            android:text="Welcome, user!"
-            android:textColor="#ffffff"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/userid"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.084"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/notification_bell"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.99">
-
-        </TextView>
-
-
-        <com.google.android.material.imageview.ShapeableImageView
-
-
-            android:id="@+id/profile_pic"
-            android:layout_width="73dp"
-            android:layout_height="49dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@id/greetings_user"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.064"
-            app:shapeAppearanceOverlay="@style/circular" />
+            app:layout_constraintTop_toBottomOf="@id/notification_bell"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/userid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_regular"
-            android:text="ID:......."
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/home_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.078"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/greetings_user"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.59">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="15dp">
 
-        </TextView>
+                <TextView
+                    android:id="@+id/greetings_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="Welcome, user!"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                   >
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/userid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosans_regular"
+                    android:text="ID:......."
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                   >
+
+                </TextView>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+
+                android:id="@+id/profile_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@id/greetings_user"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.064"
+                app:shapeAppearanceOverlay="@style/circular" >
+
+            </com.google.android.material.imageview.ShapeableImageView>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/home_background"
@@ -94,9 +112,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userid"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.989">
+            app:layout_constraintTop_toBottomOf="@id/user_details_holder"
+            app:layout_constraintVertical_bias="1.0">
 
         </ImageView>
 
@@ -110,7 +127,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userid"
+            app:layout_constraintTop_toBottomOf="@+id/user_details_holder"
             app:layout_constraintVertical_bias="0.139">
 
         </com.denzcoskun.imageslider.ImageSlider>
@@ -124,11 +141,11 @@
             android:text="What are you looking \nfor today?"
             android:textSize="21sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/cardview_holder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.179"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/imageSlider">
 
         </TextView>
 
