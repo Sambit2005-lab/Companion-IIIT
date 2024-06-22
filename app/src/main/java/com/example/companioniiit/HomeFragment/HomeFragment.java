@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -41,8 +42,8 @@ public class HomeFragment extends Fragment {
     private String userId;
 
 
-    private AppCompatButton attendenceButton;
-    private AppCompatButton myCalenderButton;
+    private CardView attendenceButton;
+    private CardView myCalenderButton;
 
     @SuppressLint("MissingInflatedId")
     @Nullable
