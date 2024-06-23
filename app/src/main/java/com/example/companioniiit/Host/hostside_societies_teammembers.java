@@ -122,42 +122,42 @@ public class hostside_societies_teammembers extends AppCompatActivity {
         }
     }
 
-    private void uploadImageAndSaveMember() {
-        final String memberName = memberNameEditText.getText().toString().trim();
-        final String memberDesignation = memberDesignationEditText.getText().toString().trim();
 
-        if (memberName.isEmpty() || memberDesignation.isEmpty() || imageUri == null) {
-            Toast.makeText(this, "Please fill in all fields and select an image", Toast.LENGTH_SHORT).show();
-            return;
+        private void uploadImageAndSaveMember() {
+            final String memberName = memberNameEditText.getText().toString().trim();
+            final String memberDesignation = memberDesignationEditText.getText().toString().trim();
+
+            if (memberName.isEmpty() || memberDesignation.isEmpty() || imageUri == null) {
+                Toast.makeText(this, "Please fill in all fields and select an image", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            if (currentUser != null) {
+                String userId = currentUser.getUid();
+                StorageReference fileReference = mStorageRef.child(userId + "/" + memberName + ".jpg");
+
+                fileReference.putFile(imageUri)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        String imageUrl = uri.toString();
+                                        saveMemberToDatabase(memberName, memberDesignation, imageUrl);
+                                    }
+                                });
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(hostside_societies_teammembers.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
         }
-
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            String userId = currentUser.getUid();
-            StorageReference fileReference = mStorageRef.child(userId + "/" + memberName + ".jpg");
-
-            fileReference.putFile(imageUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    String imageUrl = uri.toString();
-                                    saveMemberToDatabase(memberName, memberDesignation, imageUrl);
-                                }
-                            });
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(hostside_societies_teammembers.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
-    }
-
     private void saveMemberToDatabase(String name, String designation, String imageUrl) {
         String memberId = hostMembersRef.push().getKey();
 
@@ -178,4 +178,6 @@ public class hostside_societies_teammembers extends AppCompatActivity {
                     });
         }
     }
+
+
 }

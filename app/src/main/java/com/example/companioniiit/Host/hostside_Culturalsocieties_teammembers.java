@@ -125,6 +125,7 @@ public class hostside_Culturalsocieties_teammembers extends AppCompatActivity {
         }
     }
 
+
     private void uploadImageAndSaveMember() {
         final String memberName = memberNameEditText.getText().toString().trim();
         final String memberDesignation = memberDesignationEditText.getText().toString().trim();
@@ -155,12 +156,11 @@ public class hostside_Culturalsocieties_teammembers extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(hostside_Culturalsocieties_teammembers.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText( hostside_Culturalsocieties_teammembers .this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         }
     }
-
     private void saveMemberToDatabase(String name, String designation, String imageUrl) {
         String memberId = hostMembersRef.push().getKey();
 
@@ -173,12 +173,14 @@ public class hostside_Culturalsocieties_teammembers extends AppCompatActivity {
             hostMembersRef.child(memberId).setValue(memberData)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(hostside_Culturalsocieties_teammembers.this, "Member added successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText( hostside_Culturalsocieties_teammembers .this, "Member added successfully", Toast.LENGTH_SHORT).show();
                             finish(); // Close the activity
                         } else {
-                            Toast.makeText(hostside_Culturalsocieties_teammembers.this, "Failed to add member", Toast.LENGTH_SHORT).show();
+                            Toast.makeText( hostside_Culturalsocieties_teammembers .this, "Failed to add member", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
     }
+
+
 }
