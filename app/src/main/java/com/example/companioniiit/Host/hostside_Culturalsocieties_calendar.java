@@ -1,7 +1,5 @@
 package com.example.companioniiit.Host;
 
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,15 +7,18 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.companioniiit.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class hostside_societies_calendar extends AppCompatActivity {
-
+public class hostside_Culturalsocieties_calendar extends AppCompatActivity {
     private DatePicker datePicker;
     private EditText eventDescription;
     private AppCompatButton saveEventButton;
@@ -29,7 +30,7 @@ public class hostside_societies_calendar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hostside_societies_calendar);
+        setContentView(R.layout.activity_hostside_culturalsocieties_calendar);
 
         datePicker = findViewById(R.id.datepicker_techsociety);
         eventDescription = findViewById(R.id.event_description_techsociety);
@@ -43,8 +44,8 @@ public class hostside_societies_calendar extends AppCompatActivity {
         hostEmail = intent.getStringExtra("hostEmail");
 
         if (hostEmail != null) {
-            if (hostEmail.equals("hosttechsociety@gmail.com")) {
-                hostEventsRef = databaseReference.child("2").child("events");
+            if (hostEmail.equals("hostculturalsociety@gmail.com")) {
+                hostEventsRef = databaseReference.child("4").child("events");
             } else {
                 Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();
                 return;
@@ -85,14 +86,14 @@ public class hostside_societies_calendar extends AppCompatActivity {
         String eventId = hostEventsRef.push().getKey();
 
         if (eventId != null) {
-            Event event = new Event(date, description);
+            hostside_Culturalsocieties_calendar.Event event = new hostside_Culturalsocieties_calendar.Event(date, description);
             hostEventsRef.child(eventId).setValue(event)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(hostside_societies_calendar.this, "Event saved successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(hostside_Culturalsocieties_calendar.this, "Event saved successfully", Toast.LENGTH_SHORT).show();
                             finish();
                         } else {
-                            Toast.makeText(hostside_societies_calendar.this, "Failed to save event", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(hostside_Culturalsocieties_calendar.this, "Failed to save event", Toast.LENGTH_SHORT).show();
                         }
                     });
         }

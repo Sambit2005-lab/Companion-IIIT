@@ -21,6 +21,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Host.hostside_Culturalsocieties_calendar"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_Culturalsocieties_teammembers"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_Culturalsocieties_event_images"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_Culturalsocieties_announcement"
+            android:exported="false" />
+        <activity
             android:name=".SocietyFragment.megahertz"
             android:exported="false" />
         <activity
@@ -68,7 +80,6 @@
         <activity
             android:name=".Host.culturalsociety_host_home"
             android:exported="false" />
-
         <activity
             android:name=".Host.fats_host_home"
             android:exported="false" />
@@ -93,14 +104,12 @@
         <activity
             android:name=".Host.techsociety_host_home"
             android:exported="false" />
-
         <activity
             android:name=".Host.HostCompanionIIIT"
             android:exported="false" />
         <activity
             android:name=".announcement_card"
             android:exported="false" />
-
         <activity
             android:name=".Card_Activity"
             android:exported="false" />
@@ -113,7 +122,6 @@
         <activity
             android:name=".attendance.student_attendance_activity"
             android:exported="false" />
-
         <activity
             android:name=".SocietyFragment.fats"
             android:exported="false" />
