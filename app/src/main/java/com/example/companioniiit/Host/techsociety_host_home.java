@@ -3,30 +3,53 @@ package com.example.companioniiit.Host;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.companioniiit.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class techsociety_host_home extends AppCompatActivity {
 
-    private String hostEmail;
+    private EditText joiningLinkEditText;
+    private AppCompatButton saveJoiningLinkButton;
+    private DatabaseReference databaseReference;
+    private DatabaseReference hostJoiningLinksRef;
+    private String hostEmail = "hosttechsociety@gmail.com"; // Hardcoded host email
+
     private AppCompatButton AddEventbtn;
     private AppCompatButton AddTeamMemberbtn;
     private AppCompatButton AddEventimgbtn;
     private AppCompatButton Addannouncementbtn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_techsociety_host_home);
+
+        joiningLinkEditText = findViewById(R.id.joining_link_techsociety);
+        saveJoiningLinkButton = findViewById(R.id.save_joining_link_techsociety);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("hosts");
+
+        // Setting up the reference for joining links
+        if (hostEmail.equals("hosttechsociety@gmail.com")) {
+            hostJoiningLinksRef = databaseReference.child("2").child("joining_links");
+        } else {
+            Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        saveJoiningLinkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveJoiningLinkToFirebase();
+            }
+        });
 
         AddEventbtn = findViewById(R.id.add_event_techsociety);
         AddTeamMemberbtn = findViewById(R.id.upload_team_members);
@@ -37,17 +60,37 @@ public class techsociety_host_home extends AppCompatActivity {
         OnclickAddTeamMemberbtn();
         OnclickAddEventimgbtn();
         OnclickAddannouncementbtn();
+    }
 
+    private void saveJoiningLinkToFirebase() {
+        String joiningLink = joiningLinkEditText.getText().toString().trim();
+
+        if (joiningLink.isEmpty()) {
+            joiningLinkEditText.setError("Joining link is required");
+            joiningLinkEditText.requestFocus();
+            return;
+        }
+
+        String linkId = hostJoiningLinksRef.push().getKey();
+
+        if (linkId != null) {
+            hostJoiningLinksRef.child(linkId).setValue(joiningLink)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(techsociety_host_home.this, "Joining link saved successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(techsociety_host_home.this, "Failed to save joining link", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 
     private void OnclickAddannouncementbtn() {
-
-      Addannouncementbtn.setOnClickListener(new View.OnClickListener() {
+        Addannouncementbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(techsociety_host_home.this, hostside_societies_announcement.class);
-
-                intent.putExtra("host_email", "hosttechsociety@gmail.com");
+                intent.putExtra("host_email", hostEmail);
                 startActivity(intent);
             }
         });
@@ -58,7 +101,7 @@ public class techsociety_host_home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(techsociety_host_home.this, hostside_societies_event_images.class);
-                intent.putExtra("host_email", "hosttechsociety@gmail.com");
+                intent.putExtra("hostEmail", hostEmail);
                 startActivity(intent);
             }
         });
@@ -69,7 +112,7 @@ public class techsociety_host_home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(techsociety_host_home.this, hostside_societies_teammembers.class);
-                intent.putExtra("hostEmail", "hosttechsociety@gmail.com");
+                intent.putExtra("hostEmail", hostEmail);
                 startActivity(intent);
             }
         });
@@ -80,10 +123,9 @@ public class techsociety_host_home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(techsociety_host_home.this, hostside_societies_calendar.class);
-                intent.putExtra("host_email", "hosttechsociety@gmail.com");
+                intent.putExtra("hostEmail", hostEmail);
                 startActivity(intent);
             }
         });
-
     }
 }

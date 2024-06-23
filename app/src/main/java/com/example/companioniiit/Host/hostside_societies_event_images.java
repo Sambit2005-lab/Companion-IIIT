@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class hostside_societies_event_images extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private StorageReference mStorageRef;
+    private DatabaseReference hostEventsRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +48,32 @@ public class hostside_societies_event_images extends AppCompatActivity {
         setContentView(R.layout.activity_hostside_societies_event_images);
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("hosts");
         mStorageRef = FirebaseStorage.getInstance().getReference("event_images");
 
         uploadPictureBtn = findViewById(R.id.upload_image_events_techsociety);
         saveImageBtn = findViewById(R.id.save_image_techsociety);
         cancelPostBtn = findViewById(R.id.cancel_post);
         uploadEventsImages = findViewById(R.id.upload_events_images);
+
+        // Retrieve the email from the Intent
+        Intent intent = getIntent();
+        String hostEmail = intent.getStringExtra("hostEmail");
+
+        if (hostEmail != null) {
+            Log.d("HostsideSocieties", "Current host email: " + hostEmail); // Log the host email
+            if (hostEmail.equals("hosttechsociety@gmail.com")) {
+                hostEventsRef = mDatabase.child("2").child("eventImages");
+            } else {
+                Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();
+                Log.e("HostsideSocieties", "Invalid host email: " + hostEmail);
+                return;
+            }
+        } else {
+            Toast.makeText(this, "Host email is null", Toast.LENGTH_SHORT).show();
+            Log.e("HostsideSocieties", "Host email is null");
+            return;
+        }
 
         uploadPictureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,14 +134,7 @@ public class hostside_societies_event_images extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         String imageUrl = uri.toString();
-                                        mDatabase.child("users").child(userId).child("eventImage").setValue(imageUrl)
-                                                .addOnCompleteListener(task -> {
-                                                    if (task.isSuccessful()) {
-                                                        Toast.makeText(hostside_societies_event_images.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
-                                                    } else {
-                                                        Toast.makeText(hostside_societies_event_images.this, "Failed to upload image", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
+                                        saveImageUrlToDatabase(imageUrl);
                                     }
                                 });
                             }
@@ -132,6 +146,22 @@ public class hostside_societies_event_images extends AppCompatActivity {
                             }
                         });
             }
+        }
+    }
+
+    private void saveImageUrlToDatabase(String imageUrl) {
+        String imageId = hostEventsRef.push().getKey();
+
+        if (imageId != null) {
+            hostEventsRef.child(imageId).setValue(imageUrl)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(hostside_societies_event_images.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+                            finish(); // Close the activity
+                        } else {
+                            Toast.makeText(hostside_societies_event_images.this, "Failed to save image URL", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
     }
 }
