@@ -58,6 +58,7 @@ public class techsociety_host_home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(techsociety_host_home.this, hostside_societies_event_images.class);
+                intent.putExtra("host_email", "hosttechsociety@gmail.com");
                 startActivity(intent);
             }
         });
@@ -68,6 +69,7 @@ public class techsociety_host_home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(techsociety_host_home.this, hostside_societies_teammembers.class);
+                intent.putExtra("hostEmail", "hosttechsociety@gmail.com");
                 startActivity(intent);
             }
         });
@@ -78,6 +80,7 @@ public class techsociety_host_home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(techsociety_host_home.this, hostside_societies_calendar.class);
+                intent.putExtra("host_email", "hosttechsociety@gmail.com");
                 startActivity(intent);
             }
         });
