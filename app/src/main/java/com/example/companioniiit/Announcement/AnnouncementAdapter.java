@@ -35,7 +35,13 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         Announcement announcement = announcementList.get(position);
         holder.captionTextView.setText(announcement.getCaption());
         holder.postedByTextView.setText(announcement.getPostedBy());
-        Picasso.get().load(announcement.getImageUrl()).into(holder.imageView);
+
+        if (announcement.getImageUrl() != null && !announcement.getImageUrl().isEmpty()) {
+            holder.imageView.setVisibility(View.VISIBLE);
+            Picasso.get().load(announcement.getImageUrl()).into(holder.imageView);
+        } else {
+            holder.imageView.setVisibility(View.GONE);
+        }
     }
 
     @Override

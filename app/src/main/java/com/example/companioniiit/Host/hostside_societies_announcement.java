@@ -104,40 +104,42 @@ public class hostside_societies_announcement extends AppCompatActivity {
         String caption = captionEditText.getText().toString().trim();
         String postedBy = postedByEditText.getText().toString().trim();
 
-        if (imageUri != null && !caption.isEmpty() && !postedBy.isEmpty()) {
+        if (!caption.isEmpty() && !postedBy.isEmpty()) {
             progressDialog.setMessage("Uploading...");
             progressDialog.show();
 
-            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + ".jpg");
+            if (imageUri != null) {
+                StorageReference fileReference = storageReference.child(System.currentTimeMillis() + ".jpg");
 
-            fileReference.putFile(imageUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    String imageUrl = uri.toString();
-                                    saveAnnouncementData(imageUrl);
-                                }
-                            });
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
-                            Toast.makeText(hostside_societies_announcement.this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                fileReference.putFile(imageUri)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        String imageUrl = uri.toString();
+                                        saveAnnouncementData(imageUrl, caption, postedBy);
+                                    }
+                                });
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                progressDialog.dismiss();
+                                Toast.makeText(hostside_societies_announcement.this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            } else {
+                saveAnnouncementData(null, caption, postedBy);
+            }
         } else {
             Toast.makeText(this, "Please fill all fields and select an image", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void saveAnnouncementData(String imageUrl) {
-        String caption = captionEditText.getText().toString().trim();
-        String postedBy = postedByEditText.getText().toString().trim();
+    private void saveAnnouncementData(String imageUrl, String caption, String postedBy) {
         long timestamp = System.currentTimeMillis();
 
         Map<String, Object> announcementData = new HashMap<>();
@@ -174,3 +176,4 @@ public class hostside_societies_announcement extends AppCompatActivity {
                 });
     }
 }
+

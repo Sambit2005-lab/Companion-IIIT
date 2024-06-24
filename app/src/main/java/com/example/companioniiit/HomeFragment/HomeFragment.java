@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,6 +49,12 @@ public class HomeFragment extends Fragment {
 
     private CardView AnnouncementBtn;
 
+    private boolean newAnnouncementFlag = false;
+    private DatabaseReference hostAnnouncementsRef;
+    private ValueEventListener announcementsListener;
+
+
+    private View view;
     @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
@@ -95,8 +102,11 @@ public class HomeFragment extends Fragment {
 
         onAnnouncementClick();
 
+
         return view;
     }
+
+
 
     private void onAnnouncementClick() {
         AnnouncementBtn.setOnClickListener(new View.OnClickListener() {

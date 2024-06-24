@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/notification_bell_with_dot.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/notification_bell" />
+    <item
+        android:id="@+id/notification_dot"
+        android:drawable="@drawable/red_dot"
+        android:gravity="top|end"
+        android:visible="false" />
+</layer-list>

@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.companioniiit.MainActivity;
 import com.example.companioniiit.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,18 +31,29 @@ public class AnnouncementActivity extends AppCompatActivity {
     private AnnouncementAdapter announcementAdapter;
     private List<Announcement> announcementList;
 
+    private ImageButton back_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announcement);
 
         recyclerView = findViewById(R.id.recycler_view_announcements);
+        back_btn = findViewById(R.id.back_button);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         announcementList = new ArrayList<>();
         announcementAdapter = new AnnouncementAdapter(announcementList);
         recyclerView.setAdapter(announcementAdapter);
 
         fetchAllAnnouncements();
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AnnouncementActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void fetchAllAnnouncements() {
