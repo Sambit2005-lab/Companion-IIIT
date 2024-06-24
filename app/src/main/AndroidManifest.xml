@@ -21,6 +21,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Host.hostside_Tars_societies_calendar"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_Tars_societies_teammembers"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_Tars_societies_event_images"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_Tars_societies_announcement"
+            android:exported="false" />
+        <activity
             android:name=".Host.hostside_Culturalsocieties_calendar"
             android:exported="false" />
         <activity

@@ -55,7 +55,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
             noteTitle = itemView.findViewById(R.id.chapterName);
-            pdfIcon = itemView.findViewById(R.id.pdficon);
+
             downloadButton = itemView.findViewById(R.id.downloadButton);
         }
     }
