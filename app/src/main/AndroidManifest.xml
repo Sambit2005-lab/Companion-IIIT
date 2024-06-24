@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,6 +21,18 @@
         android:theme="@style/Theme.CompanionIIIT"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Host.hostside_Ecell_societies_calendar"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_Ecell_societies_teammembers"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_Ecell_societies_event_images"
+            android:exported="false" />
+        <activity
+            android:name=".Host.hostside_Ecell_societies_announcement"
+            android:exported="false" />
         <activity
             android:name=".Host.hostside_Tars_societies_calendar"
             android:exported="false" />
