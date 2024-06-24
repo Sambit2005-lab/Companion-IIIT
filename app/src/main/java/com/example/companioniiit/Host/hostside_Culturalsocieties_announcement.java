@@ -142,11 +142,13 @@ public class hostside_Culturalsocieties_announcement extends AppCompatActivity {
     private void saveAnnouncementData(String imageUrl) {
         String caption = captionEditText.getText().toString().trim();
         String postedBy = postedByEditText.getText().toString().trim();
+        long timestamp = System.currentTimeMillis();
 
         Map<String, Object> announcementData = new HashMap<>();
         announcementData.put("imageUrl", imageUrl);
         announcementData.put("caption", caption);
         announcementData.put("postedBy", postedBy);
+        announcementData.put("timestamp", timestamp);
 
         // Determine the host node based on the email
         DatabaseReference hostAnnouncementsRef;
