@@ -20,6 +20,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 
 
+import com.example.companioniiit.Announcement.AnnouncementActivity;
 import com.example.companioniiit.R;
 import com.example.companioniiit.MyCalendar.activity_myCalender_card;
 import com.example.companioniiit.attendance.attendance_card;
@@ -45,6 +46,8 @@ public class HomeFragment extends Fragment {
     private CardView attendenceButton;
     private CardView myCalenderButton;
 
+    private CardView AnnouncementBtn;
+
     @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
@@ -54,6 +57,7 @@ public class HomeFragment extends Fragment {
         greetingsTextView = view.findViewById(R.id.greetings_user);
         attendenceButton = view.findViewById(R.id.attendance_card); // Initialize the button
         myCalenderButton = view.findViewById(R.id.myCalendar_card);
+        AnnouncementBtn = view.findViewById(R.id.announcement_card);
 
         // Initialize ImageSlider
         ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
@@ -89,7 +93,20 @@ public class HomeFragment extends Fragment {
 
         onMyCalenderClick();
 
+        onAnnouncementClick();
+
         return view;
+    }
+
+    private void onAnnouncementClick() {
+        AnnouncementBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the AnnouncementActivity
+                Intent intent = new Intent(getActivity(), AnnouncementActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void onMyCalenderClick() {
