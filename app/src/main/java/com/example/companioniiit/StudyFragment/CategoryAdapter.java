@@ -43,7 +43,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.notesRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         holder.notesRecyclerView.setAdapter(noteAdapter);
 
+
+        // Add spacing to the inner RecyclerView
+        int spacingInPixels = context.getResources().getDimensionPixelSize(R.dimen.recycler_view_item_spacing);
+        holder.notesRecyclerView.addItemDecoration(new SpacingItemDecoration(spacingInPixels));
     }
+
+
+
 
 
 

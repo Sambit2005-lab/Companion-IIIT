@@ -15,7 +15,7 @@
         android:id="@+id/noteRecyclerView"
         android:layout_width="380dp"
         android:layout_height="642dp"
-        android:background="#DEDADA"
+        android:background="@drawable/page_bckg"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

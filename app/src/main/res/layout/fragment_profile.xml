@@ -9,7 +9,10 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:background="@drawable/page_bckg">
 
     </FrameLayout>
 
@@ -235,7 +238,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:maxImageSize="24dp"
-        app:srcCompat="@drawable/dots_icon"
+        android:src="@drawable/dots_icon"
         app:tint="#ffffff"
         app:useCompatPadding="false"
         />
