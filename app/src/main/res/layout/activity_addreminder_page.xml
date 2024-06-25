@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Kotlin_Reminder_functionality.AddreminderPage">
+    tools:context=".Kotlin_Reminder_functionality.AddreminderPage"
+    android:background="@drawable/page_bckg">
 
 
     <androidx.appcompat.widget.AppCompatButton

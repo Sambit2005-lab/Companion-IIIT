@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".attendance.student_attendance_activity">
+    tools:context=".attendance.student_attendance_activity"
+    android:background="@drawable/page_bckg">
 
    <RelativeLayout
        android:layout_width="match_parent"
