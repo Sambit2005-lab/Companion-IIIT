@@ -111,7 +111,7 @@
              android:id="@+id/cancelbtn"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:backgroundTint="#51B5C3"
+             android:backgroundTint="#D31919"
              android:layout_margin="10dp"
              android:text="cancel"
              />
