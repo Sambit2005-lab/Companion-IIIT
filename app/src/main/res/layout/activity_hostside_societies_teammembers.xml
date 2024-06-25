@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Host.hostside_societies_teammembers">
+    android:background="@drawable/page_bckg">
 
     <ImageView
         android:id="@+id/upload_members_images_techsociety"

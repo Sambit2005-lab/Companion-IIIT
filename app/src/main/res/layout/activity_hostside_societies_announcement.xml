@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Host.hostside_societies_announcement">
+
+    android:background="@drawable/page_bckg">
 
     <ImageView
         android:id="@+id/uplaod_image_for_announcement"
