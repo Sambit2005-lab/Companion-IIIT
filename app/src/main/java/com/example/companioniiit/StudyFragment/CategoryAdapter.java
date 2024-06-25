@@ -44,9 +44,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.notesRecyclerView.setAdapter(noteAdapter);
 
 
-        // Add spacing to the inner RecyclerView
-        int spacingInPixels = context.getResources().getDimensionPixelSize(R.dimen.recycler_view_item_spacing);
-        holder.notesRecyclerView.addItemDecoration(new SpacingItemDecoration(spacingInPixels));
+        // Add horizontal space item decoration only once
+        if (holder.notesRecyclerView.getItemDecorationCount() == 0) {
+            int spacing = context.getResources().getDimensionPixelSize(R.dimen.horizontal_spacing); // define this in your resources
+            holder.notesRecyclerView.addItemDecoration(new HorizontalSpaceItemDecoration(spacing));
+        }
+
     }
 
 

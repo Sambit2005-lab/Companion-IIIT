@@ -32,19 +32,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cardHomeRecyclerView"
         android:layout_width="match_parent"
-        android:transitionName="rvAnim"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="8dp"
+        android:transitionName="rvAnim"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ViewAllBtn"
-        tools:listitem="@layout/singlecard"
-        />
-
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/singlecard" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

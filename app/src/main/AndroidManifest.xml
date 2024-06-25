@@ -22,6 +22,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Loading_page"
+            android:exported="false" />
+        <activity
             android:name=".Host.hostside_Ecell_societies_calendar"
             android:exported="false" />
         <activity

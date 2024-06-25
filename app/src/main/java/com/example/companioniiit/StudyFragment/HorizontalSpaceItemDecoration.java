@@ -6,11 +6,10 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SpacingItemDecoration extends RecyclerView.ItemDecoration {
-
+public class HorizontalSpaceItemDecoration extends RecyclerView.ItemDecoration {
     private final int horizontalSpaceWidth;
 
-    public SpacingItemDecoration(int horizontalSpaceWidth) {
+    public HorizontalSpaceItemDecoration(int horizontalSpaceWidth) {
         this.horizontalSpaceWidth = horizontalSpaceWidth;
     }
 
@@ -18,7 +17,7 @@ public class SpacingItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         outRect.right = horizontalSpaceWidth;
 
-        // If you want spacing at the left of the first item
+        // Add left margin only for the first item to avoid extra space at the start
         if (parent.getChildAdapterPosition(view) == 0) {
             outRect.left = horizontalSpaceWidth;
         }

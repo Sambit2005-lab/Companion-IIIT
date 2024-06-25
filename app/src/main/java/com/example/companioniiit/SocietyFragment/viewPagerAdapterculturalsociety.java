@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.companioniiit.chat_techsociety;
-
 public class viewPagerAdapterculturalsociety extends FragmentStateAdapter {
 
     public viewPagerAdapterculturalsociety(@NonNull FragmentActivity fragmentActivity) {

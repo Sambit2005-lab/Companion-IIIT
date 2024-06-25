@@ -82,7 +82,7 @@ public class interest extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(interest.this, MainActivity.class);
+                Intent intent = new Intent(interest.this, Loading_page.class);
                 startActivity(intent);
                 finish();
             }
