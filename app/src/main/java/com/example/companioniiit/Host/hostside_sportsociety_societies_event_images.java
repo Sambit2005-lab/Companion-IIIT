@@ -33,7 +33,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
-public class hostside_photogeeks_societies_event_images extends AppCompatActivity {
+public class hostside_sportsociety_societies_event_images extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private AppCompatButton uploadPictureBtn;
     private AppCompatButton saveImageBtn;
@@ -48,11 +48,10 @@ public class hostside_photogeeks_societies_event_images extends AppCompatActivit
 
     @SuppressLint("MissingInflatedId")
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hostside_photogeeks_societies_event_images);
+        setContentView(R.layout.activity_hostside_sportsociety_societies_event_images);
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("hosts");
@@ -69,8 +68,8 @@ public class hostside_photogeeks_societies_event_images extends AppCompatActivit
 
         if (hostEmail != null) {
             Log.d("HostsideSocieties", "Current host email: " + hostEmail); // Log the host email
-            if (hostEmail.equals("hostphotogeeks@gmail.com")) {
-                hostEventsRef = mDatabase.child("10").child("eventImages");
+            if (hostEmail.equals("hostsportsociety@gmail.com")) {
+                hostEventsRef = mDatabase.child("11").child("eventImages");
             } else {
                 Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();
                 Log.e("HostsideSocieties", "Invalid host email: " + hostEmail);
@@ -149,7 +148,7 @@ public class hostside_photogeeks_societies_event_images extends AppCompatActivit
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText( hostside_photogeeks_societies_event_images.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText( hostside_sportsociety_societies_event_images.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
             }
@@ -163,10 +162,10 @@ public class hostside_photogeeks_societies_event_images extends AppCompatActivit
             hostEventsRef.child(imageId).setValue(imageUrl)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText( hostside_photogeeks_societies_event_images.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText( hostside_sportsociety_societies_event_images.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
                             finish(); // Close the activity
                         } else {
-                            Toast.makeText( hostside_photogeeks_societies_event_images.this, "Failed to save image URL", Toast.LENGTH_SHORT).show();
+                            Toast.makeText( hostside_sportsociety_societies_event_images.this, "Failed to save image URL", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
