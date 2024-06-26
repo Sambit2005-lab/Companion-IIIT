@@ -9,15 +9,16 @@
     android:background="@drawable/page_bckg">
 
 
-    
-    
-    <ImageView
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+
+        android:id="@+id/profile_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
-        android:layout_marginStart="12dp">
+        app:shapeAppearanceOverlay="@style/circular" >
 
-    </ImageView>
+    </com.google.android.material.imageview.ShapeableImageView>
     
 
 
@@ -195,6 +196,7 @@
         android:paddingStart="12dp"
         android:text="Literature   +   "
         android:textAlignment="viewStart" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/photography"
         android:layout_width="wrap_content"
@@ -211,6 +213,7 @@
         android:paddingStart="12dp"
         android:text="Photography   +   "
         android:textAlignment="viewStart" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/dance"
         android:layout_width="wrap_content"
@@ -245,6 +248,7 @@
         android:paddingStart="12dp"
         android:text="Social Cause   +   "
         android:textAlignment="viewStart" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/career"
         android:layout_width="wrap_content"
@@ -261,6 +265,7 @@
         android:paddingStart="12dp"
         android:text="Career Development   +   "
         android:textAlignment="viewStart" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/marketing"
         android:layout_width="wrap_content"
@@ -293,6 +298,7 @@
         android:paddingStart="12dp"
         android:text="Film Media   +   "
         android:textAlignment="viewStart" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/enterpreneurship"
         android:layout_width="wrap_content"

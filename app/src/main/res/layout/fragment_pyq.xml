@@ -13,8 +13,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/noteRecyclerView"
-        android:layout_width="380dp"
-        android:layout_height="642dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/page_bckg"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
