@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/page_bckg"
+    >
+
+    <ImageView
+        android:id="@+id/upload_members_images_techsociety"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="200dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/upload_image_hostside">
+
+    </ImageView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/uplaod_image_members_techsociety"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/upload_members_images_techsociety"
+        android:text="upload image"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:drawableRight="@drawable/upload_icon_white"
+        android:padding="8dp"
+        android:drawablePadding="8dp"
+        android:background="@drawable/hostside_button_solidblue">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <EditText
+        android:id="@+id/member_name_techsociety"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="20dp"
+        android:padding="8dp"
+        android:hint="Add Member Name"
+        app:layout_constraintTop_toBottomOf="@id/uplaod_image_members_techsociety">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/member_designation_techsociety"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/member_name_techsociety"
+        android:layout_margin="20dp"
+        android:padding="8dp"
+        android:hint="Add Designation">
+
+    </EditText>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/save_member_techsociety"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/member_designation_techsociety"
+        android:text="save post"
+        android:textColor="#ffffff"
+        android:background="@drawable/save_button"
+        >
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancel_member_techsociety"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/save_member_techsociety"
+        android:text="cancel post"
+        android:padding="10dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/cancel_button"
+        >
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

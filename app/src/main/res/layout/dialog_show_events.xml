@@ -25,5 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#51B5C3"
         android:text="Close" />
 </LinearLayout>
