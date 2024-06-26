@@ -110,6 +110,25 @@
             </EditText>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/save_joining_link_techsociety"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Save joining link"
+                android:background="@drawable/save_button">
+            </androidx.appcompat.widget.AppCompatButton>
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
