@@ -23,7 +23,7 @@ public class megahertz extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         ViewPager2 viewPager = findViewById(R.id.view_pager);
 
-        viewPager.setAdapter(new viewPagerAdapterTechsociety(this));
+        viewPager.setAdapter(new viewPagerAdapterMegaHertz(this));
 
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {

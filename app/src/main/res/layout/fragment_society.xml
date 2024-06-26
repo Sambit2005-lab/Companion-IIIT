@@ -104,7 +104,8 @@
                   android:textAlignment="textStart"
                   android:fontFamily="@font/noto_sans"
                   android:textStyle="bold"
-                  android:textColor="#ffffff">
+                  android:textColor="#ffffff"
+                  android:backgroundTint="#33333F">
 
               </androidx.appcompat.widget.AppCompatButton>
 
@@ -121,7 +122,8 @@
                   android:textAlignment="textStart"
                   android:fontFamily="@font/noto_sans"
                   android:textStyle="bold"
-                  android:textColor="#ffffff">
+                  android:textColor="#ffffff"
+                  android:backgroundTint="#000000">
 
               </androidx.appcompat.widget.AppCompatButton>
 
@@ -138,7 +140,8 @@
                   android:textAllCaps="false"
                   android:textColor="#ffffff"
                   android:textSize="28sp"
-                  android:textStyle="bold">
+                  android:textStyle="bold"
+                  android:backgroundTint="#3C92C3">
 
               </androidx.appcompat.widget.AppCompatButton>
 
@@ -146,16 +149,16 @@
                   android:id="@+id/FATS_card"
                   android:layout_width="380dp"
                   android:layout_height="90dp"
-                  android:background="@drawable/techsociety_card_background"
                   android:layout_margin="12dp"
-                  android:text="FATS"
-                  android:textAllCaps="false"
-                  android:padding="14dp"
-                  android:textSize="28sp"
-                  android:textAlignment="textStart"
+                  android:background="@drawable/techsociety_card_background"
                   android:fontFamily="@font/noto_sans"
-                  android:textStyle="bold"
-                  android:textColor="#ffffff">
+                  android:padding="14dp"
+                  android:text="FATS"
+                  android:textAlignment="textStart"
+                  android:textAllCaps="false"
+                  android:textColor="#ffffff"
+                  android:textSize="28sp"
+                  android:textStyle="bold">
 
               </androidx.appcompat.widget.AppCompatButton>
 
@@ -206,7 +209,8 @@
                   android:textAllCaps="false"
                   android:textColor="#ffffff"
                   android:textSize="28sp"
-                  android:textStyle="bold">
+                  android:textStyle="bold"
+                  android:backgroundTint="#C9A72D">
 
               </androidx.appcompat.widget.AppCompatButton>
 
@@ -257,7 +261,8 @@
                   android:textAlignment="textStart"
                   android:fontFamily="@font/noto_sans"
                   android:textStyle="bold"
-                  android:textColor="#ffffff">
+                  android:textColor="#ffffff"
+                  android:backgroundTint="#CC2B6E">
 
               </androidx.appcompat.widget.AppCompatButton>
 

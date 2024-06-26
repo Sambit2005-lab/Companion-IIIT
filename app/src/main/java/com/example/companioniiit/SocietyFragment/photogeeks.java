@@ -25,7 +25,7 @@ public class photogeeks extends AppCompatActivity {
          TabLayout tabLayout = findViewById(R.id.tab_layoutphoto);
         ViewPager2 viewPager = findViewById(R.id.view_pagerphoto);
 
-        viewPager.setAdapter(new viewPagerAdapterTechsociety(this));
+        viewPager.setAdapter(new viewPagerAdapterPhotogeeks(this));
 
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
