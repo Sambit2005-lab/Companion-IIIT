@@ -67,6 +67,7 @@
         android:layout_below="@+id/name"
         android:layout_centerInParent="true"
         android:layout_marginTop="-13dp"
+        android:paddingStart="5dp"
         android:background="@drawable/edit_text_border">
         
     </EditText>
@@ -90,6 +91,7 @@
         android:layout_below="@+id/email"
         android:layout_centerInParent="true"
         android:layout_marginTop="6dp"
+        android:paddingStart="5dp"
         android:background="@drawable/edit_text_border"/>
 
     <TextView
@@ -111,6 +113,7 @@
         android:layout_below="@+id/password"
         android:layout_centerInParent="true"
         android:layout_marginTop="6dp"
+        android:paddingStart="5dp"
         android:background="@drawable/edit_text_border">
 
     </EditText>
@@ -134,10 +137,11 @@
         android:layout_below="@+id/cp"
         android:layout_centerInParent="true"
         android:layout_marginTop="6dp"
+        android:paddingStart="5dp"
         android:background="@drawable/edit_text_border"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:background="@color/white"
+        android:background="@null"
         android:id="@+id/back"
         android:layout_width="62dp"
         android:layout_height="62dp"
@@ -145,7 +149,7 @@
         android:drawableRight="@drawable/left_arrow"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:background="@color/white"
+        android:background="@null"
         android:id="@+id/next"
         android:layout_width="62dp"
         android:layout_height="62dp"

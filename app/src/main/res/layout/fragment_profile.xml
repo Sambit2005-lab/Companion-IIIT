@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="#51B5C3"
+            android:background="@null"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/back_button" />
@@ -179,7 +179,7 @@
         android:text="Edit your interests"
         android:textAlignment="textStart"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@id/my_downloads"
+        app:layout_constraintBottom_toTopOf="@id/my_reports"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_password">
@@ -188,17 +188,17 @@
 
     <androidx.appcompat.widget.AppCompatButton
 
-        android:id="@+id/my_downloads"
+        android:id="@+id/my_reports"
         android:layout_width="300dp"
         android:layout_height="25dp"
         android:layout_below="@+id/edit_interests"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/my_profile_blue_buttons"
-        android:drawableRight="@drawable/download_icon"
+        android:drawableRight="@drawable/downloadicon000"
         android:paddingLeft="30dp"
         android:paddingRight="10dp"
-        android:text="My Downloads"
+        android:text="My Reports"
         android:textAlignment="textStart"
         android:textColor="#ffffff"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -237,9 +237,10 @@
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:maxImageSize="24dp"
+        app:maxImageSize="25dp"
         android:src="@drawable/dots_icon"
         app:tint="#ffffff"
+
         app:useCompatPadding="false"
         />
 

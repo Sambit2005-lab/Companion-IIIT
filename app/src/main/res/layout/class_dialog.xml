@@ -35,6 +35,7 @@
         android:layout_height="50dp"
         android:hint="Subject Name"
         android:layout_margin="8dp"
+        android:paddingStart="5dp"
         android:background="@drawable/class_dialog_inputfield"
         android:padding="16dp">
     </EditText>
@@ -46,6 +47,7 @@
         android:layout_height="50dp"
         android:hint="Teacher's Name"
         android:layout_margin="8dp"
+        android:paddingStart="5dp"
         android:background="@drawable/class_dialog_inputfield"
         android:padding="16dp">
     </EditText>

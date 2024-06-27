@@ -400,25 +400,25 @@
         android:text="Writing   +   "
         android:textAlignment="viewStart" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:background="@color/white"
+    <ImageButton
+        android:background="@null"
         android:id="@+id/back"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_alignParentBottom="true"
-        android:drawableRight="@drawable/left_arrow"/>
+        android:src="@drawable/left_arrow"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:background="@color/white"
+    <ImageButton
+        android:background="@null"
         android:id="@+id/next"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="0dp"
-        android:drawableLeft="@drawable/right_arrow__1_">
+        android:src="@drawable/right_arrow__1_">
 
-    </androidx.appcompat.widget.AppCompatButton>
+    </ImageButton>
 
 
 
