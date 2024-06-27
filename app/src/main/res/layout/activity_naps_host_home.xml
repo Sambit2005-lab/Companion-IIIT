@@ -42,16 +42,25 @@
             android:orientation="horizontal"
             >
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/add_event_techsociety"
                 android:layout_width="140dp"
                 android:layout_height="120dp"
-                android:layout_marginRight="60dp"
                 android:padding="8dp"
                 android:text="Add event on my calendar"
                 android:background="@drawable/background_intro">
 
             </androidx.appcompat.widget.AppCompatButton>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/add_announcement_techsociety"
@@ -63,6 +72,11 @@
 
             </androidx.appcompat.widget.AppCompatButton>
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -72,16 +86,25 @@
             android:padding="15dp"
             android:gravity="center">
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/upload_event_images_techsociety"
                 android:layout_width="140dp"
                 android:layout_height="120dp"
-                android:layout_marginRight="60dp"
                 android:text="Upload Event images"
                 android:padding="8dp"
                 android:background="@drawable/background_intro">
 
             </androidx.appcompat.widget.AppCompatButton>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/upload_team_members"
@@ -92,6 +115,11 @@
                 android:background="@drawable/background_intro">
 
             </androidx.appcompat.widget.AppCompatButton>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
