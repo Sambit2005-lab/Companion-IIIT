@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +32,8 @@ public class interest extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    private AppCompatButton nextButton;
-    private AppCompatButton backButton;
+    private ImageButton nextButton;
+    private ImageButton backButton;
     private FirebaseUser currentUser;
     private Map<String, Button> buttonMap = new HashMap<>();
 

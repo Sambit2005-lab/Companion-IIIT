@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,8 +26,8 @@ public class info_year extends AppCompatActivity {
     private ArrayAdapter<String> adapterItemsCourse, adapterItemsYear;
 
     private String selectedCourse, selectedYear;
-    private AppCompatButton nextButton;
-    private AppCompatButton backButton;
+    private AppCompatImageButton nextButton;
+    private AppCompatImageButton backButton;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
