@@ -5,7 +5,15 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment.HomeFragment"
-    android:background="#51B5C3">
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/homefragment_fullbkcg2"
+        android:scaleType="fitXY">
+
+    </ImageView>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,12 +65,12 @@
 
                 <TextView
                     android:id="@+id/greetings_user"
-                    android:layout_width="240dp"
+                    android:layout_width="270dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans"
-                    android:text="Welcome, user!"
+                    android:text="Welcome, \nuser!"
                     android:textColor="#ffffff"
-                    android:textSize="25sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
                    >
 
@@ -114,36 +122,20 @@
         </LinearLayout>
 
 
-        <ImageView
-            android:id="@+id/home_background"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:src="@drawable/home_fragment_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_details_holder"
-            app:layout_constraintVertical_bias="1.0">
-
-        </ImageView>
-
-
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/imageSlider"
             android:layout_width="350dp"
-            android:layout_height="140dp"
+            android:layout_height="150dp"
             android:elevation="5dp"
+            android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toTopOf="@+id/what_are_you_looking_for_today"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_details_holder"
-            app:layout_constraintVertical_bias="0.139">
+            app:layout_constraintVertical_bias="0.109">
 
         </com.denzcoskun.imageslider.ImageSlider>
-
 
         <TextView
             android:id="@+id/what_are_you_looking_for_today"
