@@ -19,7 +19,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_profile"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
         android:backgroundTint="#51B5C3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -34,7 +34,8 @@
             android:layout_marginTop="30dp"
             android:text="My Profile"
             android:textColor="#ffffff"
-            android:textSize="30dp"
+            android:fontFamily="@font/noto_sans"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -78,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
-        android:text="Branch"
+        android:text="Branch:"
         android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/year"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -91,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/branch"
         android:layout_centerHorizontal="true"
-        android:text="Year"
+        android:text="Year:"
         android:textSize="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -103,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/year"
         android:layout_centerHorizontal="true"
-        android:text="Student ID"
+        android:text="Student ID:"
         android:textSize="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -145,56 +146,36 @@
         android:background="@drawable/my_profile_blue_buttons"
         android:paddingLeft="30dp"
         android:paddingRight="10dp"
-        android:text="Change your Password                   ***"
+        android:text="Change your Password"
+        android:drawableRight="@drawable/change_password_icon"
         android:textAlignment="textStart"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/edit_interests"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_profile">
 
     </androidx.appcompat.widget.AppCompatButton>
 
-    <androidx.appcompat.widget.AppCompatButton
 
-        android:id="@+id/edit_interests"
-        android:layout_width="300dp"
-        android:layout_height="25dp"
-        android:layout_below="@+id/change_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/my_profile_blue_buttons"
-        android:drawableRight="@drawable/interest_icon"
-        android:paddingLeft="30dp"
-        android:paddingRight="10dp"
-        android:text="Edit your interests"
-        android:textAlignment="textStart"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@id/my_reports"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/change_password">
-
-    </androidx.appcompat.widget.AppCompatButton>
 
     <androidx.appcompat.widget.AppCompatButton
 
         android:id="@+id/my_reports"
         android:layout_width="300dp"
         android:layout_height="25dp"
-        android:layout_below="@+id/edit_interests"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/my_profile_blue_buttons"
-        android:drawableRight="@drawable/downloadicon000"
+        android:drawableRight="@drawable/attendance_report_icon"
         android:paddingLeft="30dp"
         android:paddingRight="10dp"
+        android:drawablePadding="10dp"
         android:text="My Reports"
         android:textAlignment="textStart"
         android:textColor="#ffffff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_interests">
+        app:layout_constraintTop_toBottomOf="@+id/change_password">
 
     </androidx.appcompat.widget.AppCompatButton>
 
@@ -219,8 +200,8 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab1"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#51B5C3"
@@ -228,17 +209,17 @@
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:maxImageSize="25dp"
         android:src="@drawable/dots_icon"
         app:tint="#ffffff"
-
-        app:useCompatPadding="false"
+        app:maxImageSize="20dp"
+        android:padding="0dp"
+        android:scaleType="centerInside"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
         android:layout_marginLeft="50dp"
@@ -251,8 +232,8 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab3"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
         android:layout_marginLeft="50dp"
@@ -265,8 +246,8 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab4"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
         android:layout_marginLeft="50dp"
