@@ -49,8 +49,8 @@ public class about_tars extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_about_tars, container, false);
 
-        eventsRecyclerView = view.findViewById(R.id.our_events_recyclerview_sportssociety);
-        teamMembersRecyclerView = view.findViewById(R.id.team_members_recyclerview_sportssociety);
+        eventsRecyclerView = view.findViewById(R.id.our_events_recyclerview_tars);
+        teamMembersRecyclerView = view.findViewById(R.id.team_members_recyclerview_tars);
 
         eventList = new ArrayList<>();
         teamMemberList = new ArrayList<>();
