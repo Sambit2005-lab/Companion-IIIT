@@ -51,6 +51,8 @@ dependencies {
     implementation ("com.airbnb.android:lottie:6.4.1")
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
     implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.auth)
