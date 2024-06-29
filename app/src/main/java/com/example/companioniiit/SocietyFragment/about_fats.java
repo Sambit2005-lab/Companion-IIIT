@@ -2,65 +2,105 @@ package com.example.companioniiit.SocietyFragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.companioniiit.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link about_fats#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class about_fats extends Fragment {
+    private RecyclerView eventsRecyclerView;
+    private RecyclerView teamMembersRecyclerView;
+    private List<Event> eventList;
+    private List<TeamMember> teamMemberList;
+    private EventAdapter eventAdapter;
+    private TeamMemberAdapter teamMemberAdapter;
+    private DatabaseReference databaseReference;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public about_fats() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment about_fats.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static about_fats newInstance(String param1, String param2) {
-        about_fats fragment = new about_fats();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about_fats, container, false);
+        View view= inflater.inflate(R.layout.fragment_about_fats, container, false);
+
+        eventsRecyclerView = view.findViewById(R.id.our_events_recyclerview_fats);
+        teamMembersRecyclerView = view.findViewById(R.id.team_members_recyclerview_fats);
+
+        eventList = new ArrayList<>();
+        teamMemberList = new ArrayList<>();
+
+        eventAdapter = new EventAdapter(eventList);
+        teamMemberAdapter = new TeamMemberAdapter(teamMemberList);
+
+        eventsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        eventsRecyclerView.setAdapter(eventAdapter);
+
+        teamMembersRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        teamMembersRecyclerView.setAdapter(teamMemberAdapter);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        // Fetching events data
+        databaseReference.child("hosts").child("6").child("eventImages").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String photoUrl = snapshot.getValue(String.class);
+                    Event event = new Event(photoUrl);
+                    eventList.add(event);
+                }
+                eventAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle possible errors.
+                Log.e("Firebase Error", "Failed to fetch events: " + databaseError.getMessage());
+                Toast.makeText(getContext(), "Failed to fetch events.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Fetching team members data
+        databaseReference.child("hosts").child("6").child("teamMembers").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    TeamMember member = snapshot.getValue(TeamMember.class);
+                    teamMemberList.add(member);
+                }
+                teamMemberAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+        });
+
+
+
+        return view;
     }
 }

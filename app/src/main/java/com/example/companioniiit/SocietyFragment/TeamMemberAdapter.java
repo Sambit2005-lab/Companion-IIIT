@@ -33,7 +33,7 @@ public class TeamMemberAdapter extends RecyclerView.Adapter<TeamMemberAdapter.Te
         TeamMember member = teamMemberList.get(position);
         holder.nameTextView.setText(member.getName());
         holder.designationTextView.setText(member.getDesignation());
-        Picasso.get().load(member.getImageUrl()).placeholder(R.drawable.erroricon) // Optional placeholder
+        Picasso.get().load(member.getImageUrl()).placeholder(R.drawable.plswait) // Optional placeholder
                 .error(R.drawable.erroricon) // Optional error image
                 .into(holder.photoImageView);
     }
