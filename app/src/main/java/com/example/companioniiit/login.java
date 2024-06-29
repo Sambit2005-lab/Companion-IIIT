@@ -1,12 +1,17 @@
 package com.example.companioniiit;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -29,6 +34,8 @@ public class login extends AppCompatActivity {
 
     private DatabaseReference hostsRef;
 
+    private TextView forgotPasswordTextView;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,8 @@ public class login extends AppCompatActivity {
         loginButton = findViewById(R.id.loginbutton);
         backButton = findViewById(R.id.back_button);
         progressBar = findViewById(R.id.progressBar);
+        forgotPasswordTextView=findViewById(R.id.forgot_password);
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +67,61 @@ public class login extends AppCompatActivity {
                 finish();
             }
         });
+
+        forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showForgotPasswordDialog();
+            }
+        });
     }
+
+    private void showForgotPasswordDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Reset Password");
+
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        input.setHint("Enter your email"); // Set hint for the email input
+        builder.setView(input);
+
+
+        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String email = input.getText().toString().trim();
+                if (!email.isEmpty()) {
+                    resetPassword(email);
+                } else {
+                    Toast.makeText(login.this, "Please enter your email", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    private void resetPassword(String email) {
+        mAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(login.this, "Reset link sent to your email", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(login.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+
+
+
 
     private void handleLogin() {
         String email = emailEditText.getText().toString();

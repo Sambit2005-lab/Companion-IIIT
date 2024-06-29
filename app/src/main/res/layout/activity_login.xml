@@ -17,7 +17,7 @@
         android:background="@null"
         android:padding="8dp"
         android:src="@drawable/back_button"
-        app:layout_constraintBottom_toTopOf="@+id/heading"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -122,6 +122,26 @@
 
     </EditText>
 
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/edittext2"
+        app:layout_constraintBottom_toBottomOf="@+id/loginbutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Forgot Password?"
+        android:paddingStart="210dp"
+        android:paddingTop="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+
+        >
+
+
+
+    </TextView>
+
     <androidx.appcompat.widget.AppCompatButton
 
         android:layout_width="350dp"
@@ -166,19 +186,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:visibility="gone"
-            />
+            android:visibility="gone" />
 
 
     </RelativeLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
