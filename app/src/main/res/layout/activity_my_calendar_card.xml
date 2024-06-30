@@ -80,7 +80,6 @@
                 android:id="@+id/current_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/noto_sans"
                 android:text="CurrentYear"
@@ -90,9 +89,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.2">
+                app:layout_constraintVertical_bias="0.0">
 
             </TextView>
 
@@ -131,7 +129,6 @@
             android:id="@+id/days_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_below="@id/current_year_layout"
@@ -238,23 +235,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="40dp">
+
+        >
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_event_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="15dp"
             android:src="@drawable/plus_icon"
+            android:backgroundTint="#51B5C3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.777">
+           >
 
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
@@ -263,13 +257,57 @@
             android:id="@+id/add_reminder_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:visibility="gone"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#51B5C3"
             app:layout_constraintBottom_toTopOf="@id/add_event_fab"
             app:layout_constraintEnd_toEndOf="@id/add_event_fab"
             android:src="@drawable/add_reminder_fab_icon">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        <TextView
+            android:id="@+id/add_a_reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a Reminder"
+            app:layout_constraintTop_toTopOf="@id/add_reminder_fab"
+            app:layout_constraintEnd_toStartOf="@id/add_reminder_fab"
+            app:layout_constraintBottom_toBottomOf="@id/add_reminder_fab"
+            android:padding="4dp"
+            android:textColor="#51B5C3"
+            android:textStyle="bold"
+            android:textSize="12sp">
+
+        </TextView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/holiday_list_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#51B5C3"
+            android:tint="#ffffff"
+            app:layout_constraintBottom_toTopOf="@id/add_reminder_fab"
+            app:layout_constraintEnd_toEndOf="@id/add_reminder_fab"
+            android:src="@drawable/calendar_holiday_list">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        <TextView
+            android:id="@+id/holiday_list_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Holiday List"
+            app:layout_constraintTop_toTopOf="@id/holiday_list_fab"
+            app:layout_constraintEnd_toStartOf="@id/holiday_list_fab"
+            app:layout_constraintBottom_toBottomOf="@id/holiday_list_fab"
+            android:padding="4dp"
+            android:textColor="#51B5C3"
+            android:textStyle="bold"
+            android:textSize="12sp">
+
+        </TextView>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
