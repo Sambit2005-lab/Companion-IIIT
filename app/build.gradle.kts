@@ -52,6 +52,7 @@ dependencies {
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.firebase.messaging)
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
