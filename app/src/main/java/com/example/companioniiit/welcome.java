@@ -64,7 +64,7 @@ public class welcome extends AppCompatActivity {
                 }
         });
 
-       /*  mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
@@ -75,7 +75,7 @@ public class welcome extends AppCompatActivity {
         } else {
             Toast.makeText(welcome.this, "Hello!", Toast.LENGTH_SHORT).show();
 
-       } */
+       }
 
         // we add the blue line under the terms and conditions and add the link to give wave view of term and conditions
         TextView termsTextView = findViewById(R.id.textview5);

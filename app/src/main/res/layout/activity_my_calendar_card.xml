@@ -259,6 +259,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:backgroundTint="#51B5C3"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/add_event_fab"
             app:layout_constraintEnd_toEndOf="@id/add_event_fab"
             android:src="@drawable/add_reminder_fab_icon">
@@ -270,6 +271,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add a Reminder"
+            android:visibility="gone"
             app:layout_constraintTop_toTopOf="@id/add_reminder_fab"
             app:layout_constraintEnd_toStartOf="@id/add_reminder_fab"
             app:layout_constraintBottom_toBottomOf="@id/add_reminder_fab"
@@ -287,6 +289,7 @@
             android:layout_marginBottom="12dp"
             android:backgroundTint="#51B5C3"
             android:tint="#ffffff"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/add_reminder_fab"
             app:layout_constraintEnd_toEndOf="@id/add_reminder_fab"
             android:src="@drawable/calendar_holiday_list">
@@ -298,6 +301,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Holiday List"
+            android:visibility="gone"
             app:layout_constraintTop_toTopOf="@id/holiday_list_fab"
             app:layout_constraintEnd_toStartOf="@id/holiday_list_fab"
             app:layout_constraintBottom_toBottomOf="@id/holiday_list_fab"

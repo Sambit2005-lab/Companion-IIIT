@@ -54,6 +54,7 @@ public class activity_myCalender_card extends AppCompatActivity {
     private String currentUserId;
 
     private Map<String, Integer> eventDates;
+    private boolean isFabExpanded = false;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -85,6 +86,9 @@ public class activity_myCalender_card extends AppCompatActivity {
         //floating button functionality added
         FloatingActionButton addEventFab = findViewById(R.id.add_event_fab);
         FloatingActionButton addReminderFab = findViewById(R.id.add_reminder_fab);
+        FloatingActionButton HolidayListFab = findViewById(R.id.holiday_list_fab);
+        TextView HolidayListText = findViewById(R.id.holiday_list_text);
+        TextView addReminderText = findViewById(R.id.add_a_reminder);
 
         // back btn implementation
 
@@ -98,12 +102,23 @@ public class activity_myCalender_card extends AppCompatActivity {
         });
         addEventFab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (addReminderFab.getVisibility() == View.VISIBLE) {
-                    addReminderFab.hide();
+            public void onClick(View v) {
+                if (isFabExpanded) {
+                    // Hide the secondary FABs and text views
+                    addReminderFab.setVisibility(View.GONE);
+                    HolidayListFab.setVisibility(View.GONE);
+                    addReminderText.setVisibility(View.GONE);
+                    HolidayListText.setVisibility(View.GONE);
+
                 } else {
-                    addReminderFab.show();
+                    // Show the secondary FABs and text views
+                    addReminderFab.setVisibility(View.VISIBLE);
+                    HolidayListFab.setVisibility(View.VISIBLE);
+                    addReminderText.setVisibility(View.VISIBLE);
+                    HolidayListText.setVisibility(View.VISIBLE);
+                    HolidayListFab.setVisibility(View.VISIBLE);
                 }
+                isFabExpanded = !isFabExpanded;
             }
         });
 
