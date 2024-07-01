@@ -22,6 +22,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".MyCalendar.holiday_single_item"
+            android:exported="false" />
+        <activity
+            android:name=".MyCalendar.holidayList"
+            android:exported="false" />
+        <activity
             android:name=".Singlecard_1"
             android:exported="false" />
         <activity

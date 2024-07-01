@@ -130,6 +130,14 @@ public class activity_myCalender_card extends AppCompatActivity {
             }
         });
 
+        HolidayListFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity_myCalender_card.this, holidayList.class);
+                startActivity(intent);
+            }
+        });
+
 
         displayCurrentMonth();
 
