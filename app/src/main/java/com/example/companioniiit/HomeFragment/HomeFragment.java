@@ -7,25 +7,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-
-
 import com.example.companioniiit.Announcement.AnnouncementActivity;
-import com.example.companioniiit.R;
+import com.example.companioniiit.MainActivity;
 import com.example.companioniiit.MyCalendar.activity_myCalender_card;
+import com.example.companioniiit.R;
 import com.example.companioniiit.attendance.attendance_card;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,32 +45,29 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth auth;
     private String userId;
 
+    private FirebaseUser currentUser;
 
+    private ShapeableImageView profilePic;
     private CardView attendenceButton;
     private CardView myCalenderButton;
-
     private CardView AnnouncementBtn;
 
-    private boolean newAnnouncementFlag = false;
-    private DatabaseReference hostAnnouncementsRef;
-    private ValueEventListener announcementsListener;
-
-
     private View view;
+
     @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
         userIdTextView = view.findViewById(R.id.userid);
         greetingsTextView = view.findViewById(R.id.greetings_user);
         attendenceButton = view.findViewById(R.id.attendance_card); // Initialize the button
         myCalenderButton = view.findViewById(R.id.myCalendar_card);
         AnnouncementBtn = view.findViewById(R.id.announcement_card);
+        profilePic = view.findViewById(R.id.profile_pic);
 
         // Initialize ImageSlider
         ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
-
 
         // Creating a list of SlideModel
         List<SlideModel> slideModels = new ArrayList<>();
@@ -77,36 +76,70 @@ public class HomeFragment extends Fragment {
         slideModels.add(new SlideModel(R.drawable.iiitphoto3, ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.iiitphoto4, ScaleTypes.CENTER_CROP));
 
-
         // Add images to the ImageSlider
         imageSlider.setImageList(slideModels);
 
-
-
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();
-        userId = auth.getCurrentUser().getUid();
+        currentUser = auth.getCurrentUser();
 
-        // Initialize Firebase Database
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userId);
+        if (currentUser != null) {
+            userId = currentUser.getUid();
+            // Initialize Firebase Database
+            databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userId);
 
-        // Check if the College ID is already saved in Firebase
-        checkIfCollegeIdExists();
+            // Check if the College ID is already saved in Firebase
+            checkIfCollegeIdExists();
 
-        // Retrieve the user's name from Firebase
-        getUserNameFromFirebase();
+            // Retrieve the user's name from Firebase
+            getUserNameFromFirebase();
 
-        onAttendenceClick();
+            onAttendenceClick();
 
-        onMyCalenderClick();
+            onMyCalenderClick();
 
-        onAnnouncementClick();
+            onAnnouncementClick();
 
+            loadProfileImage();
+        } else {
+            Toast.makeText(getContext(), "User not logged in", Toast.LENGTH_SHORT).show();
+            // Optionally, redirect to login activity
+            startActivity(new Intent(getActivity(), MainActivity.class));
+            getActivity().finish();
+        }
 
         return view;
     }
 
+    private void loadProfileImage() {
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            DatabaseReference profileImageRef = databaseReference.child("profileImage");
 
+            profileImageRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String profileImageUrl = dataSnapshot.getValue(String.class);
+                        Glide.with(HomeFragment.this)
+                                .load(profileImageUrl)
+                                .placeholder(R.drawable.plswait) // Optional placeholder
+                                .circleCrop()
+                                .into(profilePic);
+                    } else {
+                        Toast.makeText(getContext(), "Profile image not found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(getContext(), "Failed to load profile image: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), "User not logged in", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void onAnnouncementClick() {
         AnnouncementBtn.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +161,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
     }
 
     private void onAttendenceClick() {
@@ -207,4 +239,3 @@ public class HomeFragment extends Fragment {
         });
     }
 }
-
