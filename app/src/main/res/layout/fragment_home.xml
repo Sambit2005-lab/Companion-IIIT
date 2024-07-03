@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <ImageButton
             android:id="@+id/notification_bell"
             android:layout_width="wrap_content"
@@ -39,14 +40,12 @@
         <View
             android:id="@+id/red_dot"
             android:layout_width="5dp"
-            android:layout_height="5dp"
+            android:layout_height="7dp"
             android:layout_gravity="top|end"
-            app:layout_constraintBottom_toBottomOf="@id/notification_bell"
-            app:layout_constraintEnd_toStartOf="@id/notification_bell"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.0"
             android:background="@drawable/red_dot"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/notification_bell"
+            app:layout_constraintEnd_toStartOf="@id/notification_bell" />
 
         <LinearLayout
             android:id="@+id/user_details_holder"
@@ -90,33 +89,16 @@
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-
             <com.google.android.material.imageview.ShapeableImageView
 
                 android:id="@+id/profile_pic"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingRight="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@id/greetings_user"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.064"
-                app:shapeAppearanceOverlay="@style/circular">
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                app:shapeAppearanceOverlay="@style/circular"
+                tools:ignore="MissingConstraints">
 
             </com.google.android.material.imageview.ShapeableImageView>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
 
 
         </LinearLayout>
