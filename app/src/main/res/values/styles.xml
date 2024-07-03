@@ -9,4 +9,15 @@
         <item name="android:padding">10dp</item>
     </style>
 
+    <!-- Style for circular images -->
+    <style name="circularImageView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Circle</item>
+    </style>
+
+    <!-- Overlay for circular shape appearance -->
+    <style name="ShapeAppearanceOverlay.App.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>
