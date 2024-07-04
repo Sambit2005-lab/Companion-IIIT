@@ -156,7 +156,7 @@ public class hostside_vedantasamiti_societies_announcement extends AppCompatActi
 
         // Determine the host node based on the email
         DatabaseReference hostAnnouncementsRef;
-        if (hostEmail.equals("hostvedantasamiti@gmail.com")) {
+        if (hostEmail.equals("vedantasamiti@iiit-bh.ac.in")) {
             hostAnnouncementsRef = databaseReference.child("12").child("announcements");
         } else {
             Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

@@ -47,7 +47,7 @@ public class hostside_Tars_societies_calendar extends AppCompatActivity {
         hostEmail = intent.getStringExtra("hostEmail");
 
         if (hostEmail != null) {
-            if (hostEmail.equals("hosttarssociety@gmail.com")) {
+            if (hostEmail.equals("tars@iiit-bh.ac.in")) {
                 hostEventsRef = databaseReference.child("3").child("events");
             } else {
                 Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

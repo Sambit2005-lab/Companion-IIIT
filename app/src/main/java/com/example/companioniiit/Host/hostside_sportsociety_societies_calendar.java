@@ -48,7 +48,7 @@ public class hostside_sportsociety_societies_calendar extends AppCompatActivity 
         hostEmail = intent.getStringExtra("hostEmail");
 
         if (hostEmail != null) {
-            if (hostEmail.equals("hostsportsociety@gmail.com")) {
+            if (hostEmail.equals("sportssociety@iiit-bh.ac.in")) {
                 hostEventsRef = databaseReference.child("11").child("events");
             } else {
                 Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

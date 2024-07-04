@@ -47,7 +47,7 @@ public class hostside_paracosom_societies_calendar extends AppCompatActivity {
         hostEmail = intent.getStringExtra("hostEmail");
 
         if (hostEmail != null) {
-            if (hostEmail.equals("hostparacosm@gmail.com")) {
+            if (hostEmail.equals("paracosm@iiit-bh.ac.in")) {
                 hostEventsRef = databaseReference.child("9").child("events");
             } else {
                 Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

@@ -153,7 +153,7 @@ public class hostside_fats_societies_announcement extends AppCompatActivity {
 
         // Determine the host node based on the email
         DatabaseReference hostAnnouncementsRef;
-        if (hostEmail.equals("hostfats@gmail.com")) {
+        if (hostEmail.equals("fats@iiit-bh.ac.in")) {
             hostAnnouncementsRef = databaseReference.child("6").child("announcements");
         } else {
             Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

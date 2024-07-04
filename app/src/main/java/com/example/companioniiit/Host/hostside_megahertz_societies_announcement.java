@@ -155,7 +155,7 @@ public class hostside_megahertz_societies_announcement extends AppCompatActivity
 
         // Determine the host node based on the email
         DatabaseReference hostAnnouncementsRef;
-        if (hostEmail.equals("hostmegahertz@gmail.com")) {
+        if (hostEmail.equals("megaheartz@iiit-bh.ac.in")) {
             hostAnnouncementsRef = databaseReference.child("7").child("announcements");
         } else {
             Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

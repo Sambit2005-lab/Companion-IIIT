@@ -66,7 +66,7 @@ public class hostside_societies_teammembers extends AppCompatActivity {
 
         if (hostEmail != null) {
             Log.d("HostsideSocieties", "Current host email: " + hostEmail); // Log the host email
-            if (hostEmail.equals("hosttechsociety@gmail.com")) {
+            if (hostEmail.equals("tech-society@iiit-bh.ac.in")) {
                 hostMembersRef = mDatabase.child("2").child("teamMembers");
             } else {
                 Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

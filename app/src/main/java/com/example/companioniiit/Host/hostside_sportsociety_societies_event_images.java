@@ -68,7 +68,7 @@ public class hostside_sportsociety_societies_event_images extends AppCompatActiv
 
         if (hostEmail != null) {
             Log.d("HostsideSocieties", "Current host email: " + hostEmail); // Log the host email
-            if (hostEmail.equals("hostsportsociety@gmail.com")) {
+            if (hostEmail.equals("sportssociety@iiit-bh.ac.in")) {
                 hostEventsRef = mDatabase.child("11").child("eventImages");
             } else {
                 Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

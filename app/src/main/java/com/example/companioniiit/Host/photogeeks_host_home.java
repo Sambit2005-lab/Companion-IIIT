@@ -23,7 +23,7 @@ public class photogeeks_host_home extends AppCompatActivity {
     private AppCompatButton saveJoiningLinkButton;
     private DatabaseReference databaseReference;
     private DatabaseReference hostJoiningLinksRef;
-    private String hostEmail = "hostphotogeeks@gmail.com"; // Hardcoded host email
+    private String hostEmail = "photogeeks1@iiit-bh.ac.in"; // Hardcoded host email
 
     private AppCompatButton AddEventbtn;
     private AppCompatButton AddTeamMemberbtn;
@@ -44,7 +44,7 @@ public class photogeeks_host_home extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("hosts");
 
         // Setting up the reference for joining links
-        if (hostEmail.equals("hostphotogeeks@gmail.com")) {
+        if (hostEmail.equals("photogeeks1@iiit-bh.ac.in")) {
             hostJoiningLinksRef = databaseReference.child("10").child("joining_links");
         } else {
             Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

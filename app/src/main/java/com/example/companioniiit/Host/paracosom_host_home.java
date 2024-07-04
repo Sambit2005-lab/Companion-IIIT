@@ -23,7 +23,7 @@ public class paracosom_host_home extends AppCompatActivity {
     private AppCompatButton saveJoiningLinkButton;
     private DatabaseReference databaseReference;
     private DatabaseReference hostJoiningLinksRef;
-    private String hostEmail = "hostparacosm@gmail.com"; // Hardcoded host email
+    private String hostEmail = "paracosm@iiit-bh.ac.in"; // Hardcoded host email
 
     private AppCompatButton AddEventbtn;
     private AppCompatButton AddTeamMemberbtn;
@@ -42,7 +42,7 @@ public class paracosom_host_home extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("hosts");
 
         // Setting up the reference for joining links
-        if (hostEmail.equals("hostparacosm@gmail.com")) {
+        if (hostEmail.equals("paracosm@iiit-bh.ac.in")) {
             hostJoiningLinksRef = databaseReference.child("9").child("joining_links");
         } else {
             Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

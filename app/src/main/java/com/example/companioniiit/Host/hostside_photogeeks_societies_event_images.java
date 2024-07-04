@@ -69,7 +69,7 @@ public class hostside_photogeeks_societies_event_images extends AppCompatActivit
 
         if (hostEmail != null) {
             Log.d("HostsideSocieties", "Current host email: " + hostEmail); // Log the host email
-            if (hostEmail.equals("hostphotogeeks@gmail.com")) {
+            if (hostEmail.equals("photogeeks1@iiit-bh.ac.in")) {
                 hostEventsRef = mDatabase.child("10").child("eventImages");
             } else {
                 Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

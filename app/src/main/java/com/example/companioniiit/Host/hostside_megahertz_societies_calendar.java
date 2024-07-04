@@ -47,7 +47,7 @@ public class hostside_megahertz_societies_calendar extends AppCompatActivity {
         hostEmail = intent.getStringExtra("hostEmail");
 
         if (hostEmail != null) {
-            if (hostEmail.equals("hostmegahertz@gmail.com")) {
+            if (hostEmail.equals("megaheartz@iiit-bh.ac.in")) {
                 hostEventsRef = databaseReference.child("7").child("events");
             } else {
                 Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();

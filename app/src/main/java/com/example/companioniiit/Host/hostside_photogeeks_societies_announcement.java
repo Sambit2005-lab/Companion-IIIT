@@ -156,7 +156,7 @@ public class hostside_photogeeks_societies_announcement extends AppCompatActivit
 
         // Determine the host node based on the email
         DatabaseReference hostAnnouncementsRef;
-        if (hostEmail.equals("hostphotogeeks@gmail.com")) {
+        if (hostEmail.equals("photogeeks1@iiit-bh.ac.in")) {
             hostAnnouncementsRef = databaseReference.child("10").child("announcements");
         } else {
             Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();
