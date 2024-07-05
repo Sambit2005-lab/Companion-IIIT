@@ -22,9 +22,7 @@
         android:theme="@style/Theme.CompanionIIIT"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".MyCalendar.holiday_single_item"
-            android:exported="false" />
+
         <activity
             android:name=".MyCalendar.holidayList"
             android:exported="false" />
@@ -54,7 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".Host.hostside_sportsociety_societies_calendar"
-            android:exported="false" />
+            />
         <activity
             android:name=".Host.hostside_sportsociety_societies_teammembers"
             android:exported="false" />
@@ -98,6 +96,9 @@
             android:name=".Host.hostside_naps_societies_announcement"
             android:exported="false" />
         <activity
+            android:name=".Host.hostside_naps_societies_event_images"
+            android:exported="false" />
+        <activity
             android:name=".Host.hostside_megahertz_societies_calendar"
             android:exported="false" />
         <activity
@@ -107,8 +108,9 @@
             android:name=".Host.hostside_megahertz_societies_announcement"
             android:exported="false" />
         <activity
-            android:name=".Item_host_events"
-            android:exported="false" />
+            android:name=".Host.hostside_megahertz_societies_teammembers"
+             />
+
         <activity
             android:name=".Host.hostside_fats_societies_calendar"
             android:exported="false" />
@@ -136,6 +138,9 @@
         <activity
             android:name=".Host.hostside_Ecell_societies_announcement"
             android:exported="false" />
+        <activity
+            android:name=".Host.ecell_host_home"
+             />
         <activity
             android:name=".Host.hostside_Tars_societies_calendar"
             android:exported="false" />

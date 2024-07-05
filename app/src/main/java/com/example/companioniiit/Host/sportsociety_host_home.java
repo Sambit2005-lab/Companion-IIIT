@@ -57,7 +57,7 @@ public class sportsociety_host_home extends AppCompatActivity {
             }
         });
 
-        AddEventbtn = findViewById(R.id.add_event_techsociety);
+        AddEventbtn = findViewById(R.id.add_event_sport_society);
         AddTeamMemberbtn = findViewById(R.id.upload_team_members);
         AddEventimgbtn = findViewById(R.id.upload_event_images_techsociety);
         Addannouncementbtn = findViewById(R.id.add_announcement_techsociety);

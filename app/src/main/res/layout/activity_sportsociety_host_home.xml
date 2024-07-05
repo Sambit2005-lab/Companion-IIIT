@@ -47,7 +47,7 @@
                 android:layout_weight="1"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/add_event_techsociety"
+                android:id="@+id/add_event_sport_society"
                 android:layout_width="140dp"
                 android:layout_height="120dp"
                 android:padding="8dp"
