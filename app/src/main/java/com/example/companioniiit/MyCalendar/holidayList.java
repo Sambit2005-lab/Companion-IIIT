@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import androidx.appcompat.widget.SearchView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +27,10 @@ public class holidayList extends AppCompatActivity {
     private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
     private List<eventHoliday> eventList;
+    private List<eventHoliday> filteredList;
     private DatabaseReference databaseReference;
-
     private ImageButton backbutton;
-
-
-
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +40,31 @@ public class holidayList extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view_Holiday_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventList = new ArrayList<>();
-        eventAdapter = new EventAdapter(eventList);
+        filteredList = new ArrayList<>();
+        eventAdapter = new EventAdapter(filteredList);
         recyclerView.setAdapter(eventAdapter);
-        backbutton = findViewById(R.id.back_button);
 
+        backbutton = findViewById(R.id.back_button);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holidayList.this, activity_myCalender_card.class);
                 startActivity(intent);
+            }
+        });
+
+        searchView = findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterEvents(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterEvents(newText);
+                return false;
             }
         });
 
@@ -72,7 +87,7 @@ public class holidayList extends AppCompatActivity {
                         }
                     }
                 }
-                eventAdapter.notifyDataSetChanged();
+                filterEvents(searchView.getQuery().toString());
             }
 
             @Override
@@ -80,5 +95,19 @@ public class holidayList extends AppCompatActivity {
                 Log.e("FirebaseError", databaseError.getMessage());
             }
         });
+    }
+
+    private void filterEvents(String query) {
+        filteredList.clear();
+        if (query.isEmpty()) {
+            filteredList.addAll(eventList);
+        } else {
+            for (eventHoliday event : eventList) {
+                if (event.getDate().contains(query)) {
+                    filteredList.add(event);
+                }
+            }
+        }
+        eventAdapter.notifyDataSetChanged();
     }
 }

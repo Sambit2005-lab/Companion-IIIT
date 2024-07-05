@@ -28,6 +28,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         eventHoliday event = eventList.get(position);
         holder.dateTextView.setText(event.getDate());
         holder.descriptionTextView.setText(event.getDescription());
+
+
     }
 
     @Override
@@ -39,10 +41,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         TextView dateTextView;
         TextView descriptionTextView;
 
+
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
             dateTextView = itemView.findViewById(R.id.date_slot);
             descriptionTextView = itemView.findViewById(R.id.event_description);
+
         }
     }
 }

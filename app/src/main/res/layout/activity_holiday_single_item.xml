@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="15/05/2024"
-        android:textColor="@android:color/black"
+        android:textColor="#03A9F4"
         android:textSize="16sp" />
 
 
@@ -21,7 +21,9 @@
         android:layout_toEndOf="@id/date_slot"
         android:paddingStart="16dp"
         android:text="Event Description"
-        android:textColor="@android:color/black"
+        android:textColor="#C52C2C"
         android:textSize="16sp" />
+
+
 
 </RelativeLayout>

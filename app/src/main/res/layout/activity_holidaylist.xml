@@ -16,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="#51B5C3">
-
     </ImageView>
 
     <ImageButton
@@ -30,7 +29,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.312">
-
     </ImageButton>
 
     <TextView
@@ -48,8 +46,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.857">
-
     </TextView>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/edit_text_border"
+        android:hint="Search by date (e.g. 15/05/2024)"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search by date (e.g. 15/05/2024)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_attendance"
+
+        />
 
     <LinearLayout
         android:id="@+id/recycler_view_holder"
@@ -60,7 +72,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_attendance">
+        app:layout_constraintTop_toBottomOf="@id/search_view">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_Holiday_list"
@@ -68,11 +80,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
         </androidx.recyclerview.widget.RecyclerView>
-
     </LinearLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
