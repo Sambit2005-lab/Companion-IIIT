@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.companioniiit.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.AnnouncementViewHolder> {
 
@@ -42,6 +45,13 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         } else {
             holder.imageView.setVisibility(View.GONE);
         }
+
+        // Convert timestamp to date and set the date text
+        if (announcement.getTimestamp() != null) {
+            Date date = new Date(announcement.getTimestamp());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+            holder.dateTextView.setText(sdf.format(date));
+        }
     }
 
     @Override
@@ -53,12 +63,14 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         public ImageView imageView;
         public TextView captionTextView;
         public TextView postedByTextView;
+        public TextView dateTextView;
 
         public AnnouncementViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view_announcement);
             captionTextView = itemView.findViewById(R.id.text_view_caption);
             postedByTextView = itemView.findViewById(R.id.text_view_posted_by);
+            dateTextView = itemView.findViewById(R.id.text_view_date);
         }
     }
 }

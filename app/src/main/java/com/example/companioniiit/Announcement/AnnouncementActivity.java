@@ -1,6 +1,5 @@
 package com.example.companioniiit.Announcement;
 
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,7 +29,6 @@ public class AnnouncementActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AnnouncementAdapter announcementAdapter;
     private List<Announcement> announcementList;
-
     private ImageButton back_btn;
 
     @Override
@@ -50,7 +48,7 @@ public class AnnouncementActivity extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(AnnouncementActivity.this, MainActivity.class);
+                Intent intent = new Intent(AnnouncementActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -67,7 +65,9 @@ public class AnnouncementActivity extends AppCompatActivity {
                         DataSnapshot announcementsSnapshot = hostSnapshot.child("announcements");
                         for (DataSnapshot announcementSnapshot : announcementsSnapshot.getChildren()) {
                             Announcement announcement = announcementSnapshot.getValue(Announcement.class);
-                            announcementList.add(announcement);
+                            if (announcement != null) {
+                                announcementList.add(announcement);
+                            }
                         }
                     }
                 }
