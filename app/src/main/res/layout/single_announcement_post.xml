@@ -13,6 +13,8 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintEnd_toEndOf="parent">
 
+
+
       <TextView
           android:id="@+id/username_announcement"
           android:layout_width="wrap_content"

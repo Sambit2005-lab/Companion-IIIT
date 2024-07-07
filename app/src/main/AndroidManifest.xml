@@ -33,6 +33,9 @@
             android:name=".Viewall"
             android:exported="false" />
         <activity
+            android:name=".holiday_list_page"
+            android:exported="false" />
+        <activity
             android:name=".change_your_password"
             android:exported="false" />
         <activity

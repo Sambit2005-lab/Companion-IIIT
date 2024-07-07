@@ -90,7 +90,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:src="@drawable/downloadicon2" />
+                    android:src="@drawable/downloadicon2"
+                    />
             </LinearLayout>
 
         </LinearLayout>
