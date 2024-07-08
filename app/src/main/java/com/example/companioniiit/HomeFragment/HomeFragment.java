@@ -24,6 +24,7 @@ import com.example.companioniiit.Announcement.AnnouncementActivity;
 import com.example.companioniiit.MainActivity;
 import com.example.companioniiit.MyCalendar.activity_myCalender_card;
 import com.example.companioniiit.R;
+import com.example.companioniiit.TechBytes.tech_bytes_home;
 import com.example.companioniiit.attendance.attendance_card;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,6 +53,8 @@ public class HomeFragment extends Fragment {
     private CardView myCalenderButton;
     private CardView AnnouncementBtn;
 
+    private CardView techBytesBtn;
+
     private View view;
 
     @SuppressLint("MissingInflatedId")
@@ -64,6 +67,7 @@ public class HomeFragment extends Fragment {
         attendenceButton = view.findViewById(R.id.attendance_card); // Initialize the button
         myCalenderButton = view.findViewById(R.id.myCalendar_card);
         AnnouncementBtn = view.findViewById(R.id.announcement_card);
+        techBytesBtn = view.findViewById(R.id.techBytes_card);
         profilePic = view.findViewById(R.id.profile_pic);
 
         // Initialize ImageSlider
@@ -100,6 +104,8 @@ public class HomeFragment extends Fragment {
 
             onAnnouncementClick();
 
+            onTechBytesClick();
+
             loadProfileImage();
         } else {
             Toast.makeText(getContext(), "User not logged in", Toast.LENGTH_SHORT).show();
@@ -109,6 +115,16 @@ public class HomeFragment extends Fragment {
         }
 
         return view;
+    }
+
+    private void onTechBytesClick() {
+        techBytesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), tech_bytes_home.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadProfileImage() {

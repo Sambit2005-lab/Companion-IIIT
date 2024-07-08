@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +22,9 @@
         android:theme="@style/Theme.CompanionIIIT"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".TechBytes.tech_bytes_home"
+            android:exported="false" />
         <activity
             android:name=".MyCalendar.holidayList"
             android:exported="false" />
@@ -53,9 +55,7 @@
         <activity
             android:name=".Host.hostside_vedantasamiti_societies_announcement"
             android:exported="false" />
-        <activity
-            android:name=".Host.hostside_sportsociety_societies_calendar"
-            />
+        <activity android:name=".Host.hostside_sportsociety_societies_calendar" />
         <activity
             android:name=".Host.hostside_sportsociety_societies_teammembers"
             android:exported="false" />
@@ -110,10 +110,7 @@
         <activity
             android:name=".Host.hostside_megahertz_societies_announcement"
             android:exported="false" />
-        <activity
-            android:name=".Host.hostside_megahertz_societies_teammembers"
-             />
-
+        <activity android:name=".Host.hostside_megahertz_societies_teammembers" />
         <activity
             android:name=".Host.hostside_fats_societies_calendar"
             android:exported="false" />
@@ -141,9 +138,7 @@
         <activity
             android:name=".Host.hostside_Ecell_societies_announcement"
             android:exported="false" />
-        <activity
-            android:name=".Host.ecell_host_home"
-             />
+        <activity android:name=".Host.ecell_host_home" />
         <activity
             android:name=".Host.hostside_Tars_societies_calendar"
             android:exported="false" />

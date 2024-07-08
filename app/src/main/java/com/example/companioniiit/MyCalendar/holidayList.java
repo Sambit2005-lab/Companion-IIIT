@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +37,8 @@ public class holidayList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_holidaylist);
+
+        Toast.makeText(holidayList.this, "Click the search icon & Search by date (e.g. 15-05-2024)", Toast.LENGTH_LONG).show();
 
         recyclerView = findViewById(R.id.recycler_view_Holiday_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
