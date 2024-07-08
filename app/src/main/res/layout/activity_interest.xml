@@ -163,7 +163,7 @@
                 android:layout_below="@+id/dash"
                 android:layout_marginTop="340dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/technology_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Technology  +   "
@@ -176,7 +176,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/sports"
                 style="@android:style/Widget.Button"
@@ -185,7 +184,7 @@
                 android:layout_marginTop="340dp"
                 android:layout_toRightOf="@+id/technology"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/sports_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Sports   +   "
@@ -193,11 +192,9 @@
                 android:textSize="16sp"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.93"
+                app:layout_constraintHorizontal_bias="0.796"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/cybersecurity"
@@ -207,7 +204,7 @@
                 android:layout_below="@+id/technology"
                 android:layout_marginTop="380dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/cybersecurity_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Cybersecurity  +  "
@@ -220,17 +217,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/music"
                 style="@android:style/Widget.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
                 android:layout_below="@+id/sports"
-                android:layout_marginTop="380dp"
+                android:layout_marginTop="376dp"
                 android:layout_toRightOf="@+id/cybersecurity"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/music_icon_2"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Music  +  "
@@ -238,11 +234,9 @@
                 android:textSize="16sp"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.893"
+                app:layout_constraintHorizontal_bias="0.813"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/literature"
@@ -252,7 +246,7 @@
                 android:layout_below="@+id/cybersecurity"
                 android:layout_marginTop="420dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/literature_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Literature   +   "
@@ -274,7 +268,7 @@
                 android:layout_below="@+id/literature"
                 android:layout_marginTop="460dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/photography_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Photography   +   "
@@ -296,7 +290,7 @@
                 android:layout_marginTop="596dp"
                 android:layout_toRightOf="@+id/socialcause"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/dance_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Dance   +   "
@@ -304,7 +298,7 @@
                 android:textSize="16sp"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.947"
+                app:layout_constraintHorizontal_bias="0.877"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -318,7 +312,7 @@
                 android:layout_below="@+id/enterpreneurship"
                 android:layout_marginTop="596dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/social_cause_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Social Cause   +   "
@@ -340,7 +334,7 @@
                 android:layout_below="@+id/photography"
                 android:layout_marginTop="504dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/career_dev_icon_2"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Career Development   +   "
@@ -362,7 +356,7 @@
                 android:layout_below="@+id/filmmedia"
                 android:layout_marginTop="684dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/marketing_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Marketing   +   "
@@ -383,7 +377,7 @@
                 android:layout_below="@+id/socialcause"
                 android:layout_marginTop="640dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/film_media_icon_2"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Film Media   +   "
@@ -405,10 +399,10 @@
                 android:layout_below="@+id/career"
                 android:layout_marginTop="548dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/entrepreneurship_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
-                android:text="Enterpreneurship   +   "
+                android:text="Entrepreneurship   +   "
                 android:textAlignment="viewStart"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -427,7 +421,7 @@
                 android:layout_marginTop="640dp"
                 android:layout_toRightOf="@+id/filmmedia"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/coding_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Coding   +   "
@@ -449,7 +443,7 @@
                 android:layout_below="@+id/marketing"
                 android:layout_marginTop="728dp"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/event_management_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Event Management   +   "
@@ -472,7 +466,7 @@
                 android:layout_marginTop="460dp"
                 android:layout_toRightOf="@+id/photography"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/acting_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Acting   +   "
@@ -480,7 +474,7 @@
                 android:textSize="16sp"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.915"
+                app:layout_constraintHorizontal_bias="0.815"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -495,7 +489,7 @@
                 android:layout_marginTop="548dp"
                 android:layout_toRightOf="@+id/enterpreneurship"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/arts_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Art   +   "
@@ -503,7 +497,7 @@
                 android:textSize="16sp"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.951"
+                app:layout_constraintHorizontal_bias="0.871"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -518,7 +512,7 @@
                 android:layout_marginTop="420dp"
                 android:layout_toRightOf="@+id/literature"
                 android:background="@drawable/btn_background_1"
-                android:drawableStart="@drawable/ic_1"
+                android:drawableStart="@drawable/writing_icon"
                 android:drawablePadding="12dp"
                 android:paddingStart="12dp"
                 android:text="Writing   +   "
@@ -526,7 +520,7 @@
                 android:textSize="16sp"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.87"
+                app:layout_constraintHorizontal_bias="0.777"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
