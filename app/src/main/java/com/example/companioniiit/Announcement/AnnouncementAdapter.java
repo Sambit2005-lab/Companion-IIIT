@@ -41,7 +41,11 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
         if (announcement.getImageUrl() != null && !announcement.getImageUrl().isEmpty()) {
             holder.imageView.setVisibility(View.VISIBLE);
-            Picasso.get().load(announcement.getImageUrl()).into(holder.imageView);
+            Picasso.get()
+                    .load(announcement.getImageUrl())
+                    .placeholder(R.drawable.plswait) // Placeholder image resource
+                    .error(R.drawable.erroricon) // Error image resource
+                    .into(holder.imageView);
         } else {
             holder.imageView.setVisibility(View.GONE);
         }
