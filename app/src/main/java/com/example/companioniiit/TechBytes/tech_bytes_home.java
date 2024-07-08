@@ -2,9 +2,7 @@ package com.example.companioniiit.TechBytes;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.companioniiit.MainActivity;
 import com.example.companioniiit.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,13 +18,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class tech_bytes_home extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postList;
-
     private ImageButton backBtn;
 
     @Override
@@ -41,6 +39,7 @@ public class tech_bytes_home extends AppCompatActivity {
         postList = new ArrayList<>();
         postAdapter = new PostAdapter(postList);
         recyclerView.setAdapter(postAdapter);
+
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(v -> {
             Intent intent = new Intent(tech_bytes_home.this, MainActivity.class);
@@ -49,7 +48,6 @@ public class tech_bytes_home extends AppCompatActivity {
 
         loadPostsFromFirebase();
     }
-
 
     private void loadPostsFromFirebase() {
         DatabaseReference postsRef = FirebaseDatabase.getInstance().getReference("hosts").child("1").child("posts");
@@ -65,6 +63,13 @@ public class tech_bytes_home extends AppCompatActivity {
                         postList.add(post);
                     }
                 }
+                // Sort posts by timestamp in descending order
+                Collections.sort(postList, new Comparator<Post>() {
+                    @Override
+                    public int compare(Post p1, Post p2) {
+                        return Long.compare(p2.getTimestamp(), p1.getTimestamp());
+                    }
+                });
                 postAdapter.setPostList(postList);
             }
 
