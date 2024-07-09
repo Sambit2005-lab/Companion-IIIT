@@ -23,6 +23,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".splash"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Host.hostside_codexnova_societies_calendar"
             android:exported="false" />
         <activity
@@ -286,12 +295,8 @@
             android:exported="false" />
         <activity
             android:name=".welcome"
-            android:exported="true">
-            <intent-filter tools:ignore="ExtraText">
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".signup"
@@ -299,6 +304,9 @@
         <activity
             android:name=".login"
             android:exported="false" />
+
+
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
