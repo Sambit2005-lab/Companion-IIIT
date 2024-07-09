@@ -1,15 +1,23 @@
 package com.example.companioniiit.SocietyFragment;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ImageSpan;
+import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.companioniiit.R;
@@ -42,6 +50,10 @@ public class about_techsociety extends Fragment {
 
         eventsRecyclerView = view.findViewById(R.id.our_events_recyclerview_techsociety);
         teamMembersRecyclerView = view.findViewById(R.id.team_members_recyclerview_techsociety);
+
+
+
+
 
         eventList = new ArrayList<>();
         teamMemberList = new ArrayList<>();

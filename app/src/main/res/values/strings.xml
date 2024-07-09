@@ -12,6 +12,11 @@
     <string name="title_activity_my_profile">my_profile</string>
     <string name="date_and_time"><![CDATA[Date & Time]]></string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <string name="socities_chat_section">COMMING SOON</string>
+
+
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

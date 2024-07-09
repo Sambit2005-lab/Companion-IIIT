@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SocietyFragment.about_techsociety">
+    tools:context=".SocietyFragment.about_techsociety"
+    android:background="@drawable/page_bckg"
+    >
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -21,20 +23,7 @@
 
     </ImageView>
 
-    <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@null"
-        android:src="@drawable/back_button"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar_societies"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347">
 
-    </ImageButton>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -84,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="152dp"
-                    android:text="Society Name..."
+                    android:text="Tech Society"
                     android:textColor="#000000"
                     android:textSize="28sp"
                     android:textStyle="bold"
@@ -145,7 +134,7 @@
                 android:id="@+id/about_us_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                android:text="The Tech Society at IIIT BBSR fosters a rich coding environment, nurturing technological skills. Join us to collaborate, innovate, and excel with passionate individuals dedicated to making a meaningful impact."
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="12dp"
@@ -175,8 +164,9 @@
                 android:id="@+id/what_do_we_do_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                android:text="At the Tech Society, we cater to diverse interests and skill levels through coding sessions, workshops, hackathons, collaborative projects, mentorship programs, and community-building events, fostering programming skills, technical knowledge, creativity, teamwork, and strong bonds among our members."
                 android:paddingLeft="8dp"
+                android:autoLink="web"
                 android:paddingRight="8dp"
                 android:paddingBottom="12dp"
                 android:textColor="#000000"
@@ -205,7 +195,8 @@
                 android:id="@+id/Our_Events_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                android:text="Our events include an Annual Tech Fest, coding bootcamps, hackathons, guest lectures, project showcases, and inter-college competitions, all designed to engage, educate, and empower our members in various technology domains."
+                android:autoLink="web"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="12dp"
