@@ -23,6 +23,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ContactUsActivity"
+            android:exported="false" />
+        <activity
             android:name=".splash"
             android:exported="true">
             <intent-filter>
@@ -295,18 +298,13 @@
             android:exported="false" />
         <activity
             android:name=".welcome"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".signup"
             android:exported="true" />
         <activity
             android:name=".login"
             android:exported="false" />
-
-
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
