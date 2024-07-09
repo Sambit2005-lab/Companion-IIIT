@@ -82,6 +82,9 @@ public class HomeFragment extends Fragment {
 
         // Add images to the ImageSlider
         imageSlider.setImageList(slideModels);
+        imageSlider.startSliding(1500);
+
+
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();
