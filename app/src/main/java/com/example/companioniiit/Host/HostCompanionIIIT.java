@@ -1,5 +1,6 @@
 package com.example.companioniiit.Host;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -31,153 +33,123 @@ import java.util.Map;
 
 public class HostCompanionIIIT extends AppCompatActivity {
 
-    private static final int PICK_IMAGE_REQUEST = 1;
-
-    private ImageView uploadImageView;
-    private EditText captionEditText, postedByEditText;
-    private Button uploadImageButton, savePostButton, cancelPostButton;
-    private Uri imageUri;
-
-    private StorageReference storageReference;
+    private EditText joiningLinkEditText;
+    private AppCompatButton saveJoiningLinkButton;
     private DatabaseReference databaseReference;
+    private DatabaseReference hostJoiningLinksRef;
+    private String hostEmail = "code.x.novas@gmail.com"; // Hardcoded host email
 
-    private ProgressDialog progressDialog;
+    private AppCompatButton AddEventbtn;
+    private AppCompatButton AddTeamMemberbtn;
+    private AppCompatButton AddEventimgbtn;
+    private AppCompatButton Addannouncementbtn;
 
-    private String hostEmail="code.x.novas@gmail.com";
+
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_companion_iiit);
 
 
-        uploadImageView = findViewById(R.id.uplaod_image_for_announcement);
-        captionEditText = findViewById(R.id.caption_announcement_techsociety);
-        postedByEditText = findViewById(R.id.post_by_designation);
-        uploadImageButton = findViewById(R.id.upload_image_announcement_techsociety);
-        savePostButton = findViewById(R.id.save_post);
-        cancelPostButton = findViewById(R.id.cancel_post);
+        joiningLinkEditText = findViewById(R.id.joining_link_techsociety);
+        saveJoiningLinkButton = findViewById(R.id.save_joining_link_techsociety);
 
-        storageReference = FirebaseStorage.getInstance().getReference("posts");
-        databaseReference = FirebaseDatabase.getInstance().getReference("hosts");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("hosts");
 
-        progressDialog = new ProgressDialog(this);
-
-
-
-        uploadImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFileChooser();
-            }
-        });
-
-        savePostButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadAnnouncement();
-            }
-        });
-
-        cancelPostButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle cancel post logic
-                finish();
-            }
-        });
-    }
-
-    private void openFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imageUri = data.getData();
-            uploadImageView.setImageURI(imageUri);
-        }
-    }
-
-    private void uploadAnnouncement() {
-        String caption = captionEditText.getText().toString().trim();
-        String postedBy = postedByEditText.getText().toString().trim();
-
-        if (!caption.isEmpty() && !postedBy.isEmpty()) {
-            progressDialog.setMessage("Uploading...");
-            progressDialog.show();
-
-            if (imageUri != null) {
-                StorageReference fileReference = storageReference.child(System.currentTimeMillis() + ".jpg");
-
-                fileReference.putFile(imageUri)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        String postImageUrl = uri.toString();
-                                        saveAnnouncementData(postImageUrl, caption, postedBy);
-                                    }
-                                });
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                progressDialog.dismiss();
-                                Toast.makeText( HostCompanionIIIT.this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            } else {
-                saveAnnouncementData(null, caption, postedBy);
-            }
-        } else {
-            Toast.makeText(this, "Please fill all fields and select an image", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void saveAnnouncementData(String imageUrl, String caption, String postedBy) {
-        long timestamp = System.currentTimeMillis();
-
-        Map<String, Object> announcementData = new HashMap<>();
-        announcementData.put("imageUrl", imageUrl);
-        announcementData.put("caption", caption);
-        announcementData.put("postedBy", postedBy);
-        announcementData.put("timestamp", timestamp);
-
-        // Determine the host node based on the email
-        DatabaseReference hostAnnouncementsRef;
+        // Setting up the reference for joining links
         if (hostEmail.equals("code.x.novas@gmail.com")) {
-            hostAnnouncementsRef = databaseReference.child("1").child("posts");
+            hostJoiningLinksRef = databaseReference.child("1").child("joining_links");
         } else {
             Toast.makeText(this, "Invalid host email", Toast.LENGTH_SHORT).show();
-            progressDialog.dismiss();
             return;
         }
 
-        String key = hostAnnouncementsRef.push().getKey();
-        hostAnnouncementsRef.child(key).setValue(announcementData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        progressDialog.dismiss();
-                        Toast.makeText( HostCompanionIIIT.this, "Post uploaded", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressDialog.dismiss();
-                        Toast.makeText( HostCompanionIIIT.this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        saveJoiningLinkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveJoiningLinkToFirebase();
+            }
+        });
+
+        AddEventbtn = findViewById(R.id.add_event_techsociety);
+        AddTeamMemberbtn = findViewById(R.id.upload_team_members);
+        AddEventimgbtn = findViewById(R.id.upload_event_images_techsociety);
+        Addannouncementbtn = findViewById(R.id.add_announcement_techsociety);
+
+        OnclickAddEventbtn();
+        OnclickAddTeamMemberbtn();
+        OnclickAddEventimgbtn();
+        OnclickAddannouncementbtn();
+    }
+
+    private void saveJoiningLinkToFirebase() {
+        String joiningLink = joiningLinkEditText.getText().toString().trim();
+
+        if (joiningLink.isEmpty()) {
+            joiningLinkEditText.setError("Joining link is required");
+            joiningLinkEditText.requestFocus();
+            return;
+        }
+
+        String linkId = hostJoiningLinksRef.push().getKey();
+
+        if (linkId != null) {
+            hostJoiningLinksRef.child(linkId).setValue(joiningLink)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText( HostCompanionIIIT.this, "Joining link saved successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText( HostCompanionIIIT.this, "Failed to save joining link", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+    }
+
+    private void OnclickAddannouncementbtn() {
+        Addannouncementbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( HostCompanionIIIT.this, hostside_codexnova_societies_announcement.class);
+                intent.putExtra("host_email", hostEmail);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void OnclickAddEventimgbtn() {
+        AddEventimgbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( HostCompanionIIIT.this, hostside_codexnova_societies_event_images.class);
+                intent.putExtra("hostEmail", hostEmail);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void OnclickAddTeamMemberbtn() {
+        AddTeamMemberbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( HostCompanionIIIT.this, hostside_codexnova_societies_teammembers.class);
+                intent.putExtra("hostEmail", hostEmail);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void OnclickAddEventbtn() {
+        AddEventbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( HostCompanionIIIT.this, hostside_codexnova_societies_calendar.class);
+                intent.putExtra("hostEmail", hostEmail);
+                startActivity(intent);
+            }
+        });
     }
 }
-
 
