@@ -48,10 +48,7 @@ public class PyqFragment extends Fragment {
         categoryRecyclerView.setAdapter(categoryAdapter);
 
         database = FirebaseDatabase.getInstance();
-        String userYear = "1st year"; // Get this value based on your current user
-        notesRef = database.getReference().child(userYear).child("Pyqs").child("Pyqs Category");
 
-        fetchNotes();
 
         fetchUserYearAndNotes();
 
