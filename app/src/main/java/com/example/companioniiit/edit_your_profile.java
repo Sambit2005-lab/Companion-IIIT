@@ -45,7 +45,7 @@ public class edit_your_profile extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
 
     private ImageView profileImageView;
-    private EditText nameEditText, emailEditText, courseEditText, studentIdEditText;
+    private EditText nameEditText, emailEditText, courseYearEditText, studentIdEditText;
     private Uri profileImageUri;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
@@ -60,7 +60,7 @@ public class edit_your_profile extends AppCompatActivity {
         profileImageView = findViewById(R.id.profile_pic2);
         nameEditText = findViewById(R.id.change_name);
         emailEditText = findViewById(R.id.change_email);
-        courseEditText = findViewById(R.id.change_course);
+        courseYearEditText = findViewById(R.id.change_course);
         studentIdEditText = findViewById(R.id.studentid);
         AppCompatButton saveButton = findViewById(R.id.save);
         AppCompatButton uploadButton = findViewById(R.id.upload_picture);
@@ -144,7 +144,7 @@ public class edit_your_profile extends AppCompatActivity {
     private void saveProfileInfo() {
         String name = nameEditText.getText().toString().trim();
         String email = emailEditText.getText().toString().trim();
-        String course = courseEditText.getText().toString().trim();
+        String course = courseYearEditText.getText().toString().trim();
         String studentId = studentIdEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(course) || TextUtils.isEmpty(studentId)) {
@@ -159,10 +159,10 @@ public class edit_your_profile extends AppCompatActivity {
             Map<String, Object> userData = new HashMap<>();
             userData.put("name", name);
             userData.put("email", email);
-            userData.put("course", course);
+            userData.put("year", course);
             userData.put("collegeId", studentId);
 
-            databaseReference.child(userId).setValue(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
+            databaseReference.child(userId).updateChildren(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
@@ -218,13 +218,13 @@ public class edit_your_profile extends AppCompatActivity {
                     if (dataSnapshot.exists()) {
                         String name = dataSnapshot.child("name").getValue(String.class);
                         String email = dataSnapshot.child("email").getValue(String.class);
-                        String course = dataSnapshot.child("course").getValue(String.class);
+                        String course = dataSnapshot.child("year").getValue(String.class);
                         String studentId = dataSnapshot.child("collegeId").getValue(String.class);
                         String profileImageUrl = dataSnapshot.child("profileImage").getValue(String.class);
 
                         nameEditText.setText(name);
                         emailEditText.setText(email);
-                        courseEditText.setText(course);
+                        courseYearEditText.setText(course);
                         studentIdEditText.setText(studentId);
 
                         if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
