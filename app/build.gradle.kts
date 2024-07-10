@@ -53,6 +53,7 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.github.bumptech.glide:glide:4.15.1")
     implementation(libs.firebase.messaging)
+    implementation(libs.firebase.firestore)
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)

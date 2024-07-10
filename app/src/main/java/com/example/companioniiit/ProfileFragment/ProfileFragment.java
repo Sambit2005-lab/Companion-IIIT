@@ -1,66 +1,150 @@
 package com.example.companioniiit.ProfileFragment;
 
-import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
 import com.example.companioniiit.R;
+import com.example.companioniiit.change_your_password;
+import com.example.companioniiit.edit_your_profile;
+import com.example.companioniiit.login;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProfileFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private TextView nameTextView, branchTextView, yearTextView, studentIdTextView;
+    private ImageView profileImageView;
+    private AppCompatButton editProfileButton, changePasswordButton, myReportsButton, logoutButton;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+    private FirebaseStorage firebaseStorage;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        // Initialize Firebase Auth, Database, and Storage
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        firebaseStorage = FirebaseStorage.getInstance();
+
+        // Initialize UI elements
+        nameTextView = view.findViewById(R.id.name);
+        branchTextView = view.findViewById(R.id.branch);
+        yearTextView = view.findViewById(R.id.year);
+        studentIdTextView = view.findViewById(R.id.student_id);
+        profileImageView = view.findViewById(R.id.profile_pic);
+        editProfileButton = view.findViewById(R.id.edit_profile);
+        changePasswordButton = view.findViewById(R.id.change_password);
+        myReportsButton = view.findViewById(R.id.my_reports);
+        logoutButton = view.findViewById(R.id.logout);
+
+        // Load profile information
+        loadProfileInfo();
+
+        // Set button listeners
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), edit_your_profile.class);
+                startActivity(intent);
+
+            }
+        });
+
+        changePasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(getActivity(), change_your_password.class);
+            }
+        });
+
+        myReportsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                Intent intent = new Intent(getActivity(), login.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
+        return view;
+    }
+
+    private void loadProfileInfo() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+            databaseReference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String name = dataSnapshot.child("name").getValue(String.class);
+                        String branch = dataSnapshot.child("branch").getValue(String.class);
+                        String year = dataSnapshot.child("year").getValue(String.class);
+                        String studentId = dataSnapshot.child("studentId").getValue(String.class);
+                        String profileImageUrl = dataSnapshot.child("profileImage").getValue(String.class);
+
+                        nameTextView.setText(name);
+                        branchTextView.setText(branch);
+                        yearTextView.setText(year);
+                        studentIdTextView.setText(studentId);
+
+                        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+                            Glide.with(ProfileFragment.this).load(profileImageUrl).into(profileImageView);
+                        } else {
+                            profileImageView.setImageResource(R.drawable.profile_icon); // Set a default image if needed
+                        }
+                    } else {
+                        Toast.makeText(getActivity(), "Profile data not found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(getActivity(), "Failed to load profile data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
-    }
 }
+
