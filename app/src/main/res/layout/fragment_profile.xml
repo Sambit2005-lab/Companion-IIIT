@@ -225,7 +225,7 @@
         android:focusable="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/feedback_icon"
+        android:src="@drawable/feedback_icon"
         android:visibility="invisible"
 
         app:layout_constraintBottom_toTopOf="@+id/fab1"
@@ -240,7 +240,7 @@
         android:focusable="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/about_us_icon"
+        android:src="@drawable/about_us_icon"
         android:visibility="invisible"
 
         app:layout_constraintBottom_toTopOf="@+id/fab2"
@@ -255,7 +255,7 @@
         android:focusable="true"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/contact_us_icon"
+        android:src="@drawable/contact_us_icon"
         android:visibility="invisible"
 
         app:layout_constraintBottom_toTopOf="@+id/fab3"
