@@ -88,7 +88,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="40dp"
         android:layout_marginRight="10dp"
-        android:background="#C1C0C0"
+        android:background="@drawable/edit_text_border_grey"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/agree"
         app:layout_constraintTop_toBottomOf="@+id/message">
