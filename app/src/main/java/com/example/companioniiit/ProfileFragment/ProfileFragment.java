@@ -1,13 +1,18 @@
 package com.example.companioniiit.ProfileFragment;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -139,8 +144,7 @@ public class ProfileFragment extends Fragment {
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), change_your_password.class);
-                startActivity(intent);
+                showForgotPasswordDialog();
             }
         });
 
@@ -167,6 +171,49 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
+    private void showForgotPasswordDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Reset Password");
+
+        final EditText input = new EditText(getContext());
+        input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        input.setHint("Enter your email"); // Set hint for the email input
+        builder.setView(input);
+
+
+        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String email = input.getText().toString().trim();
+                if (!email.isEmpty()) {
+                    resetPassword(email);
+                } else {
+                    Toast.makeText(getActivity(), "Please enter your email", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    private void resetPassword(String email) {
+        firebaseAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getActivity(), "Reset link sent to your email", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     private void loadProfileInfo() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
@@ -186,7 +233,7 @@ public class ProfileFragment extends Fragment {
                         studentIdTextView.setText(studentId);
 
                         if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
-                            Glide.with(ProfileFragment.this).load(profileImageUrl).into(profileImageView);
+                            Glide.with(ProfileFragment.this).load(profileImageUrl).centerInside().into(profileImageView);
                         } else {
                             profileImageView.setImageResource(R.drawable.profile_icon); // Set a default image if needed
                         }
