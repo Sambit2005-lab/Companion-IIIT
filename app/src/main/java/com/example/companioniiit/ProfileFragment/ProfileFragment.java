@@ -175,9 +175,9 @@ public class ProfileFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         String name = dataSnapshot.child("name").getValue(String.class);
-                        String branch = dataSnapshot.child("branch").getValue(String.class);
+                        String branch = dataSnapshot.child("course").getValue(String.class);
                         String year = dataSnapshot.child("year").getValue(String.class);
-                        String studentId = dataSnapshot.child("studentId").getValue(String.class);
+                        String studentId = dataSnapshot.child("collegeId").getValue(String.class);
                         String profileImageUrl = dataSnapshot.child("profileImage").getValue(String.class);
 
                         nameTextView.setText(name);
