@@ -42,6 +42,7 @@ public class FeedbackPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedRating = "very_bad";
+                  Toast.makeText(FeedbackPage.this, "Very Good", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -49,6 +50,7 @@ public class FeedbackPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedRating = "bad";
+                  Toast.makeText(FeedbackPage.this, "Bad", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -56,6 +58,7 @@ public class FeedbackPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedRating = "neutral";
+                  Toast.makeText(FeedbackPage.this, "Neutral", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -63,6 +66,7 @@ public class FeedbackPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedRating = "good";
+                  Toast.makeText(FeedbackPage.this, "Good", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -70,6 +74,7 @@ public class FeedbackPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedRating = "very_good";
+                  Toast.makeText(FeedbackPage.this, "Very_Good", Toast.LENGTH_SHORT).show();
             }
         });
 
