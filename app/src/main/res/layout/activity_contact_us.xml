@@ -83,6 +83,7 @@
         android:background="@drawable/edit_text_border_grey"/>
 
     <CheckBox
+        android:id="@+id/agree_checkbox"
         android:layout_width="18dp"
         android:layout_height="18dp"
         android:layout_marginLeft="50dp"

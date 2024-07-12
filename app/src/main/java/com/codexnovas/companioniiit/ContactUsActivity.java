@@ -1,6 +1,7 @@
 
 package com.codexnovas.companioniiit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -26,6 +27,7 @@ public class ContactUsActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,7 @@ public class ContactUsActivity extends AppCompatActivity {
         EditText emailEditText = findViewById(R.id.email);
         EditText phoneEditText = findViewById(R.id.phone);
         EditText messageEditText = findViewById(R.id.message);
-        CheckBox agreeCheckBox = findViewById(R.id.agree_checkbox);
+         CheckBox agreeCheckBox = findViewById(R.id.agree_checkbox);
         AppCompatButton sendButton = findViewById(R.id.send_message_button);
 
         // Handle form submission
