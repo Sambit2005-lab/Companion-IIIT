@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.companioniiit"
+    namespace = "com.codexnovas.companioniiit"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.companioniiit"
+        applicationId = "com.codexnovas.companioniiit"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

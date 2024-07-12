@@ -1,10 +1,30 @@
 {
   "project_info": {
     "project_number": "816606346614",
+    "firebase_url": "https://companion-iiit-6a95d-default-rtdb.firebaseio.com",
     "project_id": "companion-iiit-6a95d",
     "storage_bucket": "companion-iiit-6a95d.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816606346614:android:fc74dc3152e0caa93b0e57",
+        "android_client_info": {
+          "package_name": "com.codexnovas.companioniiit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0DPUeKJSs04QQySHYiEKLkH1OkwVyriw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:816606346614:android:363b467449e4a9a23b0e57",
