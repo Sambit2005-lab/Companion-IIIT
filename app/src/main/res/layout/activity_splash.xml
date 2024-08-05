@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         app:lottie_rawRes="@raw/companion_iiit_splashscreen"
         app:lottie_autoPlay="true"
+        android:scaleType="fitXY"
         app:layout_constraintBaseline_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
