@@ -23,4 +23,17 @@
         app:layout_constraintVertical_bias="0.292"
         tools:listitem="@layout/card_home" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

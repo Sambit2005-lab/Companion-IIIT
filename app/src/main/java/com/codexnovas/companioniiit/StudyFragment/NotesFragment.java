@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -32,6 +33,8 @@ public class NotesFragment extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference notesRef;
 
+    private ProgressBar progressBar; // Add progress bar
+
     public NotesFragment() {
         // Required empty public constructor
     }
@@ -43,6 +46,8 @@ public class NotesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_note, container, false);
 
         categoryRecyclerView = view.findViewById(R.id.noteRecyclerView);
+        progressBar = view.findViewById(R.id.progressBar); // Initialize progress bar
+
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         categoryList = new ArrayList<>();
         categoryAdapter = new CategoryAdapter(getContext(), categoryList);
@@ -50,7 +55,11 @@ public class NotesFragment extends Fragment {
 
         database = FirebaseDatabase.getInstance();
 
-        fetchUserYearAndNotes();
+        // Show the progress bar before fetching data
+        progressBar.setVisibility(View.VISIBLE);
+        categoryRecyclerView.setVisibility(View.GONE);
+
+        fetchUserYearAndNotes(); // Fetch the user year and notes data
 
         return view;
     }
@@ -70,19 +79,23 @@ public class NotesFragment extends Fragment {
                             fetchNotes();
                         } else {
                             Log.e("NotesFragment", "User year not found");
+                            hideProgressBar(); // Hide progress bar on failure
                         }
                     } else {
                         Log.e("NotesFragment", "User data not found");
+                        hideProgressBar(); // Hide progress bar on failure
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Log.e("NotesFragment", "Failed to read user data.", error.toException());
+                    hideProgressBar(); // Hide progress bar on failure
                 }
             });
         } else {
             Log.e("NotesFragment", "User is not logged in");
+            hideProgressBar(); // Hide progress bar if no user logged in
         }
     }
 
@@ -110,13 +123,21 @@ public class NotesFragment extends Fragment {
                     categoryList.add(category);
                 }
                 categoryAdapter.notifyDataSetChanged();
+
+                hideProgressBar(); // Hide progress bar when data is loaded
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("NotesFragment", "Failed to read value.", error.toException());
-                // Handle the error here, e.g., show a toast or log a message
+                hideProgressBar(); // Hide progress bar on failure
             }
         });
+    }
+
+    // Method to hide progress bar and show the recycler view
+    private void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
+        categoryRecyclerView.setVisibility(View.VISIBLE);
     }
 }

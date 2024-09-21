@@ -17,10 +17,19 @@ import com.codexnovas.companioniiit.SocietyFragment.SocietyFragment;
 public class MainActivity extends AppCompatActivity {
     private int Selectedtab = 1;
     private static final int REQUEST_NOTIFICATION_PERMISSION = 1;
+    private NetworkMonitor networkMonitor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        networkMonitor = new NetworkMonitor(this);
+
+        // Immediately check network status when the app starts
+        networkMonitor.checkInitialNetworkStatus();
+
+        // Start monitoring network changes
+        networkMonitor.startNetworkCallback();
 
         // Force light mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -170,6 +179,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        networkMonitor.stopNetworkCallback();  // Stop monitoring when activity is destroyed
     }
 
 
