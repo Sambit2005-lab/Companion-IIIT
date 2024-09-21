@@ -38,6 +38,9 @@ class AddreminderPage : AppCompatActivity() {
         binding.Addreminder.setOnClickListener {
             addReminder()
         }
+        binding.imageButton.setOnClickListener {
+            finish()
+        }
 
         }
 

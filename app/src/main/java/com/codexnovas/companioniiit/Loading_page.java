@@ -25,6 +25,7 @@ public class Loading_page extends AppCompatActivity {
                 finally {
                     Intent isplash=new Intent(Loading_page.this, MainActivity.class);
                     startActivity(isplash);
+                    finish();
 
                 }
             }

@@ -26,6 +26,7 @@ public class splash extends AppCompatActivity {
                 finally {
                     Intent isplash=new Intent(splash.this, welcome.class);
                     startActivity(isplash);
+                    finish();
 
                 }
             }

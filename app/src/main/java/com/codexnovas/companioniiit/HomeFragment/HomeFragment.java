@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.codexnovas.companioniiit.ProfileFragment.ProfileFragment;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -54,6 +56,7 @@ public class HomeFragment extends Fragment {
     private CardView AnnouncementBtn;
 
     private CardView techBytesBtn;
+    private ImageButton bellIcon;
 
     private View view;
 
@@ -69,6 +72,16 @@ public class HomeFragment extends Fragment {
         AnnouncementBtn = view.findViewById(R.id.announcement_card);
         techBytesBtn = view.findViewById(R.id.techBytes_card);
         profilePic = view.findViewById(R.id.profile_pic);
+        bellIcon=view.findViewById(R.id.notification_bell);
+
+        bellIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AnnouncementActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Initialize ImageSlider
         ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
