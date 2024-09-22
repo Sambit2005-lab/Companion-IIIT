@@ -9,6 +9,23 @@
     android:background="@drawable/page_bckg"
     >
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/backbtn"
+        android:background="@null"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true"
+        android:drawableRight="@drawable/left_arrow"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/contact_us"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.77"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/contact_us"
+
+        />
+
     <TextView
         android:id="@+id/contact_us"
         android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,6 +8,27 @@
     android:layout_height="match_parent"
     tools:context=".signup"
     android:background="@drawable/page_bckg">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+
+
 
     <TextView
         android:id="@+id/step1"
@@ -16,7 +38,15 @@
         android:layout_marginTop="60dp"
         android:fontFamily="@font/notosans_regular"
         android:text="Step 1 of 4"
-        android:textSize="12dp"/>
+        android:textSize="12dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <ImageView
         android:id="@+id/image"
@@ -25,7 +55,15 @@
         android:layout_below="@+id/step1"
         android:layout_centerInParent="true"
         android:layout_marginTop="5dp"
-        android:src="@drawable/loadingbar"/>
+        android:src="@drawable/loadingbar"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/step1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <TextView
         android:id="@+id/buildprof"
@@ -37,7 +75,15 @@
         android:fontFamily="@font/notosans_regular"
         android:text="Let's build your profile."
         android:textSize="30dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <TextView
         android:id="@+id/lessthan"
@@ -47,7 +93,17 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/notosans_regular"
         android:text="It takes less than 2 minutes."
-        android:textSize="13dp"/>
+        android:textSize="13dp"
+
+        app:layout_constraintStart_toStartOf="@id/buildprof"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/buildprof"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
     <TextView
         android:id="@+id/name"
         android:layout_width="327dp"
@@ -58,7 +114,15 @@
         android:layout_marginTop="4dp"
         android:textStyle="bold"
         android:text="Full Name"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/lessthan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <EditText
         android:id="@+id/edittext1"
@@ -68,7 +132,15 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="-13dp"
         android:paddingStart="5dp"
-        android:background="@drawable/edit_text_border">
+        android:background="@drawable/edit_text_border"
+
+        app:layout_constraintStart_toStartOf="@id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
         
     </EditText>
 
@@ -82,7 +154,15 @@
         android:fontFamily="@font/notosans_regular"
         android:text="Your Email ID"
         android:textSize="15sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/edittext1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <EditText
         android:id="@+id/emailinput"
@@ -92,7 +172,15 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="6dp"
         android:paddingStart="5dp"
-        android:background="@drawable/edit_text_border"/>
+        android:background="@drawable/edit_text_border"
+
+        app:layout_constraintStart_toStartOf="@id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <TextView
         android:id="@+id/password"
@@ -104,7 +192,15 @@
         android:fontFamily="@font/notosans_regular"
         android:text="Password"
         android:textSize="15sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/emailinput"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <EditText
         android:layout_width="337dp"
@@ -114,7 +210,15 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="6dp"
         android:paddingStart="5dp"
-        android:background="@drawable/edit_text_border">
+        android:background="@drawable/edit_text_border"
+
+        app:layout_constraintStart_toStartOf="@id/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
     </EditText>
 
@@ -128,35 +232,74 @@
         android:fontFamily="@font/notosans_regular"
         android:text="Confirm Password"
         android:textSize="15sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/passwordinput"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <EditText
+        android:id="@+id/cpinput"
         android:layout_width="337dp"
         android:layout_height="50dp"
-        android:id="@+id/cpinput"
         android:layout_below="@+id/cp"
         android:layout_centerInParent="true"
         android:layout_marginTop="6dp"
         android:paddingStart="5dp"
-        android:background="@drawable/edit_text_border"/>
+        android:background="@drawable/edit_text_border"
+
+        app:layout_constraintStart_toStartOf="@id/cp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/cp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:background="@null"
         android:id="@+id/back"
+        android:background="@null"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_alignParentBottom="true"
-        android:drawableRight="@drawable/left_arrow"/>
+        android:drawableRight="@drawable/left_arrow"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 
     <androidx.appcompat.widget.AppCompatButton
-        android:background="@null"
         android:id="@+id/next"
+        android:background="@null"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="0dp"
-        android:drawableLeft="@drawable/right_arrow__1_">
+        android:drawableLeft="@drawable/right_arrow__1_"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
     </androidx.appcompat.widget.AppCompatButton>
 
@@ -168,5 +311,4 @@
         android:visibility="gone"/>
 
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
