@@ -66,7 +66,7 @@ public class PyqFragment extends Fragment {
                     if (snapshot.exists()) {
                         String userYear = snapshot.child("year").getValue(String.class);
                         if (userYear != null) {
-                            notesRef = database.getReference().child(userYear).child("Notes").child("Notes Category");
+                            notesRef = database.getReference().child(userYear).child("Pyqs").child("Pyqs Category");
                             fetchNotes();
                         } else {
                             Log.e("NotesFragment", "User year not found");

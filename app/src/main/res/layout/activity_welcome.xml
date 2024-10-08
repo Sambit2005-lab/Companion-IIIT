@@ -18,18 +18,20 @@
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintBottom_toTopOf="@id/UI_components"
        android:gravity="center">
-       
+
+
        <ImageView
            android:layout_width="match_parent"
            android:layout_height="380dp"
-           android:layout_margin="8dp">
+           android:layout_margin="8dp"
+           android:background="@drawable/iiitlogo"
+
+           >
 
        </ImageView>
 
-       <!--Clear the imageview and put the lottiefile
-       in its place with height as 420dp. Further work will
-       be done once the lottiefile is placed here-->
-       
+
+
        
 
    </LinearLayout>
