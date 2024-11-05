@@ -8,9 +8,9 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
-        android:layout_width="438dp"
-        android:layout_height="39dp"
-        android:background="#51B5C3"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#1e1e1e"
         android:elevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

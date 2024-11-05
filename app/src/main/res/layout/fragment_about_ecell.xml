@@ -4,16 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SocietyFragment.about_ecell">
+    tools:context=".SocietyFragment.about_ecell"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/ecell_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ecell_background"
+            android:alpha="0.2">
+
+        </ImageView>
+
+        <ImageView
             android:id="@+id/toolbar_societies"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="0dp"
             android:background="#000000"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +36,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@null"
-            android:src="@drawable/back_button"
+            android:src="@drawable/back_button_white"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar_societies"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.081"
@@ -58,10 +68,12 @@
                         android:id="@+id/background_pfp"
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
-                        android:background="#d9d9d9"
+                        android:background="@drawable/long_banner_ecell"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:scaleType="center">
 
                     </ImageView>
 
@@ -70,7 +82,8 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_marginTop="80dp"
-                        android:background="@drawable/circular_pfp_holder"
+                        android:background="@drawable/ecell_logo_stroke"
+
                         app:layout_constraintEnd_toStartOf="@+id/society_name"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -145,11 +158,11 @@
                     android:id="@+id/about_us_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="The E-Cell at IIIT Bhubaneswar is a student-run organization that fosters entrepreneurship. They empower aspiring entrepreneurs by providing a supportive community.  This vibrant hub offers students the resources they need to develop their ventures.
- "
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:paddingBottom="12dp"
+                    android:text="The E-Cell at IIIT Bhubaneswar is a student-run organization that fosters entrepreneurship. They empower aspiring entrepreneurs by providing a supportive community.  This vibrant hub offers students the resources they need to develop their ventures.
+ "
                     android:textColor="#000000"
                     android:textSize="16sp">
 
@@ -176,10 +189,12 @@
                     android:id="@+id/what_do_we_do_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="E-Cell at IIIT Bhubaneswar goes beyond just teaching business. We ignite your creativity to find innovative solutions and empower you to take charge of your entrepreneurial journey.  Our vision extends to businesses creating a positive social impact. We're more than an organization; we're a supportive community that celebrates your success. "
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:paddingBottom="12dp"
+                    android:text="E-Cell at IIIT Bhubaneswar is not just about learning business; it's about sparking innovation and fueling your entrepreneurial spirit. We go beyond traditional teaching by encouraging creativity and empowering you to develop groundbreaking solutions to real-world challenges. Our mission is to equip you with the tools and confidence to take control of your entrepreneurial journey, fostering a mindset that embraces both success and responsibility.
+
+\n\nAt E-Cell, we believe in building businesses that don’t just aim for profit but also create a lasting positive impact on society. Our vision extends far beyond the classroom, focusing on nurturing ventures that contribute to the greater good. We are more than an organization—we are a thriving, supportive community that celebrates every milestone of your journey toward success.. "
                     android:textColor="#000000"
                     android:textSize="16sp">
 
