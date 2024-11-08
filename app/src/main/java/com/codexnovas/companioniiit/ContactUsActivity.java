@@ -1,7 +1,10 @@
 
 package com.codexnovas.companioniiit;
 
+import static java.security.AccessController.getContext;
+
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -41,7 +44,10 @@ public class ContactUsActivity extends AppCompatActivity {
         EditText emailEditText = findViewById(R.id.email);
         EditText phoneEditText = findViewById(R.id.phone);
         EditText messageEditText = findViewById(R.id.message);
-         CheckBox agreeCheckBox = findViewById(R.id.agree_checkbox);
+
+
+
+
         AppCompatButton sendButton = findViewById(R.id.send_message_button);
 
         // Handle form submission
@@ -53,7 +59,7 @@ public class ContactUsActivity extends AppCompatActivity {
                 String phone = phoneEditText.getText().toString();
                 String message = messageEditText.getText().toString();
 
-                if (agreeCheckBox.isChecked()) {
+                if (!name.isEmpty() || !email.isEmpty() || !phone.isEmpty() || !message.isEmpty()) {
                     submitContactUsForm(name, email, phone, message);
                 } else {
                     Toast.makeText(ContactUsActivity.this, "Please agree to the terms", Toast.LENGTH_SHORT).show();
@@ -61,6 +67,8 @@ public class ContactUsActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void submitContactUsForm(String name, String email, String phone, String message) {
         // Create a new contact entry
@@ -88,13 +96,13 @@ public class ContactUsActivity extends AppCompatActivity {
         EditText emailEditText = findViewById(R.id.email);
         EditText phoneEditText = findViewById(R.id.phone);
         EditText messageEditText = findViewById(R.id.message);
-        CheckBox agreeCheckBox = findViewById(R.id.agree_checkbox);
+
 
         nameEditText.setText("");
         emailEditText.setText("");
         phoneEditText.setText("");
         messageEditText.setText("");
-        agreeCheckBox.setChecked(false);
+
     }
 
     public static class ContactUs {

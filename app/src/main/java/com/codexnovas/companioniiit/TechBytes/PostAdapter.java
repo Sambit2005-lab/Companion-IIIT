@@ -55,8 +55,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         // Load the image with Glide
         Glide.with(holder.postImage.getContext())
                 .load(post.getImageUrl())
-                .override(800, 600) // resize to desired width and height
-                .centerInside() // scale type
+                .override(1000, 600) // resize to desired width and height
+                .centerInside()
+                // scale type
                 .placeholder(R.drawable.plswait) // add a placeholder image
                 .error(R.drawable.erroricon) // add an error image
                 .into(holder.postImage);
