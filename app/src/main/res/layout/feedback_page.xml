@@ -9,7 +9,7 @@
     android:background="@drawable/page_bckg">
 
 
-    <androidx.appcompat.widget.AppCompatImageButton
+   <!-- <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,24 +22,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.appcompat.widget.AppCompatImageButton>
+    </androidx.appcompat.widget.AppCompatImageButton>  -->
 
-    <TextView
-        android:id="@+id/give_feedback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:text="Give Feedback"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/back_button"
-        app:layout_constraintTop_toBottomOf="@+id/back_button"
-        />
+   <TextView
+       android:id="@+id/give_feedback"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="40dp"
+       android:layout_marginEnd="92dp"
+       android:text="Give Feedback"
+       android:textColor="@color/black"
+       android:textSize="34sp"
+       android:textStyle="bold"
+       app:layout_constraintBottom_toBottomOf="@+id/email"
+       app:layout_constraintEnd_toEndOf="parent"
 
-    <TextView
+       app:layout_constraintHorizontal_bias="1.0"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.283"
+       tools:ignore="MissingConstraints" />
+
+   <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
